@@ -1,0 +1,3570 @@
+Checking for conference activity.
+Joining vendor/14chatter 7 new message(s).
+>>>vendor/14chatter 1260 aeskelson(107)12mar10 22:28 c1259*
+Have a look for a hidden partition. It's fairly common for manaf. to put 
+the install files there.
+
+Andy
+
+
+
+>>>vendor/14chatter 1261 thecobweb(160)12mar10 23:02 c1260*
+Thanks for the suggestion.
+
+But it won't boot up. Goes straight to a screen about missing or corrupted 
+WINDOWS\SYSTEM32\CONFIG\SYSTEM
+
+Regards
+
+Adrian Cobley
+
+
+>>>vendor/14chatter 1262 aeskelson(1197)13mar10 0:26 c1261m
+Get into the computer bios, and see if the partitions are listed, if so 
+you should be able to select which one to boot from.
+(Not all bios show this)
+
+Be careful and some rescue partitions give you a couple of options such as 
+repair leaving any user data and programs intact, or reset to factory, 
+which will zap everything on the C: drive.
+ 
+
+If the bios does not do the trick, then all you need is a bootable disk  
+to get to the command line. So  make a boot disk from another system 
+(assuming it has a floppy) or a boot CD with fdisk on it.
+
+Things like norton ghost cd's are bootable, and they have gdisk on them, 
+which is a more advanced fdisk type utility.
+
+These will allow you to have a look at the drive and see if there are any 
+additional partitions, and if so what is on them. Sometimes they are set 
+to hidden, so you will need to reset the hidden flag, to be able to use 
+them. 
+
+There are also many system rescue CD's available for download.
+
+I keep a copy of the linux system rescue CD handy for such things.
+
+I also have this on a bootable USB stick
+
+http://www.sysresccd.org/Main_Page
+
+Obviously a XP disk is the easiest, but any of the above methods may work.
+
+Andy
+
+
+ 
+
+
+
+
+>>>vendor/14chatter 1263 steveren(246)13mar10 7:30 c1257*
+> I'ld like something more than an Atom so that it 
+> could handle the video from my sons cameras.
+
+With reasonable hardware support, an Atom is more than powerful enough. 
+It's got a lot more raw CPU grunt than the Via CPUs in my MythTV boxes.
+
+
+>>>vendor/14chatter 1264 mthorn(263)13mar10 8:48 c1263*
+Ah I should be clearer, I don't mean just playing it but assembling the 
+clips into a story and rendering it (e.g. to DVD). Currently my wife 
+assembles the project and then transfers it to my machine for rendering 
+(Q6600) --- still takes hours.
+
+Mark Thornton
+
+
+>>>vendor/14chatter 1265 steveren(12)13mar10 11:12 c1264
+Ah, right.
+
+
+>>>vendor/14chatter 1266 petecroft(216)15mar10 9:54 c1261
+There's a KB on how to deal with that, as long as you can get into the 
+Recovery Console (which you should be able to do using your OEM CD).
+
+http://support.microsoft.com/kb/307545
+
+Regards,
+
+Pete
+Ginger Monkey Ltd
+
+
+Joining windows_xp/12general 27 new message(s).
+>>>windows_xp/12general 2506 thecobweb(271)12mar10 23:02 *
+XP OEM
+
+Looks like Son1's laptop needs XP reinstalled 
+(WINDOWS\SYSTEM32\CONFIG\SYSTEM missing or corrupt).
+
+It runs XP Home OEM, but he doesn't have the original disk (probably never 
+did).
+
+Will any OEM copy of XP Home be OK to reinstall from?
+
+Regards
+
+Adrian Cobley
+
+
+>>>windows_xp/12general 2507 mrg(275)12mar10 23:23 c2495*
+Unless you want to do really naughty stuff, the one at sourceforge is 
+good, or http://www.downloadnetcat.com/
+
+Some AV programs identify it as malware, but you can re-compile it
+
+Like nmap, I would usually compile form source rather than trust some 
+dubious site.
+
+
+
+Mr.G
+
+
+
+>>>windows_xp/12general 2508 mrg(388)12mar10 23:23 c2501*
+nlite can speed up rebuilding a new system, if you have the XP CD, it can 
+slipstream SP3 onto SP2, givign you an auto installing CD/ISO.
+
+Click over to bootdisk.com
+try gdisk to re-create the boto sector
+Use paragon to image it to a new disk
+reformat / reparttion to 137GB, or two partitions make active, format /s 
+see if it boots to command.com
+if so
+restore image made above
+
+
+Mr.G
+
+
+
+>>>windows_xp/12general 2509 mrg(101)12mar10 23:31 c2506*
+If you use XP home, you will go to hell or worse. Get XP pro, or better 
+still ubuntu linux.
+
+Mr.G
+
+
+
+>>>windows_xp/12general 2510 pellefsen(48)13mar10 9:51 c2507
+Thanks. All good and useful info.
+
+
+ - Peter -
+
+
+>>>windows_xp/12general 2511 pellefsen(76)13mar10 9:52 c2509*
+OTOH, if you so use an XP Pro cd, the product key won't work.
+
+
+ - Peter -
+
+
+>>>windows_xp/12general 2512 the_bear(341)13mar10 14:16 *
+Service pack 3
+Running service pack 3 installation for the umpteenth time on a customer's 
+machine I happened to notice the extraction routine produced a ding.wav.
+
+I copied the old ding.wav before the installation replaced it and couldn't 
+notice any differene.
+
+Just AAMOI, has anyone any idea why there is a replacement ding.wav in SP3?
+
+
+>>>windows_xp/12general 2513 fspringall(58)13mar10 14:20 c2496
+That should have been in the Windows 7 conference.
+
+Frank
+
+>>>windows_xp/12general 2514 hex(37)13mar10 15:59 c2512m
+No idea.  Copyright reasons, maybe?
+
+
+>>>windows_xp/12general 2515 ahumphreys(58)13mar10 16:55 c2512*
+That is a really good case of work displacement!
+
+Andy
+
+
+
+
+>>>windows_xp/12general 2516 hd(112)13mar10 23:04 c2490*
+Installing them and removing them is messing about with them.
+
+I'd stick with the one built into Windows IIWY.
+
+
+>>>windows_xp/12general 2517 scitech(37)14mar10 9:37 c2504
+Yes, tried that thanks and nothing.
+
+
+>>>windows_xp/12general 2518 scitech(120)14mar10 9:37 c2503
+Yes, that was the conclusion I came to but I've no idea what and I can't 
+find an easy way to fix it.
+
+Thanks anyway. 
+
+
+>>>windows_xp/12general 2519 scitech(85)14mar10 9:37 c2508*
+Thanks for the pointers, I'll have a look as I'm pretty sure it will 
+happen again.
+
+
+>>>windows_xp/12general 2520 mrg(31)14mar10 10:05 c2511
+probably a good thing.
+
+Mr.G
+
+
+
+>>>windows_xp/12general 2521 ptoye(308)14mar10 13:15 *
+Error output stream in batch files
+Is there any way in cmd.exe to redirect the output from the error output 
+stream of a program? I'm trying to detect errors from nslookup and have 
+found that it never gives an errorlevel other than 0, but an error message 
+is sent on the error output stream.
+
+TIA
+
+
+Peter
+
+
+>>>windows_xp/12general 2522 fsmith(122)14mar10 13:41 c2521*
+Use 2>&1 to redirect stderr to stdout, then > or | to redirect stdout, eg 
+
+nslookup 2>&1 | grep "failed"
+
+
+
+
+    - Fred
+
+
+>>>windows_xp/12general 2523 fullbore(136)14mar10 15:19 c2516m
+> I'd stick with the one built into Windows IIWY.
+
+None of our desktops have a firewall of any sort, we have a ZyWall for that.
+
+Niamh
+
+
+>>>windows_xp/12general 2524 koen(188)14mar10 17:19 c2516
+Unfortunately that doesn't really meet my requirements. Also, without TPF 
+I may no longer get the /reports/ of a problem, but that doesn't mean the 
+problem itself has gone away.
+
+ /K\
+
+
+
+>>>windows_xp/12general 2525 koen(1227)14mar10 17:19 c2444*
+Well a week of investigating on and off seems to point the finger 
+of suspicion towards Humyo Smartdrive (a system tray application that 
+automatically synchronizes selected folders on one's computer with the 
+on-line storage area):
+
+ (a) there was a managed upgrade of this app from version 2.2.0.7 to
+     2.2.0.9 shortly before my problems first arose on 6 March (I've 
+     been using it since late January)
+ (b) when I disable the automatic loading of the app (or when I exit
+     it within about 30 minutes after starting up), the problem does
+     not arise
+ (c) if the app is still there after about 40-45 minutes, the firewall
+     reports numerous incidences of a Windows Fatal Application Exit 
+     (I've counted 300 in 2 seconds) 'Too Many Connections' in the 
+     Event Viewer - after which occasionally, when a new connection is
+     created (as reported by TCPView), a new Fatal Exit occurs.
+
+I had hoped that reinstalling the older version of Humyo (2.2.0.7) would 
+fix this problem, but that is not the case - so maybe there is still an 
+other reason for the problem (although it does appear that Humyo is at 
+least implicated).
+
+What approaches could I use to further investigate this issue?
+
+MTIA.
+
+ /K\
+
+
+
+>>>windows_xp/12general 2526 steveren(68)14mar10 17:48 c2522*
+Or, of course, just redirect straight to a file with "2>filename".
+
+
+>>>windows_xp/12general 2527 hex(232)14mar10 18:26 c2519
+> Thanks for the pointers, I'll have a look as I'm pretty sure it 
+> will happen again.
+
+Does Windows and/or your BIOS have a "don't allow anything to write to the 
+boot sector without asking" setting?  ISTR such a thing exists.
+ 
+
+
+>>>windows_xp/12general 2528 rregal(98)14mar10 19:12 c2525*
+What happens if you load it after boot up and then keep it running for 45 
+minutes?
+
+|)
+|\ichard
+
+
+>>>windows_xp/12general 2529 koen(159)15mar10 6:37 c2528
+See (c). After even longer (several hours), mail and browsing stop working 
+while other networking activity such as ping or file sharing still works.
+
+
+ /K\
+
+
+
+>>>windows_xp/12general 2530 ptoye(168)15mar10 9:04 c2526*
+Of course. Thanks    
+Now, why don't Microsoft have a help topic for batch files? Or, if they 
+do, why can't you search for it using "batch" as a search term?
+
+
+Peter
+
+
+>>>windows_xp/12general 2531 fsmith(152)15mar10 9:34 c2530
+http://technet.microsoft.com/en-us/library/bb490982.aspx
+
+and 
+
+http://technet.microsoft.com/en-us/library/bb490890.aspx
+
+This is for XP.
+
+
+    - Fred
+
+
+>>>windows_xp/12general 2532 the_bear(14)15mar10 10:37 c2515
+On a Sunday?
+
+
+Joining maths/3general 3 new message(s).
+>>>maths/3general 2541 proche(148)12mar10 23:45 c2540*
+Thanks for that.  I'll take it slowly and with luck I'll not only get the 
+answer but I'll find why my thinking kept hitting the buffers.
+
+ Peter 
+
+
+>>>maths/3general 2542 petemaud(295)13mar10 8:54 c2541m
+> Thanks ...
+
+Cheers.
+
+> ... thinking kept hitting the buffers.
+
+We all get the dreaded thinking-block from time to time :-)
+
+Once I recollected that when linear length increases x times, area 
+increases x^2 times, it was full steam ahead (to pick up your railway 
+oriented "buffer" metaphor).
+
+
+>>>maths/3general 2543 digitig(389)14mar10 16:58 c2541
+If you really find the equations difficult, fire up a spreadsheet such as 
+Excel.
+
+In the first row (1), label the first 4 columns (A--D) "Aspect 1", "Aspect 
+2", "Diagonal" and "Area".
+
+In the next row, put 
+3       4       10      =C2^2*A2*B2/(A2^2+B2^2)
+With most spreadsheets you should get the 48 that petemaud worked out for 
+a 3:4 aspect ratio, and can then play with the values.
+
+
+
+Joining mini-itx/chatter 4 new message(s).
+>>>mini-itx/chatter 507 mthorn(112)13mar10 18:02 *
+Anyone here?
+I'm contemplating a mini-itx system, possibly based on the J&W minix 
+motherboard.
+
+Mark Thornton
+
+
+>>>mini-itx/chatter 508 gjwalker(210)14mar10 19:15 c507*
+I'm sure there are.
+
+No new minitix activity in this house in - ooh - 7 years. But that mboard 
+does look handy. What are you teaming it with - an x4 phenom? And in 
+particular what fan and case you get.
+
+gjw
+
+
+>>>mini-itx/chatter 509 gjwalker(31)14mar10 19:24 c508m
+... you get the meaning!
+
+gjw
+
+
+>>>mini-itx/chatter 510 mthorn(178)14mar10 19:44 c508
+> an x4 phenom?
+Recommended maximum TDP is 65W. Favourite candidate at the moment is the 
+Athlon II X4 600e which is rated at 45W. Cases I'm still investigating.
+
+Mark Thornton
+
+
+Joining diy/3heating 7 new message(s).
+>>>diy/3heating 1249 tforte(353)12mar10 23:20 c1247*
+>Could it be a wiring cock-up?
+
+Haven't changed anything else. 
+
+The boiler thermostat is definitely gone funny. Boiler at full blast
+when it is at zero, it switches off (though not all the time) at other
+positions.
+
+Now running the boiler manually (switching it off every so often) Don't
+like having all those pipes too hot all around the house (:-(
+
+
+
+>>>diy/3heating 1250 sids(305)13mar10 1:00 c1249*
+> The boiler thermostat is definitely gone funny. 
+
+Or is it the safety cut-out -- ie, the boiler overheating (hence the funny 
+noises) and being shut down automagically. Definitely check there's enough 
+water in the system: too little would account for all your symptoms.
+
+Sid Smith
+www.sidsmith.co.uk
+
+
+
+>>>diy/3heating 1251 billwill(635)13mar10 1:19 c1243*
+When I last did my Garage door. I gripped the shaft with a mole wrench to 
+stop it turning.
+
+The carrier for the end of spring has recesses in it into which you can 
+insert a narrow steel rod (I used some old twist drills). There are 4 such 
+recesses in my carrier, By using two rods you can hold the spring in 
+place, lever it around so that you can get a rod into a new recess and 
+take out the first rod etc. So a rod can stop the spring carrier turning 
+while you loosen its two grub screws.
+
+Then you can progressively wind it up by alternating rods and then 
+retighten the grub screws.
+
+Finally release the mole wrench. 
+
+Bill²
+
+
+>>>diy/3heating 1252 aeskelson(627)13mar10 2:07 c1251*
+That's quite a difference.
+
+Was this a roller shutter type door?
+
+
+My friends door (roller shutter type) was about 12 feet wide 8ft high, the 
+spring was inside the roll, one end anchored to the shaft the other to the 
+shutter. 
+
+No way would a pair of moles grip the shaft an stop this thing turning. I 
+even found it to difficult to put enough force on the stilson to wind up 
+the spring after just over 1 turn, I think I would have bent any thin rods.
+
+During install when the door is out of it's tracks, and the shutter roll 
+held by ties, you are supposed to rotate the door roll 2 1/2 times to 
+tension the spring. 
+
+
+
+
+
+
+>>>diy/3heating 1253 billwill(273)13mar10 14:38 c1252*
+No, its a typical up & over door.
+
+Operation performed from the inside with the door shut, 
+
+I used a Big mole wrench & clamped very tight. In fact I had to use pliers 
+to release the catch on the mole wrench to remove it.
+
+Possibly Rollers have stronger springs.
+
+Bill²
+
+
+
+>>>diy/3heating 1254 tforte(428)13mar10 15:28 c1250
+Thanks
+
+The safety cut out thermostat has a reset button, which hasn't tripped.
+There is plenty of water in the system. I have bled the radiators as
+well. 
+
+From reading various notes on the web, I guess it is either the boiler
+thermostat or the "printed circuit"  Is there a way of testing either
+independently? 
+
+For example, when the boiler thermostat is in the "0" position, is it an
+open or closed electrical circuit?
+
+
+
+
+
+
+>>>diy/3heating 1255 aeskelson(108)13mar10 20:07 c1253
+Very much so, the spring is holding most of the weight of the shutter, 
+which is rather heavy steel.
+
+Andy
+
+
+Joining diy/general9 13 new message(s).
+>>>diy/general9 1915 kblakeman(508)13mar10 8:54 c1901*m
+Definitely do not go for wood these days. We have a hardwood front door 
+that we bought in 1982 and it has not twisted, warped or rotted. Won't say 
+what it is made from in case the eco-warriors find out and pay us a visit! 
+We have had two new wood back doors since 1982, the last one having been 
+put in about 5 years ago and the quality is appalling. We can just about 
+lock it but it twists and warps in the rain and sun. It's coming out soon 
+and we're going for uPVC wood look alike this time.
+
+Karen
+
+
+>>>diy/general9 1916 zulu(234)13mar10 10:13 c1915
+Yes. I have a 120 yo front door made of 3cm oak that fits the frame 
+exactly. I also have a 2 yo hardwood door that cost £700 and which I 
+expect to last a while. Yer £150 B&Q item might cut it for a while if it's 
+well protected...
+
+
+>>>diy/general9 1917 grahamr(219)13mar10 13:03 c1769
+thanks for the comments...eventually I got a pack from linersbagsacks.com. 
+They seem fine although, despite being 500 gauge it is still 
+disappointingly easy to cut the plastic with a hard-cover book cover...
+
+graham
+
+
+>>>diy/general9 1918 derryck(28)13mar10 13:59 c1897
+Ta - less bother!
+
+Derryck
+
+
+>>>diy/general9 1919 cscott(1322)13mar10 14:16 c1899*m
+
+If you are buying a uPVC or composite door, check the construction very 
+carefully.  A uPVC door with a one-piece moulded panel *will* crack and 
+leak, as will a composite door of similar construction.  Ideally a uPVC 
+door should be constructed like a window, with panels and/or sealed units 
+fitting into a frame.  The moulded panels have several problems, quite 
+aside from looking cheap!  First, they are sealed to any window with an 
+adhesive, and the seal very often breaks down.  Second, the stresses left 
+in the material from the moulding process inevitably come back to haunt 
+them, and if you look any reasonable sample of such doors you will find 
+cracks and splits radiating from the corners of the letter-box and the 
+corners of the window.  Composite doors are OK if the panel is in GRP 
+(fibreglass to old-timers like me!), which is laid down in the mould 
+rather than being heat- and stress-moulded, and if the design avoids the 
+need to glue the panel to the glass ...
+
+A *good* hardwood door would be an excellent choice, though it is likely 
+to cost several times as much as any other type of door.
+
+Again, remember you get what you pay for, and buying on price rather than 
+quality is always going to cost you more in the long run.
+
+I could offer other advice, but I'll restrain myself.  :-)
+
+Colin
+
+
+>>>diy/general9 1920 hd(224)13mar10 23:04 c1899*m
+Yer paze yer munny and yer taiks yer choice.
+
+A good timber door is better than a bad uPVC one.
+
+A good uPVC door is better than a bad timber one.
+
+Me, I'd go for good wood, but that will probably cost more than good uPVC.
+
+
+>>>diy/general9 1921 jwalton(311)14mar10 8:37 c1920*
+I also made the point that a good uPVC door will have built-in draught 
+proofing (if required), and not just a strip of foam rubber or brush! Some 
+doors even have a draught sealing mechanism, whereby the door, once 
+closed, can be "locked", to fully engage with the seals, under pressure.
+
+Best Regards,
+John
+
+
+>>>diy/general9 1922 bubbles(139)14mar10 11:19 c1899
+> Front door
+>
+south facing.
+
+http://www.compositedoors.com/CompositeDoors
+
+GRP is of interest but pricey.
+
+geoff
+http://www.eunique.co.uk
+
+>>>diy/general9 1923 bubbles(66)14mar10 11:19 c1901*
+> Not wood; it warps!
+>
+i know:-(
+
+geoff
+http://www.eunique.co.uk
+
+>>>diy/general9 1924 bubbles(24)14mar10 11:19 c1902
+> Steel.
+>
+:-)
+
+geoff
+ 
+
+>>>diy/general9 1925 bubbles(180)14mar10 11:19 c1919
+> Again, remember you get what you pay for, and buying on price rather than 
+> quality is always going to cost you more in the long run.
+>
+noted:-)
+
+geoff
+http://www.eunique.co.uk
+
+>>>diy/general9 1926 kdavisa(507)14mar10 12:24 c1923
+Not too badly, if it's 'quarter sawn' but that is expensive and 'cheaper' 
+items are made from 'plain sawn' wood, the nearer to the bark, the cheaper 
+and most warp prone and often ends up being far more expensive by virtue 
+of being moved, in the case of a door, from doorway to fire!
+
+All to do with the wood shrinking as is dries and such 'movement' then can 
+continue as the moisture content of the air it's in changes.
+
+Just googling 'quarter sawn' brings up some pretty good illustrations, BTW.
+
+Ken
+
+
+>>>diy/general9 1927 cscott(49)14mar10 13:30 c1921
+
+A good timber door will do likewise ...
+
+Colin
+
+
+Joining enquire_within/8legal 9 new message(s).
+>>>enquire_within/8legal 3632 loei(202)13mar10 0:44 c3631*
+Here the PIT Union would (legally) step in and occupy the restaurant until 
+all the employees had been paid by someone... however many 
+weeks/months/years it took  :-)
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/8legal 3633 mfinger(136)13mar10 14:49 c3632*
+ah yes, the Musicians Union have got me out of a spot a coupla times in 
+the distant past :-)
+
+unions have their purposes, innit
+
+pete
+
+
+>>>enquire_within/8legal 3634 loei(71)13mar10 17:46 c3633*
+I'm a life-long member of UCATT  :-)
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/8legal 3635 digitig(482)13mar10 18:23 c3589*
+A few years ago there were a lot of features regarding this on various 
+consumer affairs programs and documentaries. The situation as I understood 
+it at that time was that when it came to administering an estate the 
+solicitor was notionally employed by the deceased and that nobody else -- 
+not the other executors, not the beneficiaries, nobody -- had the legal 
+power to challenge them over anything they did, even malpractice. Did I 
+get that right, and is it still the case?
+
+
+>>>enquire_within/8legal 3636 dcluley(562)13mar10 21:59 c3635
+No.  The executors/administrators are the ones appointed to be the 
+deceased's representatives.  They are the ones with powers and 
+discretions.  Best course is to appoint trusted individuals to be 
+executors.  They can then use solicitors and have the right to question 
+and ask for accountability in everything the solicitors do.
+
+Problems can arise where solicitors or banks are appointed directly as 
+executors - mere beneficiaries are not in as strong a position to 
+question or complain about the solicitors or banks, their actions or 
+the lack of them.
+
+
+
+>>>enquire_within/8legal 3637 mfinger(36)13mar10 22:32 c3634
+formidable! ( french accent)
+
+pete
+
+
+>>>enquire_within/8legal 3638 wizard(187)15mar10 9:13 c3629*
+That is also no longer the case - HMRC are not preferential creditors any 
+more (except in very specific circumstances) and hence there is no 
+advantage to them in forcing a winding up.
+
+
+>>>enquire_within/8legal 3639 neilm(145)15mar10 9:44 c3638*
+I didn't realise that, JOOI when was the change made?
+
+IWI that explains, to some extent, why they are more to collect the money 
+early.
+
+Neil.
+
+
+>>>enquire_within/8legal 3640 neilm(777)15mar10 9:59 c3639
+It is interesting to note that this current site:
+
+http://www.bizhelp24.com/money/bankruptcy/preferential-creditors-and-other-
+creditors.html
+
+shows this list:
+
+1       Insolvency Practitioner         Costs and expenses
+ 
+2       Bank, lender                    Debenture holder with fixed charge
+ 
+3       VAT, PAYE, NI, staff wages, pensions and holiday pay
+                                        Preferential creditor
+ 
+4       Bank, lender                    Debenture holder under a  floating 
+charge
+ 
+5       Suppliers, utilities, unsecured lending
+                                        Unsecured creditors
+                                        
+I note, from another site, that the changes were applied to Winding up 
+orders granted from September 2003.
+ 
+
+
+Neil.
+
+
+Joining enquire_within/70general 8 new message(s).
+>>>enquire_within/70general 5659 baccma(64)12mar10 22:50 c5658m
+Well, if you will rhyme "discovered" with "Harvard"
+
+Malcolm B
+
+
+>>>enquire_within/70general 5660 shutters(138)13mar10 16:53 c5658*m
+Even Dylan, in "Hurricane":
+"We gonna put his ass in stir,
+We gonna pin that triple mur-
+Der on him,
+He ain't no Gentleman Jim."
+
+Ian S.
+
+
+>>>enquire_within/70general 5661 loei(93)13mar10 19:12 c5660
+Bob has sufficient style to get away with such things  :-)
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/70general 5662 koen(5)13mar10 20:38 c5658*
+<!>
+
+
+>>>enquire_within/70general 5663 timill(352)13mar10 23:44 c5662*
+"We'll try to stay serene and calm,
+Now Ronald Reagan's got the Bomb."
+
+version from TomFoolery, London, 1981.
+
+And yes, it rhymed.
+
+And also:
+"The tune don't have to be clever
+And it don't matter if you put a coupla extra syllables into a line.
+It sounds more ethnic if it ain't good English
+And it don't even gotta rhyme. Excuse me -- rhyne!"
+
+
+Tim
+
+
+>>>enquire_within/70general 5664 baccma(175)13mar10 23:55 c5663
+Or to quote another lyricist:
+
+Doesn't matter if the notes are all wrong,
+And people are squirmin'
+Just make the tune up as you go along = 
+Pretend you're German.
+
+Malcolm B
+
+
+>>>enquire_within/70general 5665 elwyn(2597)15mar10 9:06 c5587*
+HDRs are a type of photography. It stands for High Dynamic Range.
+
+If you take a photograph inside a room pointing out a window then if you 
+expose it for the daylight outside then the room is dark but if you expose 
+for the room the daylight is bright white. HDR can expose the shot so that 
+you have the outside and inside visible.
+
+There are plenty of examples on the web but I tend to use the method for 
+mostly church photography, inside and out.
+
+There are also a variety of ways to both take and expose the photographs. 
+One of the methods I use is to shoot in raw format and then use the raw 
+software to expose 3 stops over then 3 stops under as well as the taken 
+photograph and merge them together. Some do end up with a good effect.
+
+http://www.flickr.com/photos/covltwt/2270350914/
+
+However, the main option I do involves taking between 3 and 7 shots at 
+differing levels of exposure on the tripod. Some results are better than 
+others.
+
+http://www.flickr.com/photos/covltwt/1095449170/
+http://www.flickr.com/photos/covltwt/2879698425/
+
+They both use the same method but are quite different. I get carried away 
+with what I think the amount of colour should be and sometimes it goes 
+pear shaped. However, the former of those two images were enough to 
+astound the members of the church that saw them and I believe have been 
+used now by the church for their use. I was careful with the copyright for 
+them as well as their attitude of 'just give us the masters and we'll sort 
+it out'
+
+http://www.flickr.com/photos/covltwt/3299059390/ I have a non-cloud 
+version that when shown together give people the impression I faked this 
+picture. However, considering they were taken several hours apart and I 
+had been inside taking photos usually calms them down. FYI I didn't and I 
+don't think I know how to yet.
+
+http://www.flickr.com/photos/covltwt/3299063568/ This one shows the point 
+above which I made. If I had exposed for outside you wouldn't have seen 
+the detail of the doorway.
+
+Some photos are better than others. Some have been taken in a hurry or 
+just didn't come out as expected.
+
+http://www.flickr.com/photos/covltwt/4037729231/
+
+http://www.flickr.com/photos/covltwt/2920983149/
+
+http://www.flickr.com/photos/covltwt/2921829724/
+
+http://www.flickr.com/photos/covltwt/2920969445/
+
+http://en.wikipedia.org/wiki/High_dynamic_range_imaging
+http://en.wikipedia.org/wiki/Exposure_%28photography%29
+
+Suffice to say, I enjoy taking photographs and these days tend to do this 
+more on my own in places where people aren't there. Graveyards are nice 
+and peaceful to do :)
+
+Elwyn
+
+
+>>>enquire_within/70general 5666 zulu(172)15mar10 9:35 c5665
+Some nice pics there Elwyn  8-)
+
+The light is very strange here
+
+> http://www.flickr.com/photos/covltwt/1095449170/
+
+You could imagine it was a leaded window itself, nice
+
+
+Joining enquire_within/71general 79 new message(s).
+>>>enquire_within/71general 2842 hzk(106)12mar10 22:46 c2824
+My Macbook Pro webcam shows a mirror image.
+
+It can also be set to 'auto flip' images when saved.
+
+Roger.
+
+>>>enquire_within/71general 2843 baccma(229)12mar10 22:50 c2812*
+> Well yes - all predictions can be wrong. 
+
+Well no.  Some predictions will be wrong and some will be right.
+Those that are right can not be wrong.  It is simply we won't know at the 
+time the predictions are made.
+
+
+Malcolm B
+
+
+>>>enquire_within/71general 2844 baccma(137)12mar10 22:50 c2809
+My favourite line from that, which I quote fairly regularly, is:
+"Son, son, always be sincere.  Whether you mean it or not."
+
+Malcolm B
+
+
+>>>enquire_within/71general 2845 rnuttall(108)12mar10 23:51 c2827
+Yes - got it the wrong way round!
+
+Wish you could buy their stuff on the web.  I like the shops a lot.
+
+RN
+
+
+>>>enquire_within/71general 2846 strum(18)13mar10 5:34 c2765
+{|-)
+
+David Craig
+
+>>>enquire_within/71general 2847 strum(741)13mar10 5:34 c2778*
+> I really don't follow.
+No, you don't.
+
+You are /ascribing/ logic to decisions /you/ have made - but 
+extrapolating the particular on to the general (and on to a time 
+several centuries before the umbrella was invented).
+
+Our millennial serf didn't have an umbrella - he wore whatever he had 
+available - /as a response to stimuli/ (he may have anticipated those 
+stimuli, but that still doesn't require logic).
+
+A 7-y-o might have behaved (or not), as a response to fear - tempered 
+by a modicom of slyness (don't get caught).
+
+You devalue the word and the concept by applying 'logic' to every 
+decision you agree with.
+
+Think about it - if we are all, naturally and inevitably, imbued with 
+logic, why do we keep fucking up?
+
+David Craig
+
+>>>enquire_within/71general 2848 zulu(252)13mar10 9:54 c2847m
+> imbued with 
+> logic, why do we keep fucking up?
+Because logic governs the method, not the content?  8-)
+
+It's one of the best indicators that facts are interpretations - if facts 
+were objective and logic used correctly, nobody would disagree  8-)
+
+
+>>>enquire_within/71general 2849 paulcummins(271)13mar10 10:18 c1630*
+> Yes 
+> my trademark is posting challenging messages that often shoot down 
+> the poster of the comment I'm replying to
+
+Can anyone else smell the sweet scent of Desperation Excrement?
+
+
+--
+Paul Cummins - sent from my laptop
+
+No Cix mail, use paulcummins@tiscali.co.uk
+
+
+>>>enquire_within/71general 2850 cody(111)13mar10 10:51 c2831*
+He did say *Air* Ministry. They were unlikely to trust anything to the 
+sea. They'd have used a pigeon.
+
+Jon.
+
+
+>>>enquire_within/71general 2851 sasha_lubetkin(91)13mar10 11:06 c2849*
+Oh, leave the poor chap in peace, for goodness' sake.  What harm has he 
+done you?
+
+Sasha
+
+
+>>>enquire_within/71general 2852 jwh(22)13mar10 12:28 c2850*
+Good one! :-))
+
+John
+
+
+>>>enquire_within/71general 2853 guy(1020)13mar10 12:51 c2851*
+"Harm" isn't the word, but distress might be.
+
+I've no real sense of being on any crusade here - I'm just mightily 
+curious. But I have to admit to a sense of sympathy for anybody who pops 
+up in here, asks a question which might be very, very important to them, 
+and gets an answer which is completely random.  
+
+It would be good if I could understand why he does it! 
+
+I mean, I've actually made up stuff myself, in the honest belief that I 
+was repeating stuff I'd been told. I just misunderstood some of the info, 
+got the wrong end of a couple of sticks, and synthesised something which 
+was WAY off beam. But at the point where someone says: "Actually, Guy..." 
+and illustrates the problem, my response changes (normally, extreme 
+embarrassment!).
+
+Neil's response seems to be: "I was right. I shot down someone in flames." 
+
+What's more amazing, to me, is his claim to retract when he is caught 
+making it up. He doesn't, does he? He justifies it. 
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2854 guy(738)13mar10 13:20 c2570*
+> Again, does anybody really think SAGA would not have sent the 
+> policy documents?
+
+Not an unforgiveable mistake; but I do wonder how anybody could have this 
+much faith in bureaucratic efficiency, and give so little credibility to 
+the direct statements of a known, honest and somewhat fussily meticulous 
+source of personal information.
+
+Is this how it works? We ask ourselves rhetorical questions, and decide 
+that the "obvious answer" must be the facts? Do I actually do it all the 
+time, without realising? How much of a gap between my own 
+mis-apprehensions, and Neil's wild assumptions, really, is there? It seems 
+to me to be very different! - but would I know?
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2855 guy(159)13mar10 13:20 c2840*
+I'd call that a generous interpretation, myself; but it will serve to 
+avoid War, hopefully...
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2856 sasha_lubetkin(333)13mar10 13:57 c2853*
+If his advice is duff, why not ignore it?  
+
+Let's face it, the advice one gets from one's fellow cixen is often 
+contradictory, and - just as with anything one finds on the web - it makes 
+sense to view it critically. 
+
+I dislike seeing a lot of people all attacking one cixen. It offends my 
+British sense of fair play :-)
+
+Sasha
+
+
+>>>enquire_within/71general 2857 mfinger(47)13mar10 14:42 c2816*
+when I read cix posts I always see myself :-)
+
+
+>>>enquire_within/71general 2858 mfinger(139)13mar10 14:49 c2847*m
+> Think about it - if we are all, naturally and inevitably, imbued 
+> with logic, why do we keep fucking up?
+
+faulty logic, of course :-)
+
+
+>>>enquire_within/71general 2859 loei(183)13mar10 15:06 c2856*m
+> I dislike seeing a lot of people all attacking one cixen. It 
+> offends my British sense of fair play :-)
+
+Life is too short for such things IMHO.
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/71general 2860 ansible(112)13mar10 15:23 c2859*m
+For the disliking, for the attacking, or for the British sense of fair 
+play? Just curious ...
+
+David Langford
+
+
+>>>enquire_within/71general 2861 guy(876)13mar10 15:34 c2856*m
+I sympathise with your soft heart, Sasha, truly. But you're behaving as if 
+people are just picking on Neil for no good reason. 
+
+If you're an experienced CIX citizen, you may well have a good perspective 
+on how questions get answered. You may, nonetheless, tend to assume that 
+if someone steps forward, speaking in an authoritative tone, then it's 
+worth taking them seriously.
+
+We all make mistakes. What makes him different is his insistence that they 
+are not mistakes; and his further insistence that when they are, he admits 
+it. I can't begin to guess what his intentions are, here; I assume 
+good-hearted! - but I think it's obvious why frustration and irritation 
+with some of his posts has spilled over the pot, and saying: "Oh, poor 
+baby, leave him alone!" isn't a helpful contribution, frankly...
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2862 pellefsen(132)13mar10 15:52 c2856*m
+> If his advice is duff, why not ignore it?  
+
+Last para of Colin's cix:enquire_within/49discussion:1427 explains it.
+
+
+ - Peter -
+
+
+>>>enquire_within/71general 2863 pellefsen(18)13mar10 15:52 c2861m
+WHS
+
+
+ - Peter -
+
+
+>>>enquire_within/71general 2864 zulu(62)13mar10 16:37 c2857*
+I can sort you out with a camo-film if you're desperate  8-)
+
+
+>>>enquire_within/71general 2865 loei(179)13mar10 19:12 c2860*
+For the attacking. If someone really pisses you off, ameol has a handy 
+"ignore" facility.
+
+FWIW I much admire the Brit spirit of fair play  :-)
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/71general 2866 sasha_lubetkin(43)13mar10 19:18 c2859
+Which - bullying or fair play?
+
+Sasha ;-)
+
+
+>>>enquire_within/71general 2867 sasha_lubetkin(214)13mar10 19:18 c2861
+Oh, well - I give up.
+
+I'm bound to observe, however, that the general opprobrium doesn't seem to 
+have had any appreciable effect upon Neil's output, so perhaps people 
+should save themselves the trouble.
+
+Sasha
+
+
+>>>enquire_within/71general 2868 sasha_lubetkin(19)13mar10 19:18 c2862
+Thank you.
+
+Sasha
+
+
+>>>enquire_within/71general 2869 sasha_lubetkin(32)13mar10 19:25 c2865
+Oh, good - we agree :-)
+
+Sasha
+
+
+>>>enquire_within/71general 2870 koen(421)13mar10 20:38 c2833*
+> When you start your survey, the population is unknown. 
+
+If the population is unknown, can statistics really help and be 
+meaningful? 
+
+> Until you have found a single black swan, you're just waving your hands 
+> around, exactly! 
+
+Indeed, and concluding that, because you've never seen a black swan, the 
+more white swans you see, the smaller the chance that a black swan exists 
+seems to me to be highly precarious.
+
+
+>>>enquire_within/71general 2871 eja(64)13mar10 20:52 c2858m
+Or faulty premises.
+
+-- 
+/Eric/  mailto:cixenmail@deira.org.uk
+
+
+>>>enquire_within/71general 2872 eja(67)13mar10 20:52 c2852*
+Keep you on your toes.
+
+-- 
+/Eric/  mailto:cixenmail@deira.org.uk
+
+
+>>>enquire_within/71general 2873 hd(289)13mar10 21:52 c2745
+I had a good experience with them when a French truck grazed the corner of 
+my motorhome. 
+
+But a few years later I had a terrible time when a drunk ran* into the 
+side of my car. NU were far worse than useless: bad enough to rule them 
+out forever.
+
+*As in walking on legs, not driving.
+
+
+>>>enquire_within/71general 2874 mfinger(37)13mar10 22:32 c2864*
+does it go away when I'm satisfied?
+
+
+>>>enquire_within/71general 2875 hd(26)13mar10 23:04 c2811
+Can you be sure of that?
+
+
+>>>enquire_within/71general 2876 hd(18)13mar10 23:04 c2788
+Lots, I expect. 
+
+
+>>>enquire_within/71general 2877 ioliver(250)14mar10 8:29 c873
+> Surely it is the employee who should look after their retirement, not 
+> their employers?
+
+Quite so, but sadly HMG are now taking a rather hard line on 
+contributions to personal pensions and full tax relief will soon be a 
+think of the past.
+
+Ian
+
+>>>enquire_within/71general 2878 ioliver(342)14mar10 8:29 c2417
+I advise relatives to use Dropbox for their files/photos. For anything 
+more serious, they need the DVDs that hold a snapshot of their machine 
+from when everything was setup and installed.
+
+They may think they don't have such DVDs, however, if they open their 
+machine, they will find that I taped them to the inside of the case. :
+-)
+
+Ian
+
+
+>>>enquire_within/71general 2879 ioliver(114)14mar10 8:29 c2651
+> he's 
+> going to do them one at a time from now on.
+
+Or stay in the bathroom for the relevant 1-2 minutes.
+
+Ian
+
+>>>enquire_within/71general 2880 zulu(24)14mar10 9:14 c2874
+No, but you can't tell
+
+
+>>>enquire_within/71general 2881 koen(1407)14mar10 9:15 c2847
+> Our millennial serf didn't have an umbrella - he wore whatever he had 
+> available - /as a response to stimuli/ (he may have anticipated those 
+> stimuli, but that still doesn't require logic).
+
+I can't believe that you think the big difference in use of logic between 
+20C and 10C man is the availability (or lack thereof) of an umbrella.
+
+> A 7-y-o might have behaved (or not), as a response to fear - tempered 
+> by a modicom of slyness (don't get caught).
+
+Sure, but so what? Choices and decisions are made on the basis of 
+preferences of aversions. Logic provides the process by which 
+observations, propositions and assumptions are combined to come to the 
+optimum decision.
+
+Remember that in cix:2465 you said
+
+> >Would a statement of the form "if ...then ..." 
+> >or "if A then B, and if B then C, hence if A then C" involve logic?
+> There's a bit more to it than that, but, yes.
+
+The 7-y-o reasons as follows "If I am grounded, then I am unhappy; if I 
+get home late, then I will be grounded, hence if I get home late I will be 
+unhappy", and so potentially decide to make sure he gets home in time for 
+dinner. You would seem to agree that this does involve logic.
+
+
+> Think about it - if we are all, naturally and inevitably, imbued with 
+> logic, why do we keep fucking up?
+
+Because we don't look at all the facts, because we make wrong assumptions, 
+because we're imbued with prejudice etc.
+
+
+>>>enquire_within/71general 2882 koen(205)14mar10 9:15 c2843*
+> > Well yes - all predictions can be wrong. 
+> 
+> Well no.  Some predictions will be wrong and some will be right.
+
+Until we know that, every prediction has the /potential/ of being wrong, 
+doesn't it? 
+
+
+>>>enquire_within/71general 2883 jwh(11)14mar10 9:35 c2872
+:-)
+
+John
+
+
+>>>enquire_within/71general 2884 cscott(897)14mar10 11:32 c2856*
+
+> I dislike seeing a lot of people all attacking one cixen. 
+
+I really think you have to understand that he brings it on himself.  If 
+*any* of us stand up and say outrageous things, we tend to get lots of 
+people attack what's been said.  In general (and apart from a few 
+notorious individuals, and some very specific feuds) it is the comment 
+that gets attacked, not the person, but persistent offenders do, and 
+understandably, take some personal flak.  I've taken it myself on 
+occasion, and on reflection it was probably justifiable, even if not 
+actually justified!  :-)  Neil just happens to be more persistent, more 
+outrageous, and more consistently persistently outrageous (IYSWIM) than 
+anyone else on Cix.  If he doesn't like it, he could always desist ...
+
+
+> It offends my British sense of fair play :-)
+
+But this is Cix, this is the jungle, red in tooth and claw ...  :-)
+
+Colin
+
+
+>>>enquire_within/71general 2885 baccma(344)14mar10 13:29 c2882*m
+If you said "any prediction could prove to be wrong", then I would agree 
+with you.  However "all predictions can be wrong" is, I think, wrong.  I 
+am not sure I would use the word "potential" in this context, but, if by 
+that, you mean the first, then again I agree with you.  I was merely 
+picking at nits, I knew what you meant.
+
+Malcolm B
+
+
+>>>enquire_within/71general 2886 mfinger(189)14mar10 15:00 c2884*m
+> he brings it on himself.
+
+come ON!
+
+Are you saying he is responsible for your actions?
+Does it stop with what you post on cix or does he also determine which 
+toothpaste you buy?
+
+peter
+
+
+>>>enquire_within/71general 2887 brangdon(127)14mar10 16:23 c2884*m
+> If he doesn't like it, he could always desist ...
+
+That's the sort of comment that makes it sound a bit more like bullying.
+
+
+>>>enquire_within/71general 2888 brangdon(3246)14mar10 16:23 c2854*
+> I do wonder how anybody could have this much faith in
+> bureaucratic efficiency
+
+I'm surprised that Saga could increase the direct debit and not send out 
+the corresponding, legally required, notification. It seems like a 
+no-brainer to design the computer software so that the one forced the 
+other. There shouldn't be scope for error.
+
+In cix:2751 we learn it was a "technical error". That probably means the 
+computer was down, or something; ie not a human error, not someone simply 
+forgetting to do it. That they can now say this with confidence suggests 
+it was something fairly major.
+
+It's interesting that what Saga said in cix:2576, ie that they sent the 
+letter to her new address, directly contradicts what they said in 
+cix:2751. Even Saga thought they'd sent the letter, for a while. Mac 
+repeated that twice. So it's not unreasonable for Neil to believe it too.
+
+
+> give so little credibility to the direct statements of a
+> known, honest and somewhat fussily meticulous source of
+> personal information.
+
+First of all, we don't all track each other's personality so closely. I 
+have no idea whether Mac is "fussily meticulous". 
+
+Secondly, and more importantly, saying Saga would have sent the letter 
+does not cast aspersions at Mac. Lots of things could have gone wrong. We 
+know she was moving house. Perhaps it got sent to the old address and 
+wasn't forwarded correctly. Perhaps it got sent to the new address, and 
+got wrongly forwarded to the previous occupant's new address. Perhaps it 
+got sent during the postal strike and a temporary postal worker lost it.
+
+Frankly, even suggesting that it did arrive correctly but that Mac somehow 
+lost it during the aftermath of the move, isn't exactly a mortal insult. 
+I'm surprised by how offended people are.
+
+
+> Is this how it works? We ask ourselves rhetorical questions, and 
+> decide that the "obvious answer" must be the facts? Do I actually 
+> do it all the time, without realising?
+
+I think most people automatically took Mac's side, and Neil went out of 
+his way to consider Saga's side. And this is necessary and useful, in a 
+dispute: to consider how things look from the other side, and how, when a 
+mistake is made and damage done, it's not necessarily fair if it's the 
+other side who have to pay for all of it. His assumptions here aren't 
+wild, they are just different to other people's.
+
+I also don't think he decided these were "the facts". His language is 
+couched in probabilities. He doesn't say what she says is untrue, he says 
+he finds it hard to believe. He gives reasoned justification for every 
+step he takes. He's aware of the uncertainties.
+
+There is probably an element of post-hoc rationalisation, and I do think 
+that's universal. Humans are good at it; we're genetically engineered to 
+speculate about mechanisms and possibilities. (Indeed, it's what we're 
+doing when we try to imagine Neil's state of mind; we're doing to him 
+roughly what he did with Mac, and probably about as erroneously).
+
+And there's something called "confirmation bias", where-by we seek to 
+confirm our theories instead of seeking to disprove them. Facts are rarely 
+unambiguous and can usually be interpreted to fit, so they don't provide 
+much of a reality-check.
+
+
+>>>enquire_within/71general 2889 brangdon(377)14mar10 16:23 c2855*
+Yes; it was a concerted effort on my part to resist the anti-Neil 
+group-think. It bothered me, a little, that so many people believed he 
+/had// called Mac a liar, when on reading the offending message it seemed 
+to me he hadn't.
+
+I do think there's a difference between bullying and a whole bunch of 
+people speaking out at the same time. But it's easy to get carried away.
+
+
+>>>enquire_within/71general 2890 digitig(562)14mar10 16:58 c2806
+> > All candidates have demonstrated their preparedness to face the 
+> > electorate, by virtue of standing as candidates.
+> First step.
+> 
+> Selection (by a party with a chance) - second step.
+>
+> >What is tested is their ability to get elected,
+> Third step.
+
+In the same sense as my electronics degree exams were a test of my having 
+learned to understand a language an infant. I.e., it's correct, but 
+irrelevant to any meaningful discussion of the test.
+
+By the way, step two is unnecessary. I said /all/ candidates. Independents 
+do sometimes get elected.
+
+
+>>>enquire_within/71general 2891 guy(683)14mar10 17:02 c2870*
+> If the population is unknown, can statistics really help and be 
+> meaningful? 
+
+Thank you! MY point precisely. 
+
+Don't let the cricket subject distract you. It's going to apply to any 
+situation in which you're comparing two sets, one of which is known in 
+detail, and the other which is entirely unknowable. 
+
+So the statement I picked up on - suggesting a statistically effect 
+involving "the more white swans you see..." - is, I repeat, about as 
+meaningful as "the higher you jump, the more you move earth." In a 
+Universe where the Infinite Improbability Drive works, it has a meaning. 
+We don't live there!
+
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2892 shutters(187)14mar10 17:40 c2882
+Some members of the set of predictions were made prior to events which 
+have indeed occurred but which are now in the past.  They once could have 
+been wrong, but cannot now :-)
+
+Ian S.
+
+
+>>>enquire_within/71general 2893 shutters(1487)14mar10 17:40 c2884m
+> But this is Cix, this is the jungle, red in tooth and claw ...  :-)
+
+:-) yes and no.  I think of what's been going on WRT Neil as a 
+manifestation of citizenship, of community responsibility.  
+
+A case can be made out against such behaviour, in terms of it amounting to 
+mob rule.  To a certain extent, I agree, but in a community which is 
+lightly - perhaps even inadequately - policed, there is often in practice 
+no viable alternative to citizen action.  When a user's activity is not 
+merely irksome to individuals but damaging to the values and fabric of the 
+community as a whole, then action does need to be taken to prevent further 
+damage.  And it's possible to regard Neil's fairly consistent wrongness 
+and refusal to acknowledge such as amounting in aggregate to a devaluation 
+of the overall usefulness of CIX as a source of information and advice.
+
+I'm well aware how dubious that sounds when viewed through the filter of 
+real-life communities under the adequately enforced rule of reasonable 
+law, and I wouldn't for an instant take such a line there.  I'm not 
+entirely comfortable taking it here, either, but so be it.
+
+Alternatively, if you'd care to view the Cix community overall as a 
+self-correcting mechanism, then when informational malfunctions occur 
+correction *does* need to take place, rather than simply ignoring them.
+
+I'd also argue that the term "mob" can usually be as accurately applied to 
+Cixen as the practice of herding can to cats :-)
+
+Ian S.
+
+
+>>>enquire_within/71general 2894 cscott(564)14mar10 18:13 c2886*
+
+> Are you saying he is responsible for your actions?
+
+No, I am saying he is responsible for his own actions and for the 
+consequences that inevitably flow from them.
+
+Do you *really* believe that if you stand up on Cix and spout nonsense 
+nobody is going to point out to you the error of your ways?  And when they 
+do, do you *really* believe you had nothing whatsoever to do with it?
+
+> Does it stop with what you post on cix or does he also determine 
+> which toothpaste you buy?
+
+Don't you think that argument is just a teensy weensy bit ridiculous?  
+
+Colin
+
+
+>>>enquire_within/71general 2895 pellefsen(465)14mar10 18:18 c2889*m
+> ... so many people believed he /had// called Mac a liar, when
+> on reading the offending message it seemed to me he hadn't.
+
+When Mac declared, several times, that she had not been advised of the 
+cost, and Neil then said "I find it very difficult to believe that Mac was 
+not told of the cost", it's only a hair's-breadth away from calling her a 
+liar. Maybe he meant to say "I find it surprising that Mac was not told of 
+the cost", but he didn't.
+
+ - Peter -
+
+
+>>>enquire_within/71general 2896 cscott(23)14mar10 18:43 c2887m
+
+Oh, purlease!
+
+Colin
+
+
+>>>enquire_within/71general 2897 cscott(263)14mar10 18:43 c2889m
+
+> I do think there's a difference between bullying and a whole bunch 
+> of people speaking out at the same time.
+
+Given that there seems to be some serious confusion over whether we have 
+one or the other, would you care to elaborate on the distinction?
+
+Colin
+
+
+>>>enquire_within/71general 2898 zulu(12)14mar10 19:12 c2888m
+Nicely put
+
+
+>>>enquire_within/71general 2899 zulu(486)14mar10 19:12 c2895*m
+> she had not been advised of the 
+> cost, and Neil then said "I find it very difficult to believe that 
+> Mac was not told of the cost
+
+Isn't that just the difference between someone saying something (Saga 
+issued the advice, or presumed it had been issued automatically, but the 
+software cocked up or it went astray) and someone saying they didn't hear 
+it (the advice didn't arrive)? Granted it isn't the first interpretation 
+that springs to mind, but it could well be the second
+
+
+>>>enquire_within/71general 2900 pellefsen(94)14mar10 19:39 c2899
+Yes, I agree that there are two interpretations; I hadn't thought of the 
+other.
+
+ - Peter -
+
+
+>>>enquire_within/71general 2901 mfinger(417)14mar10 21:14 c2894*
+> Do you *really* believe that if you stand up on Cix and spout 
+> nonsense nobody is going to point out to you the error of your 
+> ways? 
+
+it happens all the time. It's called conversation on my planet :-)
+
+We're not discussing the nature and manifestations of disagreement here.
+
+We're talking about whether your reaction is inevitably a consequence of 
+another's actions and who is therefore responsible.
+
+peter
+
+
+>>>enquire_within/71general 2902 cscott(220)14mar10 21:59 c2887
+
+On reflection my initial response to that was inadequate.
+
+Please could we have your definition of bullying so we can see how 
+
+> That's the sort of comment that makes it sound a bit more like bullying
+
+works?
+
+
+Colin
+
+
+>>>enquire_within/71general 2903 cscott(1053)14mar10 21:59 c2888*m
+
+One can keep picking bones out of the various messages from Mac and draw 
+all sorts of conclusions that may - or may not, it makes little difference 
+- be justifiable or even correct for as long as one likes, but ultimately 
+it has to come down to how one reads cix:2570, which I accept is open to 
+interpretation. 
+
+However, what I find *the* most revealing aspect of this particular little 
+sub-spat is that Neil has still yet to directly comment to Mac's cix:2578, 
+in which she accuses him of accusing her of being a liar.  Instead he 
+waited four days (during which he posted cix:2581, cix:2640, cix:2661 and 
+cix:2691 on 3 separate days) until Mac posted her understandably (if 
+somewhat regrettably) triumphalist cix:2751 before finally denying it in 
+cix:2759 - and even then in somewhat equivocal terms.
+
+Now, I know that Neil's reactions are often inexplicable, but I am pretty 
+sure that if he had *not* been calling her a liar he would have protested 
+his innocence PDQ and not waited several days for her to taunt him with it 
+...
+
+Colin
+
+
+>>>enquire_within/71general 2904 sasha_lubetkin(220)14mar10 22:40 c2884*
+> But this is Cix, this is the jungle, red in tooth and claw ...  :-)
+
+<flees for the hills>
+
+I think I'd better shut up about this now. I've said my piece and you've 
+said yours: two different points of view.  
+
+Sasha
+
+
+>>>enquire_within/71general 2905 cscott(353)14mar10 22:56 c2901
+
+> whether your reaction
+
+Specifically *my* reaction?  If so, why?  Lots of other people have  
+reactions to Neil's postings similar to mine.
+
+If not specifically my reaction, are you denying that in general, if one 
+spouts bollox anywhere on cix it is pretty much inevitable that *someone* 
+will stand up and point out the error of one's ways?
+
+Colin
+
+
+>>>enquire_within/71general 2906 neilm(100)14mar10 23:51 c2903*
+Why should I dignify an irrational comment with a posting that adds 
+nothing to the thread?
+
+Neil.
+
+
+>>>enquire_within/71general 2907 loei(187)15mar10 0:11 c2904*
+> <flees for the hills>
+
+One of the advantages of living in a castle in a comparatively flat 
+landscape is that you don't have to and can't anyway  :-) 
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/71general 2908 neilm(53)15mar10 0:39 c2907
+But one, surely, can pull up the drawbridge?
+
+Neil.
+
+
+>>>enquire_within/71general 2909 cody(3230)15mar10 1:00 c2629
+As there seem to be a number of people here who are interested in this, I 
+thought I'd post the following, which is from the latest newsletter from 
+the No2ID campaign, which started as a campaign to oppose ID cards and 
+seems to be turning into a campaign to oppose all aspects of the 'database 
+state'.
+
+------------------------8<------------------------------
+
+      + FIGHT FOR HEALTH RECORDS HEATS UP +
+
+As we warned in Newsletter 141, the Department of Health is trying to roll 
+out Summary Care Records to millions of patients before the general 
+election. Those who have received mail shots now have less than 12 weeks 
+to act, if they want to preserve their medical confidentiality.
+
+The British Medical Association and GPs' leaders are deeply concerned and 
+have told the government to stop letters being sent out to patients across 
+England until they include an opt out form. Patients are being misinformed 
+- not least about who will have access to their records [1] - and 
+independent evaluators have noted that in the pilot areas 7 out of 10 
+patients weren't even aware that a Summary Care Record had been created 
+for them.
+
+The Department is deliberately trying to make opt out difficult. Not only 
+isn't the opt out form included in the information pack, you are supposed 
+to phone a call centre for one, trawl the NHS website for a download (no 
+direct link is given) or ask your doctor (who may have no forms, or know 
+little about the process).
+
+NO2ID and our colleagues at the NHS Confidentiality Campaign [2] are 
+trying to make exercising your right to opt out simple and straightforward 
+- and we need you to help SPREAD THE WORD.
+
+Please tell everyone you know and, even if you've opted out already [3], 
+download and print off copies of our updated leaflet which explains what 
+is going on and provides an opt out letter for people to use: 
+http://www.no2id.net/downloads/SCR_optout_sheet.pdf
+
+And please do become a 'fan' of our new page on Facebook (the 'Info' 
+section contains links to three other ways you can opt out) and pass it 
+on: 
+http://www.facebook.com/pages/Protect-Your-Medical-Confidentiality-ACT-NOW/
+330345503401
+
+--
+
+Notes:
+
+[1] The leaflet 'Changes to your health records' states that "anyone who 
+has access to your records... must be directly involved in caring for 
+you". THIS IS UNTRUE: the Department's own documents show that government 
+officials and many others will have access "in the public interest", "by 
+statute" (remember Clause 152!) or by court order.
+
+[2] The NHS Confidentiality Campaign website is at 
+http://www.nhsconfidentiality.org
+
+[3] You do not need to opt out again. The NHS Confidentiality Campaign's 
+and our opt out letter use the same mechanism to prevent your details 
+being uploaded as GPs are currently being told to use. So if you have 
+opted out already and haven't moved to a different practice, you should be 
+fine. If for any reason your practice asks you to use the 'official' form, 
+simply ask them to provide one - or to respect your clearly stated wishes 
+in the form you have given, which provides all the same information. More 
+than likely, your doctor is on your side.
+
+------------------------8<------------------------------
+
+Jon.
+
+
+>>>enquire_within/71general 2910 strum(108)15mar10 5:34 c2858
+> faulty logic
+
+Mmmm. Often labelling as 'logical', anything we happen to want to 
+believe in.
+
+David Craig
+
+>>>enquire_within/71general 2911 koen(118)15mar10 6:18 c2885
+It was an (admittedly rather clumsy) way of expression the logic statement 
+"for every prediction X: X can be wrong"
+
+
+>>>enquire_within/71general 2912 koen(444)15mar10 6:18 c2891*
+> Don't let the cricket subject distract you. It's going to apply to any 
+> situation in which you're comparing two sets, one of which is known in 
+> detail, and the other which is entirely unknowable. 
+
+Unknowable, or unknown? I'd say the latter. The population of swans in the 
+whole world is not unknowable, but if it is unknown, then your sample of 
+swans from (say) only one country will not allow you to draw a robust 
+conclusion on it.
+
+
+>>>enquire_within/71general 2913 zulu(482)15mar10 9:35 c2912*m
+> The population of swans in the whole world is not unknowable, 
+> but if it is 
+
+uncountable...
+
+How would you count them exactly? Unless you counted each one at the same 
+instant then some of those eggs will have hatched before you finished: but 
+some won't, and some will have been eaten, and so on. Maybe the black ones 
+were hiding  8-)
+
+It sounds so easy, but if we're talking about the real world, then the 
+means to do the counting has to be taken into account doesn't it?
+
+
+>>>enquire_within/71general 2914 kestrel(140)15mar10 10:20 c2888
+> it was something fairly major.
+Yes - I don't think the Chief Exec's office would have been directly 
+involved otherwise.
+
+        /\/\ac
+
+
+>>>enquire_within/71general 2915 kestrel(45)15mar10 10:20 c2906*
+I've no idea.  Why did you?
+
+        /\/\ac
+
+
+>>>enquire_within/71general 2916 kestrel(44)15mar10 10:20 c2895
+Yes, that was my reaction.
+
+        /\/\ac
+
+
+>>>enquire_within/71general 2917 pellefsen(18)15mar10 10:33 c2915
+:-)
+
+
+ - Peter -
+
+
+>>>enquire_within/71general 2918 guy(390)15mar10 11:02 c2912
+Unknowable, meaning; the research which would elicit the information is 
+beyond my resources. Not unknowable in the sense that "It can never be 
+resourced some time in the future."
+
+The number of goals scored in the first half is known at half time. The 
+number of goals scored in the second half is unknowable at half time. 
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2919 guy(7552)15mar10 11:02 c2889
+I understand that. The old CIX habit of not answering the question 
+actually asked is irritating enough but common enough whenever it occurs, 
+that I no longer follow that thread, and it wasn't my focus here; for me, 
+that was probably the more irritating aspect of the event, but not what 
+caught my attention. (If you say: "I have broken a teapot, what glue 
+should I use?" it's profoundly annoying to have someone who wasn't there 
+say: "I bet it's not broken..." and you will become enraged with the 
+apparent implication that you are stupid or lying).
+
+My own experience of insurance companies leads me to find Mac's report 
+entirely credible; I'm still surprised that others are saying otherwise. I 
+suppose my experience includes rather more investigations, on behalf of 
+readers, into such errors and omissions, than many. 
+
+A reporter gets sucked into "exceptional" events like that and does come 
+to understand the ease with which a bureaucracy can malfunction, and the 
+difficulty of getting them to even investigate, never mind acknowledge 
+such errors. They are a minority of events, yes; but it happens often 
+enough to be *always* worth recognising that they are not just possible, 
+but inevitable. 
+
+Anyway, in this thread, the appearance of bullying was not one-sided. Neil 
+was entirely entitled to ask: "Are you sure...?" but having been told 
+"Yes, I'm sure" I think it was not appropriate to just keep on and on 
+about how hard that was to believe. Mac was asking for specific advice. 
+Having made it clear that Neil's advice was not helpful, I think she was 
+harassed by him beyond the point of easy tolerance. All he had to say was: 
+"I didn't intend to imply you deliberately lie, sorry; all I meant was 
+that my experience suggests an error on your part..." and that would have 
+been laid to rest. 
+
+In fact, Neil's suggestions were all entirely speculative, and often, 
+irrelevant or wrong.
+
+cix:enquire_within/71general:2499 said: 
+> Might have been a variable amount DD. 
+- a dubious concept at best, without any basis in observable reality, and 
+justified by a completely groundless "I would have thought..." - of no 
+help of value in any context whatever, except to cast doubt on Mac's 
+report, either her competence or her honesty. 
+cix:enquire_within/71general:2507
+
+Then Neil went on the attack, explicitly 
+(cix:enquire_within/71general:2530) blaming Mac for the problem:
+
+> I will argue that notwithstanding the failure to provide 
+> (intentional or not) a paper copy of what was agreed, Mac was 
+> responsible for not taking timely action to avoid the DD going 
+> through knowing the consequences. Why didn't Mac query the missing 
+> paperwork before it became an issue? Does anybody here really 
+> believe that Mac is totally blameless as she readily admits her 
+> mind was elsewhere?
+
+And for good measure, Neil then threw in a little cod psychology to 
+explain her culpability! 
+
+Mac acknowledged and answered all his objections: 
+cix:enquire_within/71general:2576
+> 1. They say they sent the letter to my new address.  All mail has 
+> been, and continues to be, forwarded by the Royal Mail anyway.
+> 
+> 2. They said they would phone me back with the revised premium. 
+> They didn't, and they accept this.
+> 
+> 3. She would not tell me the new price, as she wanted to check with 
+> the underwriting team.
+
+...and asked Neil not to offer any more advice. He ignored the request, 
+and added another accusation: "Then why didn't you chase SAGA for the 
+premium before the payment?" - neither to the point, nor helpful, nor even 
+hard to understand. 
+
+Now, have a look at cix:enquire_within/71general:2563 where Neil is 
+explicit:
+> Do you think it was reasonable of her to think that she would be 
+> covered at the existing premium when advised that a higher, albeit 
+> unquantified if we believe Mac, one applied to her new residence?
+
+and when challenged on "you don't believe her?" he confirmed that he 
+didn't. In no way did he attempt to clarify this; he simply stated that 
+her evidence was not credible. There was no "I'm sure it was an honest 
+mistake on her part" or any suggestion that he'd even considered it; it 
+was yet another attack on her competence and credibility, after being 
+specifically asked not to offer more "advice" on the subject. I see Neil, 
+here, as entirely unconcerned by any problem Mac is facing, and entirely 
+focused on his own rhetorical justification for several entirely 
+speculative, and several quite obviously incorrect assertions, taking the 
+attack into a personal mode at the point where harassment shaded into 
+bullying.
+
+He still hasn't apologised for the apparent accusation of dishonesty, or 
+attempted to clarify it as a suggestion of error. You did that, not him. 
+His response - entirely in the opposite direction - is to accuse Mac of 
+being irrational, and asserting that this relieves him of any need to be 
+good-mannered: "Why should I dignify an irrational comment with a posting 
+that adds nothing to the thread?"
+
+In other words, Neil has made not a single attempt, throughout this, to be 
+conciliatory or to appear understanding. He's been judgemental, obsessed, 
+confrontational, and entirely focused on rhetorical self-justification. 
+
+Neither his attitude, nor his style of posting, betrays any good heart. 
+His motivations, as shown in his own words, are not attempts to be 
+helpful. He simply wants to be acknowledged as some kind of authority in 
+the matter; the feelings and frustrations of the person with the actual 
+problem have not been acknowledged for a moment, except to be denounced as 
+"irrational".
+
+And, in the bottom line, he has shown himself not just to be indifferent 
+to Mac's feelings, but wrong. All the "facts" and rhetorically implied 
+probabilities he has advanced have been shown to be incorrect assertions 
+or unjustified guesses based on limited understanding. 
+
+You're quite right to point out that he did not specifically and 
+explicitly accuse Mac of dishonesty. I admire you for doing so, in a 
+somewhat heated discussion. 
+
+But - seriously, what have you achieved? You've avoided having him lynched 
+by a mob? No! - there were exasperated suggestions that he should get off 
+the line, and that it was a wonder he'd lived so long - but we all know 
+CIX! Nobody ever gets lynched. He was in no danger of being evicted from 
+CIX. The moderator hasn't even threatened him with eviction from the 
+conference, for goodness sake.
+
+What you have done, though, is to persuade Neil that there is support for 
+his approach; that he has been victimised, and that he has no need to 
+re-assess his own behaviour. 
+
+On balance, much though I'd like to praise you for being level-headed, I 
+can't do so. I think Neil has caused real distress and anger to someone 
+who merely needed informed advice, at a time of considerable personal 
+stress. I think anybody with Neil's own best wishes at heart should 
+seriously query the wisdom of giving him another opportunity to avoid 
+dealing with an issue which really is beyond a personality quirk, and is 
+verging on something which we'd be justified in being concerned about in a 
+fellow CIXen. 
+
+To me, it is obvious that Neil *does* *not* *understand* what it is he is 
+doing. I won't attempt a diagnosis of why not. I do perceive it as a 
+non-trivial problem for him, and if I can't actively help him with it I 
+nonetheless am unhappy to see him diverted from confronting it...
+
+Conciliation wasn't the priority, here.
+
+
+
+
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/71general 2920 koen(169)15mar10 11:03 c2913
+I'm not sure they need to be countable (either in the mathematical or the 
+practical sense) for statistics to be applicable. You can make assumptions 
+and estimations.
+
+
+Joining enquire_within/49discussion 90 new message(s).
+>>>enquire_within/49discussion 1560 cscott(219)12mar10 23:07 c1557*
+
+>  I've a feeling you thought I meant J Archer.  
+
+Correct.  Though reading back down the thread I'm not sure how I got that 
+impression.
+
+> Honestly, Colin - give me *some* credit!
+
+I am well rebuked.  Sorry.
+
+Colin
+
+
+>>>enquire_within/49discussion 1561 cscott(82)12mar10 23:07 c1559*
+
+It was the "with a little help from our friends" bit that did it ... :-)
+
+Colin
+
+
+>>>enquire_within/49discussion 1562 sasha_lubetkin(41)12mar10 23:30 c1560*m
+Spoken like a gentleman, Sir :-)
+
+Sasha
+
+
+>>>enquire_within/49discussion 1563 sasha_lubetkin(18)12mar10 23:30 c1561
+<chortle>
+
+Sasha
+
+
+>>>enquire_within/49discussion 1564 loei(163)13mar10 0:01 c1524
+You can't blame the prison system for him. ISTR that he was murdering the 
+English language long before he was sent to gaol  :-)
+
+Patrick
+Mail to loei@oink.co.uk
+
+
+>>>enquire_within/49discussion 1565 warhead(147)13mar10 6:56 c1560*
+> Correct.  Though reading back down the thread I'm not sure how I 
+> got that impression.
+
+My fault, I suspect!
+
+
+
+---------->Warhead<----------
+
+
+>>>enquire_within/49discussion 1566 zulu(281)13mar10 9:47 c1554m
+> Peppering one's output with "it's my impression", 
+> "AIUI", and similar clues are a bit of a giveaway
+
+I just assume these giveaways, and use the general impression built up by 
+familiarity to assign value AFAICT. It's the teasing and winding up that 
+needs some flag IMO  8-)
+
+
+>>>enquire_within/49discussion 1567 paulcummins(140)13mar10 10:18 c1530
+Now called an "Insider" and trained by the Samaritans.
+
+
+--
+Paul Cummins - sent from my laptop
+
+No Cix mail, use paulcummins@tiscali.co.uk
+
+
+>>>enquire_within/49discussion 1568 ioliver(256)13mar10 10:40 c1531
+It's certainly a useful one.
+
+There are many terms to describe those who feel they know everything, 
+even though they haven't acquired or applied the mental tools required 
+to sort the proven from the unproven, but my favourite is still 
+"gobshite".
+
+Ian
+
+
+>>>enquire_within/49discussion 1569 ioliver(223)13mar10 10:40 c1528m
+Sorry I missed another thing that a PL tells you, which is that the 
+wording on the packaging and directions has been checked and agreed. 
+Without a PL code, some pretty outrageous claims can be made, and 
+usually are.
+Ian
+
+>>>enquire_within/49discussion 1570 cscott(227)13mar10 14:16 c1565
+
+I think you are right, insofar as you introduced him into the 
+conversation, but I'm struggling to see how I can pin my mental 
+mis-threading on you.  I'll carry on trying, though, and let you know if I 
+succeed.  :-)
+
+Colin
+
+
+>>>enquire_within/49discussion 1571 cscott(12)13mar10 14:16 c1562*
+:-\
+
+Colin
+
+
+>>>enquire_within/49discussion 1572 bfrost(79)13mar10 14:39 c1528
+That's useful, thanks.
+Bri
+
+Brian Frost
+brian.frost@appliedrelaytesting.co.uk
+
+
+>>>enquire_within/49discussion 1573 mfinger(155)13mar10 14:42 c1540*
+>  I wouldn't describe selling sugar pills as "honest".
+
+even if you knew that it worked, and had a trained and thorough belief in 
+how it worked?
+
+peter
+
+
+>>>enquire_within/49discussion 1574 mfinger(145)13mar10 14:42 c1539
+yes, as I've said elsewhere, that's a trial.
+How would you deliver it in the quantities currently managed by the 
+homoeopathic industry?
+
+peter
+
+
+>>>enquire_within/49discussion 1575 mfinger(158)13mar10 14:42 c1545
+the placebo effect has been shown to be clinically effective in reducing 
+high blood pressure, improved immune response, depression, ulcers, and 
+much more.
+
+
+>>>enquire_within/49discussion 1576 mfinger(51)13mar10 14:42 c1548*
+then why call the claims for it ludicrous?
+
+peter
+
+
+>>>enquire_within/49discussion 1577 mfinger(5)13mar10 14:42 c1555
+:-)
+
+
+>>>enquire_within/49discussion 1578 guy(432)13mar10 15:34 c1544*
+I need to see that report, dammit. I can't make sense of the summary, 
+sorry; it's lost me.
+
+Fundamentally, it doesn't seem to be referring to the topic we've been 
+discussing. I don't see how we can get around the fact that 
+scientifically, placebo disrupts data collection - and yet, equally 
+scientifically, has no effect. Somewhere, there's a mismatch, in this.
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/49discussion 1579 mikegoss(137)13mar10 16:18 c1552*
+> What is most important, the effect on the patient, or the honesty 
+> of the prescriber?
+
+Oh dear, "the end justifies the means"
+
+Mike
+
+
+>>>enquire_within/49discussion 1580 shutters(489)13mar10 16:36 c1550*
+I'm sure *most* of us are, but I'm not that comfortable with even 
+conversational Darwinism.  I keep thinking "All that is necessary for evil 
+to triumph is that good men do nothing", and while I wouldn't classify 
+Neil as by any means evil, I think the counsel of individually 
+twit-bitting him is rather akin to doing nothing.  Forceful wrongness - 
+whether it's moral wrongness or simply persistent factual error - does, I 
+think, need to be contested with some force as well.
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1581 shutters(198)13mar10 16:53 c1554*
+Oh, Neil often uses acronyms.  But, ISTM tellingly, he frequently either 
+gets them wrong ("MRDR" most recently in this topic), or is coining 
+acronyms which are unfamiliar to me at least.
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1582 andrew(72)13mar10 17:05 c1573m
+How about, if you had a trained and thorough belief that it does work?
+
+
+>>>enquire_within/49discussion 1583 andrew(514)13mar10 17:05 c1578*m
+I think it says that people report that they feel better but there are no 
+clinical benefits to be shown in any of the studies they looked at (which 
+is basically, all the ones they can find that are robust enough to bother 
+including). Feeling better is obviously better than not feeling better, 
+but that's all that it is. I'm not sure that anyone *is* saying that 
+placebo disrupts data collection - "no better than placebo" means just 
+that and this isn't evidence that there is any effect down to placebo.  
+
+
+>>>enquire_within/49discussion 1584 sasha_lubetkin(62)13mar10 19:18 c1571*
+That's the most sinister smile I've seen in ages!
+
+Sasha :-)
+
+
+>>>enquire_within/49discussion 1585 sasha_lubetkin(74)13mar10 19:18 c1580*m
+So be it. My opinion is obviously very much in the minority here.
+
+Sasha
+
+
+>>>enquire_within/49discussion 1586 neilm(3756)13mar10 19:34 c1580*
+Ian,
+
+I am sure that the posting I am commenting to is unintentional but I think 
+most of those who are engaging on this line of twaddle are doing so out of 
+ignorance of one thing - that disputes have two sides to the story. 
+
+Courts, especially at Magistrate and County Count levels, are not the 
+genteel places frequently portrayed in the artistic media with time for 
+tea and a nice chit-chat before getting round to business but for the 
+efficient disposal of what is at hand - if you are not quick enough, a 
+hearing can be over before you have had time to put your bundle on the 
+table. It is also not for the squeamish or arrogant - judges of all kinds 
+are very swift at puncturing egos or grandstanders (and anyway civil 
+matters (except libel & defamation cases AIUI) are not before juries) so 
+you are dealing with somebody with a very wide discretion (based on the 
+'balance of probabilities test) to infer things not in direct evidence. 
+The one of the things judges really hate IME is being asked to turn the 
+clock back because of dilatory attention to something that could have 
+prevented the claim being brought in the first place even if it is to the 
+advantage of the defendant (and Mac, accusing the Judge of being a liar 
+will not do you any favours - all that it probably will result in is you 
+being invited to appeal, with further up-front costs and an almost certain 
+return invitation to continue as before in front of somebody who's 
+sympathy you have irretrievably lost). It was simply her duty to ensure 
+that SAGA didn't activate the DD as soon as practical after non-receipt of 
+the promised return call and the missing paperwork to block the 
+possibility of claim having to be made.
+
+Almost invariably the original posting is posed along the lines that the 
+noncixen has 'broken the law' to harm the cixen. I remember one thread 
+where the cixen attempted to buy a CD player which he thought was 
+attractively priced only to find that he had read the adjacent but 
+relevant price ticket wrongly. There is the massive thread whereby 
+somebody bought a house and through their own carelessness (I said 
+recklessness) didn't check or understand EXACTLY what they were buying and 
+thought that the courts would automatically force the developers to change 
+the contract and that between them and another party, with attendant 
+modifications) in their favour.
+
+I also remember the theatre critic hereabouts who tried his luck on the 
+boards and got a public panning for his troubles thinking, as a result of 
+a TV item portraying him in not the best of lights, that he had the 
+makings of a libel action to assuage his hurt feelings. Courts don't value 
+feelings, hurt or otherwise. :(
+
+One lady tried to suggest that because her well-used iPod failed she had 
+the automatic right to an immediate replacement. A retailer might do so of 
+their own volition, but customers do not have the legal right to demand it.
+
+I further recall another cixen who spotted some televisions being offered 
+new at a price well below market and tried to make a bit on the side, only 
+to be thwarted when all he got was his money back (Courts don't work on 
+what might have happened and damages are limited the minimum actual loss 
+along with the fact that the original claim is ordinarily capped to the 
+contract value).
+
+Yes, you can negotiate an amicable settlement that is better than the 
+court might have imposed which is preferable to having to spend time for 
+the judge to call the parties together that invariably results in a 
+pyrrhic victory, but it does require a flexible pleasant attitude, a bit 
+of humble pie with courtesy and a knowledge of what is achievable - which 
+often is a long way from what is their ideal outcome.
+
+Neil.
+
+
+>>>enquire_within/49discussion 1587 teacup(1161)13mar10 20:29 c1549
+I suppose the difficulty would be in establishing what the patient 
+*really* believes about their treatment.  
+
+Mrs teacup is very sceptical about conventional doctors,  having suffered 
+from the pranks of medical students when she was at university (not a UK 
+university, I am glad to say)  and reckons that they obviously could not 
+have learned much since they were always bunking off lectures as well.  
+Which ones?  obviously, the ones related to whatever she is suffering from 
+at the time.   (She does not believe in Homeopathic Medicine either).
+
+So, even if she can be persuaded to actually take the tablets, or 
+whatever, to the end of the course of treatment,  there is probably some 
+nocebo effect,  which just enforces her belief that the doctors were no 
+good in the first place.
+
+In my day as an undergraduate,  The Organic Chemistry course I went to was 
+shared with the medical faculty, who were obliged to keep a record of 
+attendance, (we were not).  So there was a notice above the register:  
+"Medics Only Sign Here".
+
+So that is what they did, just signed the book and went on their way,  
+whilst we actually went to the lectures.
+
+TOM
+
+
+
+
+>>>enquire_within/49discussion 1588 teacup(170)13mar10 20:29 c1578m
+>scientifically, has no effect. Somewhere, there's a mismatch, in this.
+
+Sure is, just look at the wikipedia page on placebo,  references go on 
+into the hundreds.
+
+TOM
+
+
+>>>enquire_within/49discussion 1589 guy(196)13mar10 20:34 c1583*
+From someone who was warning us all of the very real dangers of nocebo 
+just a couple of weeks ago, this is an odd claim, indeed...
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/49discussion 1590 koen(59)13mar10 20:38 c1579*m
+Are you saying that the end /never/ justifies the means? 
+
+
+>>>enquire_within/49discussion 1591 andrew(48)13mar10 21:06 c1589*
+I think 'very real dangers' is overstating it!
+
+
+>>>enquire_within/49discussion 1592 neilm(415)13mar10 21:10 c1585*
+Bullies always seem to end up running the shop so dissuading the next 
+generation of members when views that are not to their taste are expressed.
+
+Once the decent members who tolerate those with different POVs leave or 
+fade into the background, new joiners are not made welcome by those who 
+cannot abide views that dissent from theirs - they have got to have their 
+self-important egos fed or tatty-bye.
+
+Neil.
+
+
+>>>enquire_within/49discussion 1593 walsham(57)13mar10 21:11 c1576*
+
+Placebo != ludicrous
+Homeopathy == ludicrous
+
+Keith J.
+
+
+>>>enquire_within/49discussion 1594 walsham(149)13mar10 21:11 c1586m
+WTF? My head is spinning.
+
+And as for saying that solving such disputes requires "a bit of humble 
+pie". Well really. Pot/kettle anybody?
+
+Keith J.
+
+
+>>>enquire_within/49discussion 1595 andrew(107)13mar10 21:16 c1578
+The full report is at 
+http://mrw.interscience.wiley.com/cochrane/clsysrev/articles/CD003974/pdf_f
+s.html
+
+
+>>>enquire_within/49discussion 1596 walsham(436)13mar10 21:52 c1592*m
+You still don't get it do you. It's not your "different POV" that matters. 
+It's bugger all to do with bullying. It's the fact that when several 
+messages have shown quite clearly that you are just plain wrong, often 
+factually wrong, you just clam up. You seem to find it impossible to admit 
+that you were wrong, but you persuade yourself that you have admitted 
+error. This last sentence is what intrigues/riles people.
+
+Keith J.
+ 
+
+
+>>>enquire_within/49discussion 1597 mfinger(55)13mar10 22:32 c1579*
+that is only pejorative when the end is harmful
+
+pete
+
+
+>>>enquire_within/49discussion 1598 mfinger(119)13mar10 22:32 c1593
+homoeopathy is a subset of placebo. It is not an ineffective subset, 
+therefore it shares its aludicrosity
+
+;-)
+
+pete
+
+
+>>>enquire_within/49discussion 1599 neilm(219)13mar10 22:44 c1596*m
+Okay I might hang onto an untenable position too long, but that is not 
+what the issue here is about.
+
+Are you perfect? If not then I'd try and start showing some of the 
+understanding you are asking of others.
+
+Neil.
+
+
+>>>enquire_within/49discussion 1600 hd(401)13mar10 23:04 c1477*
+The whole point of homeopathy is that the patient gets better by 
+themselves. That's how it is supposed to work. So there is no way of 
+telling the difference between a successful homeopathic treatment and 
+getting better by themselves. There is no difference. 
+
+Got it yet?
+
+For someone who claims to understand, you do a good impression of someone 
+who bull-headedly refuses to understand a thing.
+
+
+>>>enquire_within/49discussion 1601 andrew(386)14mar10 0:06 c1600
+> The whole point of homeopathy is that the patient gets better by 
+> themselves. That's how it is supposed to work. So there is no way 
+> of telling the difference between a successful homeopathic 
+> treatment and getting better by themselves. There is no difference. 
+
+Spot on. (No way of telling the difference between this and an 
+unsuccessful treatment, or no treatment, either).
+
+
+>>>enquire_within/49discussion 1602 shutters(283)14mar10 1:53 c1599m
+> that is not what the issue here is about.
+
+That statement, in the face of repeated demonstrations to the contrary, is 
+a fine demonstration of its own invalidity.  Even your refusal to accept 
+that that's what it's about confirms that that's actually what it *is* 
+about.
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1603 shutters(2298)14mar10 1:53 c1586*m
+> I think most of those who are engaging on this line of twaddle are 
+> doing so out of ignorance of one thing - that disputes have two 
+> sides to the story. 
+
+I think at least one of those who are engaging in this line of twaddle is 
+demonstrably ignorant of the reality that adducing *facts* rather than 
+assumptions may sometimes influence the credibility of one or other side.  
+Your recent spat with Mac is a fine example: there was evidence on one 
+side of the case and none on the other, so you fabricated the other side 
+out of thin air and maintained it even in the face of evidence to the 
+contrary.  Belief on uncertain or deficient grounds is one thing: belief 
+on no grounds whatever is quite another.
+ 
+> a hearing can be over before you have had time to put your bundle
+> on the table. 
+
+That'll be why you so often appear to refuse to give Cixen a hearing 
+before opining against them?
+
+> It is also not for the squeamish or arrogant
+
+I really think you may not be in the optimum position to make this 
+observation.
+
+> Mac, accusing the Judge of being a liar 
+
+I'm sorry?  Where did this happen?  Are you equating yourself with the 
+Judge?  I rather thought that her position (an over-reaction, but an 
+understandable one) was that the opposite had occurred.  Really, Neil, I 
+have no idea where on earth you think you're coming from here.
+
+> I also remember the theatre critic hereabouts who tried his luck on 
+> the boards and got a public panning for his troubles thinking, as a 
+> result of a TV item portraying him in not the best of lights, that 
+> he had the makings of a libel action to assuage his hurt feelings. 
+> Courts don't value feelings, hurt or otherwise. :(
+
+The critic in question was advised by a prominent libel lawyer that such a 
+case lay, and had a contingency offer to pursue it, but decided not to.  
+The panning in question consisted in large part of four- and five-star 
+reviews of the actual show, as opposed to the slanted portrayal that 
+resulted from ten months in the edit suite and a voice-over that 
+fabricated a narrative.  Are you entirely sure you remember aright?
+ 
+> it does require a flexible pleasant attitude, a bit of humble pie
+> with courtesy
+
+You really have no idea how absurdly ironic this sounds coming from you, 
+do you?
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1604 shutters(329)14mar10 1:53 c1592
+I think this indicates an all-too-popular fallacy: "Views which dissent 
+from the majority are often right; my views often dissent from the 
+majority; therefore I am right."
+
+I'm reminded of an exchange in "Bedazzled":
+P.C.: "Well, they said Einstein was a loony."
+D.M.: "Yeah, they said it about a lot of loonies too."
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1605 shutters(2115)14mar10 4:40 c1603
+It's not just that your portrait of procedure here seems to me at least - 
+and, I suspect, to others - radically at variance with your own conduct in 
+conferences.  It's the fact that you can take stands about such petty 
+points, such ridiculous points, and persist in them so obstinately.
+
+I'm here deliberately recounting the most trivial matter I can recall, but 
+your behaviour on it was no different from that on larger points, which 
+suggests to me that the determining factor is neither gravity, legal 
+standing, complexity nor a desire to advise, but a matter of your own 
+attitude:
+
+You've no doubt noticed my twitting you several times about your 
+entrenched assertion some time ago that the former Conservative Prime 
+Minister's name was Sir Alec Douglas Hulme, his title Lord Hulme.  You 
+maintained this in the face of correction, and without citing any evidence 
+whatever for your declaration, until I cited a number of authoritative 
+sources including the Conservative Party itself to the effect that his 
+name and title alike had always been Home, not Hulme.  You then simply 
+fell silent, ignoring calls for you to acknowledge your error in any way 
+whatever.
+
+Where, in that case, was your
+> bundle on the table
+?  Where was your evidence that that matter had
+> two sides to the story
+?  Where was your
+> attention to something that could have prevented the claim being
+> brought in the first place 
+?  Where, when authoritatively corrected, was your
+> flexible pleasant attitude, a bit of humble pie with courtesy and a
+> knowledge of what is achievable
+?  And if you're prepared to show such stubbornness, followed by such 
+sullenness, over a matter as trifling as that, is it any wonder that your 
+behaviour on more substantive points often strikes many as far from 
+optimal?
+
+Are you prepared, even now, to acknowledge your error on that point all 
+those years ago, and admit that your position on the matter was mistaken 
+and groundless?  Do you begin to see how your pontification at cix:1585 
+may strike a number of readers as applying far more to you than to your 
+interlocutors?
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1606 mikegoss(63)14mar10 9:26 c1573*
+The "explanation" given by homeopaths explains nothing.
+
+Mike
+
+
+>>>enquire_within/49discussion 1607 mikegoss(65)14mar10 9:26 c1590*
+Yes.
+
+The means should stand up to scrutiny on their own.
+
+Mike
+
+
+>>>enquire_within/49discussion 1608 mikegoss(94)14mar10 9:26 c1597*
+No, its pejorative whatever the end. 
+
+The problem is that the means modifies the end.
+
+Mike
+
+
+>>>enquire_within/49discussion 1609 koen(104)14mar10 9:39 c1607*
+That must create some interesting dilemmas. Do you always tell everyone 
+the complete and utter truth?
+
+
+>>>enquire_within/49discussion 1610 koen(566)14mar10 9:39 c1599*
+> Okay I might hang onto an untenable position too long, but that is not 
+> what the issue here is about.
+
+PMFBI but I think that is exactly what it is about.
+
+I haven't got the slightest doubt with respect to your good intentions, 
+but sometimes it is really quite strange to see how you turn (often wild) 
+assumptions of your own into facts upon which you then build an argument; 
+and subsequently when the invalidity of your assumptions is pointed out, 
+you do indeed hang on to that 'untenable' position.
+
+I can see why people are puzzled about that behaviour.
+
+
+>>>enquire_within/49discussion 1611 zulu(873)14mar10 10:46 c1610*m
+Whatever the merits of neil's arguments at least he makes one. I am far 
+more irritated by the habit of other cixen of simply dismissing a comment 
+without putting a counter-argument.
+
+But I can ignore that, just like people can ignore neil's posts. 
+
+It might be good to remember that nobody here has a duty to be helpful or 
+objective or correct, it's just somewhere to hang out. Saying that, a lot 
+of people do try to be helpful, and take a lot of trouble to explain 
+themselves - Mike Todd for one - but they're dumped on too.
+
+AFAICS insulting neil is just a lazy habit. OTOH, it's quite fun, so what 
+about a topic where we rip each other up (cix:enquire_within/bastards)? 
+Each participant who has contributed in the conf gets their own thread and 
+the rest add comments when they are inclined to do so, so keeping all this 
+ad hom stuff out of the argument-space
+
+
+>>>enquire_within/49discussion 1612 neilm(52)14mar10 10:54 c1610*
+You should have seen my father! But hey ho!
+
+Neil.
+
+
+>>>enquire_within/49discussion 1613 neilm(211)14mar10 11:00 c1611*m
+You should have seen the abuse conference some time ago - anything went 
+and IIRC it didn't need moderating at all because posters were respectful, 
+within the tolerance of the thread, of other's views.
+
+Neil.
+
+
+>>>enquire_within/49discussion 1614 mikegoss(163)14mar10 11:37 c1609*
+All I said was the means must stand up scrutiny without reference to the 
+end.
+
+> Do you always tell everyone the complete and utter truth?
+
+Of course not.
+
+Mike
+
+
+>>>enquire_within/49discussion 1615 guy(2156)14mar10 11:52 c1608*m
+I always have a cold feeling of dread for absolutist positions...! 
+
+:-)
+
+First, you're assuming a competent, sane audience. That may not be the 
+case. Example: life-saving, where you have rescued a drowning victim from 
+very cold water. The mind of someone in hypothermia is not rational, and 
+you can't explain quite obvious things. You have to trick them. My 
+instructor told the story of a woman he'd pulled out of a frozen pond. She 
+was safely in his rescue boat, and suddenly looked around for her handbag. 
+It was at the bottom. "My handbag!" she screamed, and dived over to get it.
+
+Frequently, the stress of the illness leads to anxiety, which badly 
+affects the patient's ability to make a judgement. Other emotions equally 
+cloud judgement. You have to consider: "Do I tell this person now? or do 
+we wait for their mind to clear...? and in an emergency, it may not be an 
+option.
+
+There's also ignorance. You're telling someone information which conflicts 
+with what they believe. You're right, they're wrong. But in their minds, 
+the information is wrong, wrong, wrong, and maybe dangerously so. You're 
+proposing a sedative injection without which they will go into shock; they 
+perceive this as a life-threatening attack. You know you can administer it 
+without their knowledge, or awareness. Do you really choose this moment to 
+say: "Now, I'm going to give you a little injection..."? or do you save 
+their lives?
+
+Mostly, we're not discussing critical decisions like this, but the fact 
+that the stakes are normally lower, doesn't mean that the issue is 
+therefore irrelevant. My son-in-law eats tablespoons of Vicks Vapour Rub 
+as a cure for colds; it doesn't kill him. I don't see it as clever! but 
+I'm not under any illusion that I would be justified in telling him lies 
+about what might happen, in an attempt to prevent his doing it. 
+Nonetheless the issue does arise, and it isn't an issue I can resolve with 
+a blanket "never!" absolute.
+
+If it helps, I suspect we'd make the same decision 999 times in a 
+thousand. But I can't make myself turn that into a Law.
+
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/49discussion 1616 digitig(357)14mar10 11:54 c1423
+> Tell me Guy, if the media is not at fault in all this, why hasn't 
+> anybody reminded Mrs Fergus that she let Jamie wander away from her 
+> to allow Venables & Thompson to pick him up?
+
+Because most people in the media, and most media consumers, know and 
+understand the realities of child rearing, and realise that no parent 
+could possibly avoid that.
+
+
+>>>enquire_within/49discussion 1617 mikegoss(185)14mar10 11:57 c1615*
+You're absolutely right (or is that too absolutist), but, that was not the 
+context within which we are arguing.
+
+We are talking about administering sugar pills to the gullible.
+
+Mike
+
+
+>>>enquire_within/49discussion 1618 cscott(12)14mar10 13:30 c1584*
+:-)
+
+Colin
+
+
+>>>enquire_within/49discussion 1619 cscott(96)14mar10 13:30 c1581*
+
+(So far as you can tell!) do any of them admit to or hint at uncertainty 
+on his part?
+
+Colin
+
+
+>>>enquire_within/49discussion 1620 cscott(81)14mar10 13:30 c1596
+
+> This last sentence is what intrigues/riles people.
+
+s/what/one thing/
+
+Colin
+
+
+>>>enquire_within/49discussion 1621 cscott(452)14mar10 13:30 c1586*
+
+> disputes have two sides to the story. 
+
+In general, this is true.  Unfortunately, there are the disputes in which 
+you participate where frequently you have a story which is out there all 
+on its own, and has little or no reference to the reality of the matter 
+under discussion.
+
+And if my recollection of past threads is not too far off-beam, it would 
+seem that your "summaries" of some previous discussions neatly encapsulate 
+my point.
+
+Colin
+
+
+>>>enquire_within/49discussion 1622 zulu(177)14mar10 13:43 c1613*
+Is there really a cix:abuse conf?
+
+[checks conf list]
+
+So there is. Anyone want to join me there? I promise to be respectful of 
+others' views, until I get too ripped up   8-)
+
+
+>>>enquire_within/49discussion 1623 zulu(118)14mar10 13:51 c1622*
+Needs a new topic though: cix:abuse/cixen
+
+The mod, pirate, has long gone too. Might as well put the topic here  8-)
+
+
+>>>enquire_within/49discussion 1624 mfinger(290)14mar10 15:00 c1606*
+you didn't answer my question.
+
+Telling me that anyone who's explanation you don't believe in is dishonest 
+isn't useful.
+For example, I don't believe that we are a 3D projection of a 
+higher-dimensional hologram. Should that mean that those who promote that 
+theory are dishonest?
+
+peter
+
+
+>>>enquire_within/49discussion 1625 mfinger(44)14mar10 15:00 c1617m
+and if gullibility heals? ( which it does)
+
+
+>>>enquire_within/49discussion 1626 mfinger(651)14mar10 15:00 c1608*
+of course! that's the dilemma of placebo.
+One major vector of the PE is what people believe.
+For example, people given dummy alcohol in different countries show 
+different kinds of drunken behaviour, according to local behaviours.
+And I hope you will have read the recent article here about ulcer 
+treatment.
+And there's the vector of traditional healing - the vast majority of which 
+( including not only shamanism and so forth, but the  core western 
+tradition) consists of placebo treatment. 
+Galen said ( in a profession that administered placebos almost 
+exclusively): "  He cures most successfully in whom the people have the 
+most confidence"
+
+
+>>>enquire_within/49discussion 1627 digitig(140)14mar10 16:58 c1532*
+If it were done honestly it would be far less effective. It's a tricky 
+moral choice -- do we want the honesty or do we want the recovery?
+
+
+>>>enquire_within/49discussion 1628 guy(100)14mar10 17:02 c1591*
+:-)
+
+Well, you take the point...?
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/49discussion 1629 dcluley(131)14mar10 17:16 c1623*
+I can start one if you like but I do worry that if I opened an abuse 
+topic it would render the rest redundant.  :-)
+
+David Cluley
+
+>>>enquire_within/49discussion 1630 koen(214)14mar10 17:19 c1614*
+> All I said was the means must stand up scrutiny without reference to 
+> the end.
+
+Can you explain why sometimes you tell the complete and utter truth, and 
+sometimes you don't - without reference to the result?
+
+
+>>>enquire_within/49discussion 1631 koen(61)14mar10 17:19 c1612*
+You mean he hung on to untenable positions even longer?
+:-)
+
+
+>>>enquire_within/49discussion 1632 shutters(99)14mar10 17:40 c1619
+I think I once saw him acknowledge error and correction, but I don't 
+remember details...
+
+Ian S.
+
+
+>>>enquire_within/49discussion 1633 zulu(17)14mar10 18:53 c1629
+Good point  8-)
+
+
+>>>enquire_within/49discussion 1634 andrew(322)14mar10 19:03 c1627*
+We want the recovery. Unfortunately, the evidence seems to be that placebo 
+effect doesn't aid recovery but only results in patients reporting they 
+feel better. So if we can't have the recovery, perhaps we should stick to 
+honesty: tell people that they will get better in due course and that no 
+medication will help. 
+
+
+>>>enquire_within/49discussion 1635 andrew(296)14mar10 19:03 c1628
+If any treatment is capable of providing a positive effective, it's 
+probably capable of the negative effect. I hadn't realized until recently 
+that the placebo effect has no clinical value, just that people report 
+feeling better. (Do you know how many Cochrane reviews mention 'placebo' 
+:-))
+
+
+>>>enquire_within/49discussion 1636 sasha_lubetkin(49)14mar10 22:40 c1618
+Phew! <mops brow>.  That's a lot better!
+
+Sasha
+
+
+>>>enquire_within/49discussion 1637 sasha_lubetkin(145)14mar10 22:40 c1611
+>  so what 
+> about a topic where we rip each other up 
+> (cix:enquire_within/bastards)? 
+
+An simple idea bearing the mark of genius :-)
+
+Sasha
+
+
+>>>enquire_within/49discussion 1638 neilm(67)14mar10 23:51 c1631
+Most definitely hung on to them (and would not back down).
+
+Neil.
+
+
+>>>enquire_within/49discussion 1639 neilm(266)15mar10 0:37 c1621*
+So, your view is that for a story to have any credence hereabouts, it must 
+match that of your take on the situation.
+
+Tell me, if you know the law and how it is applied so expertly, why has 
+your lordship considered employment in a jobsworth organisation? 
+
+Neil.
+
+
+>>>enquire_within/49discussion 1640 derek_c(102)15mar10 5:16 c1354
+Easy.
+
+Buy one sample from a shop, another online and see if they show an equal 
+lack of efficiency!
+
+
+>>>enquire_within/49discussion 1641 koen(50)15mar10 6:18 c1634*
+But what if that makes fewer people feel better?
+
+
+>>>enquire_within/49discussion 1642 mikegoss(268)15mar10 8:01 c1624
+> even if you knew that it worked, 
+
+It doesn't work
+
+> and had a trained and thorough belief in how it worked?
+
+Every explanation of how homeopathy "works" is nonsense.
+
+And its not a matter of belief. 
+
+No trial has every shown that homeopathy does anything.
+
+Mike
+
+
+>>>enquire_within/49discussion 1643 mikegoss(47)15mar10 8:01 c1630*
+But is with reference to the context...
+
+Mike
+
+
+>>>enquire_within/49discussion 1644 mikegoss(223)15mar10 8:28 c1626
+and as a result the NHS should be researching the placebo effect, how it 
+works, what makes it work and how to make it work better, and not wasting 
+money on mumbo-jumbo like homeopathy.
+
+Which is where I came in...
+
+Mike
+
+
+>>>enquire_within/49discussion 1645 andrew(706)15mar10 10:17 c1641*
+We don't know that it does, and it might be that it's only helping people 
+think that they feel better. There will be some placebo effect in a doctor 
+telling their patient the truth (that there's nothing wrong that won't 
+heal itself) - for some patients. 
+
+Do you consider it ethical for a doctor to lie to a patient and say that 
+this sugar pill might help and it turns out it doesn't?
+
+The Cochrane report I've mentioned says that sham mechanical placebos are 
+more effective than sham medication, but there's obviously a cost in 
+providing them. Should we train lots of people to give sham procedures to 
+deliver a non-treatment which will help some people, but only for some 
+pain and some nausea? 
+
+
+>>>enquire_within/49discussion 1646 pellefsen(38)15mar10 10:33 c1639
+s/credence/credibility/ 
+
+ - Peter -
+
+
+>>>enquire_within/49discussion 1647 guy(1690)15mar10 11:02 c1617
+But what are the alternatives? That's my context.
+
+My objective, as a GP prescribing sugar pills, is to avoid seeing my 
+patient do something destructive. I know that, given seven days on a sugar 
+pill, they will have recovered entirely from whatever ails them.
+
+But my patient isn't just gullible. My patient is convinced - by culture,  
+experience, and other expectations - that they need Something Powerful - 
+urgently. I may even know what they are likely to do; often, these 
+patients are addicted to emetics, laxatives, aspirin, or just pretty 
+random self-medication.
+
+Some of the stuff you can buy, off the shelf, in a pharmacy, is really 
+quite active biochemically; some is anodyne, but dangerous to apply (you 
+would be astonished at the complications from Preparation H administration 
+by people who don't understand intestinal parasites!).
+
+Some consult herbal medicine dispensing shops, who include very toxic 
+treatments in their range of products, and have little or no training in 
+healing, and less experience. 
+
+Some will *insist* on antibiotics, and if refused them, will go to another 
+more pliable GP, and score them. 
+
+And I could, I'm sure you realise, quote other examples...
+
+In that context, I see it as a perfectly professional act: "Here is a 
+prescription for a preparation I've used successfully for a half dozen 
+patients this week. Make sure you take all seven pills." 
+
+The patient does not always need to know it's a sugar pill; making that 
+information available *after* successful treatment may be by far the more 
+responsible tactic. It's quite possibly the only way to educate them.
+
+
+
+
+
+> please use guy dot kewney at gmail dot com, not cix mail...
+
+
+>>>enquire_within/49discussion 1648 koen(166)15mar10 11:03 c1643
+Could you explain? Why might you (for example) not tell a prospective 
+client that his breath smells terribly, or that he has a big booger 
+hanging out of his nose?
+
+
+>>>enquire_within/49discussion 1649 koen(727)15mar10 11:03 c1645
+> people think that they feel better. 
+
+That seems to me to be an even more difficult distinction - when does 
+someone feel better, and when does someone merely /think/ he feels better?
+
+> Do you consider it ethical for a doctor to lie to a patient and say 
+> that this sugar pill might help and it turns out it doesn't?
+
+The same will apply to lots of 'real' medicine, won't it?
+
+> Should we train lots of people to give sham 
+> procedures to deliver a non-treatment which will help some people, but 
+> only for some pain and some nausea? 
+
+I don't know - but we should be clear what it is we want to achieve: 
+people that are more healthy, people that feel better, medics that tell 
+the truth and nothing but the truth etc.
+
+
+Joining windows_7/tips (F) 1 new message(s).
+>>>windows_7/tips 64 ratcatcher(1105)13mar10 15:05 
+Minime (v2.0)
+
+Useful little system tray application for those programmes that insist on 
+minimising to the taskbar (particularly under Windows 7).
+
+This requires no installation - just put it somewhere and create a 
+shortcut to it.  I put the shortcut in the startup folder so it starts 
+with Windows.
+
+When run, it puts an icon in the system tray (green circle with a white 
+downward arrow).  Any window you have open can be minimised to the Minime 
+menu by pressing Ctrl-Shift-z.  If you then left or right click on the 
+Minime icon, you will see a list of those programmes/windows which have 
+been minimised in this way.
+
+You can restore them individually from the Minime icon menu or restore all 
+of them by pressing Ctrl-Shift-a, selecting "Show All" from the Minime 
+menu or simply by closing Minime, at which point they all dutifully 
+migrate back to the task bar.
+
+Runs fine under Windows XP and 7 (64-bit).  Haven't tried it with other 
+versions.
+
+Oh, and it's freeware.
+
+http://www.saphua.com/minime/
+
+I've no idea whether it's supposed to be pronounced "minEEm" or "mini me", 
+though.
+
+
+Nick
+
+
+Joining windows_7/general01 36 new message(s).
+>>>windows_7/general01 1115 fspringall(574)13mar10 14:20 
+Compatibility Mode
+I've just found out that this does not include using previous versions 
+of directx.
+
+Although set to use XP SP2 BioShock 1 still would not run until I saw a 
+comment on the net about using dx9. This can be done by either by going 
+to start-games-bishock and right clicking for a menu option which says 
+Play-DirectX9 or adding -dx9 to the target on the shortcut.
+
+Not sure if I'm teaching grannies to suck eggs here but it may be 
+useful to someone. :-)
+
+PS I posted this in the Windows XP conference by mistake so sorry to 
+those seeing a repeat.
+
+Frank
+
+>>>windows_7/general01 1116 snape(174)13mar10 14:54 *
+Is now the time to upgrade from Vista to Windows 7?
+Or is the informed view that we should wait a little longer?
+
+I also have a laptop chugging along steadily on XP.
+
+Ron S
+
+
+>>>windows_7/general01 1117 ratcatcher(834)13mar10 15:13 c1116*m
+
+My own view is this:
+
+XP is stable and mature and if it's doing everything you want on the 
+laptop it's running on, there's no urgent need to change.
+
+Vista is probably one of the worst versions of Windows ever to get 
+released.  If you're happy with the way Vista runs on your machine then 
+again there's no urgent need to change.  On the other hand if, as is 
+likely, it behaves like The Spawn of the Devil, then do upgrade.  Most 
+machines capable of running Vista will also run Windows 7 without 
+modification or issue (though of course the usual caveats apply: do check 
+first).
+
+This is exactly what I did.  I have one older laptop still happily running 
+XP and another more recent one that I couldn't wait to remove Vista from.  
+The latter is now happily running the latest version of Windows 7 
+Professional 64-bit.
+
+
+Nick
+
+
+>>>windows_7/general01 1118 roman(1461)13mar10 15:17 c1116*m
+The informed view, ever since Windows 7 came out, is that Windows 7 
+thrashes Vista performancewise and in elegance of use.  Which indeed it 
+does bigtime.
+
+However, the more informed view is that you should first consider why you 
+want to upgrade -- if everything (both with the Vista machine and the XP 
+one) is working fine for you, there is a strong argument for leaving them 
+alone.  Computers are just tools, after all, and if they are working...
+
+As a decision point, anything with less than 2 Gb of RAM almost certainly 
+isn't going to be man enough.  Also, consider your devices such as video 
+card, printer, etc, and your important applications -- check that there 
+are Windows 7 drivers for your hardware and that the software applications 
+are compatible.  Windows 7 is pretty amazing for hardware recognition and 
+support, but you need to check whether your exact models will be covered.  
+
+Printers in particular can be an unwanted surprise, sometimes even if 
+there is a Windows 7 driver, sometimes they've turned out to have a lot of 
+the features missing from the new driver. 
+
+64 bit is also something to consider.  It'll make more efficient use of 
+memory above 3 Gb, but there can be hardware driver issues.
+
+A good tip is to do a Google search for, say, your printer model, using a 
+search string such, for example, as "HP Laserjet 4 Windows 7 problems" -- 
+if there are issues, chances are somebody will already have encountered 
+them.
+
+
+
+
+>>>windows_7/general01 1119 hex(500)13mar10 15:59 c1116*m
+An "upgrade" is almost always a waste of time.  Don't bother.
+
+A "format and reinstall all your apps" is definitely worth it, if you can 
+justify the cost of the software and your time.
+
+However, as others have said, if your current installations are working 
+well for you, then I'd probably wait until you replace your machines or 
+something goes wrong.  If it ain't broke, and all that.  Don't believe the 
+Microsoft marketing machine - you don't need Win7.  XP or Vista are fine 
+for the moment.
+
+
+>>>windows_7/general01 1120 ratcatcher(75)13mar10 16:09 c1119
+Agreed.  For "upgrade" in my previous reply, read "clean install".
+
+
+Nick
+
+
+>>>windows_7/general01 1121 jwalton(315)13mar10 16:09 c1116
+As you are on Vista, it is almost a no-brainer IMHO (i.e. do it). And if 
+Vista works, you are unlikely to have hardware problem (but check first).
+
+As I don't think anyone has mentioned it, run the compatibility checker 
+tool. And note that it tends to be very pessimistic / over-cautious!   
+
+Best Regards,
+John
+
+
+>>>windows_7/general01 1122 kblakeman(504)14mar10 6:30 c1117*m
+I'd agree with that. We have left the three machines with XP as they are, 
+which was just as well. We upgraded the laptop that was running Vista to 
+Windows 7. Can't really compare the performance of Vista vs Windows 7 as 
+we hardly ever used the laptop when it had Vista (which I think says it 
+all!). There are problems, though, with our old HP scanner not working or 
+supported by Win 7 and our HP 2200 duplex printer will not collate when we 
+print multiple copies of multipage documents.   
+
+Karen
+
+
+>>>windows_7/general01 1123 starhunter(317)14mar10 6:40 c1118
+> Printers in particular can be an unwanted surprise, 
+
+That's one I'll second!
+Windows 7 recognised my Epson Stylus Color 760 and installed the driver 
+for it, but it doesn't work properly.  I looked on Epson's website and 
+the only driver for the 760, and several others, is the one supplied with 
+W7.
+
+
+==Peter==
+
+
+>>>windows_7/general01 1124 donbradbury(385)14mar10 8:26 c1122*
+>There are problems, though, with our old HP scanner not working or 
+>supported by Win 7 and our HP 2200 duplex printer will not collate when 
+we 
+>print multiple copies of multipage documents.  
+
+Says it all really. If everything's running OK under the old OS, leave 
+well alone until the driver probs are sorted might be the motto. Maybe 
+with SP1. 
+
+Mind you, they *were* HP!
+
+Don
+
+
+>>>windows_7/general01 1125 paulcummins(321)14mar10 15:32 c1117*
+> XP is stable and mature and if it's doing everything you want on 
+> the laptop it's running on, there's no urgent need to change.
+
+Same can be said for Windows 2000, in most respects.
+
+
+Windows 7, IMO, should be held until SP1, which is now due in December.
+
+-- 
+Paul Cummins
+paulcummins@tiscali.co.uk - no CIX email.
+
+
+>>>windows_7/general01 1126 roman(191)14mar10 15:40 c1124*
+> Mind you, they *were* HP!
+
+If they're HP, waiting for SP1 won't ever help you. Your domestic HP 
+printer is regarded as obsolete and ancient history by HP as soon as it 
+hits the shops.  
+
+
+>>>windows_7/general01 1127 roman(431)14mar10 16:06 c1125*m
+> Windows 7, IMO, should be held until SP1
+
+Why?  Do you have any Windows7-specific reasons for this claim?  Which 
+specific Windows 7 issues -- if any --  have you personally encounterd 
+which you are expecting to be corrected by SP1?
+
+Or are you just automatically repeating the conventional Windows 
+pseudo-wisdom that's been doing the rounds for the last two decades 
+because everyone merely repeats what the last bloke said?
+
+
+>>>windows_7/general01 1128 paulcummins(708)14mar10 17:21 c1127*
+Do you have any basis for attacking me for giving my opinion?
+
+Do you have any information that suggests that, actually, it's _not_ in 
+fact my opinion and therefore I am not entitled to hold it?
+
+I expressed an opinion. There are many things that Windows 7 does not do 
+as well as XP right now. Hardware compatibility is just one of those 
+things, as demonstrated in this very conference.
+
+So yes, I am repeating the conventional wisdom, because it actually has 
+some basis in fact. SP1 releases fix many of the problems reported by the 
+early-adopters. This is not pseudo-wisdom, this is demonstrated fact since 
+NT4. 
+
+Get off your high horse.
+
+-- 
+Paul Cummins
+paulcummins@tiscali.co.uk - no CIX email.
+
+
+>>>windows_7/general01 1129 slbentall(311)14mar10 17:58 c1128m
+Just out of interest, XP may support most of the peripherals that were 
+around when it was released and all of the peripheral that were released 
+during the next five, six, or seven years after it's release, but does it 
+support as many peripherals that have been released in the last two years 
+as Windows 7?
+
+
+>>>windows_7/general01 1130 kdavisa(48)14mar10 18:04 c1126*
+Really?  My Laserjet 5MP is fine under 7.
+
+Ken
+
+
+>>>windows_7/general01 1131 kdavisa(629)14mar10 18:04 c1125*m
+I have a new computer and instead of making it multi boot, have installed 
+Windows 7 onto one hard drive and XP onto another, with the relevant 
+drives disconnected while installing the other OS.  Redirecting the 
+boot-up is then done via the BIOS, selecting the relevant drive as the 
+priority one.
+
+Quite apart from stability of W7 feeling *far* better, even with dozens of 
+programs installed; hardly any in XP, the boot-up time for W7 seems far 
+quicker than XP.  I've not done any stop-watch timings - nor do I intend 
+to, since I'm away for a couple of weeks from tomorrow - but it *feels* 
+like about half the time!
+
+Ken
+
+
+>>>windows_7/general01 1132 roman(852)14mar10 18:27 c1128*
+> So yes, I am repeating the conventional wisdom
+
+Unfortunately not apparently from a position of personal Windows 7 
+experience.  Not really helpful, IMHO.
+
+> SP1 releases fix many of the problems reported
+> by the early-adopters
+
+Which fixes, for which problems exactly, are you expecting from Windows 7 
+SP1?  Any?
+
+We're already well beyond the "early adopter" stage of Windows 7, and it's 
+holding up extremely well.  Point is, you're not going to now get many 
+updates for older drivers, particularly not from an SP.  (Nor indeed, are 
+you going to now get many XP, let alone  earlier, drivers for hardware 
+released since since Windows 7 came out.)  
+
+"Waiting for SP1" is not for most users relevant to the question of 
+whether or not one should upgrade to Windows 7 or not, and I think it 
+really is time to drop that tired old cliche.
+
+
+
+
+
+
+
+
+>>>windows_7/general01 1133 paulcummins(428)14mar10 19:29 c1132*
+> Not really helpful, IMHO.
+
+I acknowledge your opinion - A pity you couldn't simply acknowledge mine 
+and made it into something which I perceived as a personal attack.
+
+I have had to deal with no end of friends who have upgraded to 7 from 
+either XP or Vista who want to rewind in the last 3 months that I now 
+won't support either Vista (ever) or 7 (until SP1).
+ 
+
+-- 
+Paul Cummins
+paulcummins@tiscali.co.uk - no CIX email.
+
+
+>>>windows_7/general01 1134 ratcatcher(623)14mar10 20:46 c1131*
+> boot-up time for W7 seems far 
+> quicker than XP.
+
+Anecdotally I have found that to be the case, too.  But (like many others, 
+I suspect) I'm comparing a fairly new clean installation of Windows 7 on 
+to a faster machine with an older install of XP on a slower machine with 
+less memory.
+
+A clean install of Windows 7 on the older machine would be an interesting 
+exercise from the academic point-of-view though, as I said before, I'm not 
+about to attempt it unless I have some compelling reason to do so.  For 
+example, if the hard disk drive gave out and I had to replace it, I'd 
+probably given 7 a try then.
+
+
+Nick
+
+
+>>>windows_7/general01 1135 kdavisa(822)14mar10 21:54 c1134
+Yes Nick - but I'm comparing a clean install of W7 and a clean install of 
+XP on the *same* machine, just on different hard drives as *alternative* 
+booting rather than multi-booting.
+
+I have several boot-time extras on the W7 system - Mailwasher, Clipmate, 
+GoogleMail notifier, Second Copy, Digiguide - all that is ready to go far 
+more quickly than XP with no extras.
+
+About the only problem I had was with 64bit and Roxio Creator.  I use the 
+Audio editor quite a bit and when using playback, there is no visual 
+indication of where the track being played is.  Dropped back to 32bit  - 
+(on the same machine) install and it's fine.  The one thing I've found 
+that isn't (and it was working OK on my previous, 32bit computer) is 
+javascript photo galleries in Serif's Web Plus. I have Serif looking into 
+that. 
+
+
+Ken
+
+
+>>>windows_7/general01 1136 roman(38)14mar10 22:21 c1130*m
+If you're in luck, you're in luck...
+
+
+>>>windows_7/general01 1137 roman(764)14mar10 23:04 c1133*
+Sounds like your friends have unfortunately been rather uncommonly unlucky 
+with Windows 7 for some reason. 
+
+Nevertheless, the wider body of opinion in the Windows community remains 
+that Windows 7 is arguably the best version of the OS so far, and that 
+there is no need whatsoever to do the mindless "wait for SP1" folklore 
+dance.  It's ready to roll as it is.
+
+That said, my personal advice would be to always do a clean install.  And 
+in particular, not to even consider moving older machines (ie, more than a 
+couple of years old) that are working fine as they are up to Windows 7.  
+It's a contemporary OS for contemporary hardware, and attempting to 
+retrofit Windows 7 to effectively obsolete and/or inadequate hardware is 
+just going to bring grief.
+
+
+
+
+>>>windows_7/general01 1138 kdavisa(700)15mar10 6:32 c1136*
+Sometimes just not panicking can help!  On initially installing W7, that 
+printer didn't show as supported.  Just when it was detected, I can't say 
+- but it was during the next few hours.
+
+I also have an Epson Aculaser C-900 and that is also recognised but they 
+don't list the very handy Status Monitor for is under W7.  The have it for 
+use under Vista, though, so I tried it and got the info that it wasn't for 
+use under W7 and the install failed.  I asked Epson who said they didn't 
+supply it for W7 - there is one for Vista that /might/ work.  I tried 
+installing it again - and it now works!
+
+ISTM that much support *is* available.  It can just take a bit of time for 
+it to be found.
+
+Ken
+
+
+>>>windows_7/general01 1139 jwalton(112)15mar10 7:34 c1125
+No way, IMHO!
+
+I have it on a PC, an old laptop, and a little netbook. No problems at all.
+
+Best Regards,
+John
+
+
+>>>windows_7/general01 1140 jwalton(122)15mar10 7:58 c1130
+As is my antique 4MP! Actually it is attached to another PC, but running 
+the driver on my Win 7 PC.
+
+Best Regards,
+John
+
+
+>>>windows_7/general01 1141 jwalton(150)15mar10 7:58 c1138
+I found that the ability of Windows 7 after installation to go off and 
+find and install drivers automatically very unexpected. 
+
+Best Regards,
+John
+
+
+>>>windows_7/general01 1142 jwalton(163)15mar10 7:58 c1137*
+Agree with all that 100%. And I have never wasted effort in attempting a 
+Win 7 upgrade install. Treat it as an opportunity to spring clean. 
+
+Best Regards,
+John
+
+
+>>>windows_7/general01 1143 donbradbury(517)15mar10 8:14 c1142*m
+>And I have never wasted effort in attempting a Win 7 upgrade install.
+
+On a slightly different tack, can anyone see objections to a Win 7 
+*Ultimate* upgrade over the top of a fresh Win 7 64-bit *HP* install?  ie 
+on a new PC, direct from the manufacturer with 64-bit HP on it. That 
+could save basic driver location issues for the new machine.
+
+Have to confess I'm sure how this works. Is it the case that all versions 
+of 7 are installed, you just have to unlock the one you paid for with the 
+relevant key.
+
+Don
+
+
+>>>windows_7/general01 1144 jwalton(423)15mar10 8:24 c1143m
+Sorry, can't answer the question, but you may find you can do a clean 
+install, and that HP have a "pack" of updates specifically for your PC 
+under Win 7.
+
+That's what I did with my Toshiba NB200, I just installed their "Toshiba 
+Software Installer for Windows 7". This installs the special drivers for 
+such things as the auto-detect hard disc jog and lock, and the touch pad, 
+power management etc.
+
+Best Regards,
+John
+
+
+>>>windows_7/general01 1145 roman(816)15mar10 9:53 c1143
+> Win 7 *Ultimate* upgrade 
+
+All the Windows 7 versions are the same in terms of installation, but 
+which version you receive is decided by the serial number.  You can 
+"upgrade" by changing the serial number to that of Ultimate: 
+
+Highlight Computer (desktop or start menu)
+Right click
+Properties
+
+Windows Activation
+"Change Product Key"
+
+The question though is, apart from the drivers, what other crapware, 
+sampleware, dodgy antivirus, useless applications, etc have HP 
+pre-installed? 
+
+It might be as well to start with a wipe and reinstall of only the stuff 
+you actually want -- but if you do, make sure you have at least the 
+network drivers downloaded to another partition or to (unzipped) to a DVD 
+or CD.  If you have at least those, all the others you can get from the HP 
+site and install them online.
+
+
+>>>windows_7/general01 1146 kdavisa(823)15mar10 10:07 c1142*
+Agreed, again 100% - with one caution.  Make sure that certain programs 
+are uninstalled first.  Some companies have a peculiar attitude to 
+activation.
+
+Adobe seem OK.  If you're re-activating on the same computer, no problem 
+but on a different one, un-installing can roll back the activation.  
+Nuance, OTOH just apply a ration and each install, even on the same 
+computer, unless uninstalled , which does roll back the activation count, 
+will use one of the ration.  Same with F-Secure - using one of the ration, 
+that is.  With them, there is no roll back!
+
+Both Nuance and F-Secure, though, will listen to reason and set back the 
+activation count - which is the least they should do, I'd say, considering 
+that their policy otherwise takes no account of the possibility of a hard 
+drive tying itself in knots!
+
+Ken
+
+
+>>>windows_7/general01 1147 andrew(200)15mar10 10:19 c1146*
+I don't think you can go from
+
+> Some companies have a peculiar attitude to 
+> activation.
+
+to
+
+> Adobe seem OK. 
+
+in one step! Adobe are not ok and won't allow me to run software I have 
+purchased.
+
+
+>>>windows_7/general01 1148 mtaylor(96)15mar10 10:43 c1147*m
+Indeed, Adobe licensing and upgrades are a nightmare and their attitude 
+very poor.
+
+/MartinT/
+
+
+>>>windows_7/general01 1149 gswarbrick(5)15mar10 10:57 c1148
+WHS
+
+
+>>>windows_7/general01 1150 kdavisa(736)15mar10 11:01 c1147
+You're right.
+
+Overall, I gave up on Adobe ages ago.  'OK' is *only* in respect to the 
+activation, *compared* to Nuance and F-Secure, in that roll back is there 
+for the asking - indeed, if you uninstall the CS suite, there is a prompt 
+asking if you want the activation rolled back.
+
+What they are *not* OK about, the same as the others, is a disk crash and 
+they are less amenable on the phone.
+
+They were also not OK, I've just remembered, with their trial of CS3.  
+They sold it for about a tenner, ISTR, redeemable on purchase of full 
+product.  Fair enough, except that the 30 days it was supposed to run for 
+showed as 30 days on day1 and as 'expired' on day 2! Phoning to complain 
+get the response, 'Sorry, it happens'!
+
+Ken
+
+
+No unread messages

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Conference" representedClassName="Conference">
+        <attribute name="flags" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="ordering" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="moderators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="moderates" inverseEntity="Person" syncable="YES"/>
+        <relationship name="topics" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Topic" inverseName="conference" inverseEntity="Topic" indexed="YES">
+            <userInfo/>
+        </relationship>
+        <userInfo/>
+    </entity>
+    <entity name="Message" representedClassName="CIXMessage">
+        <attribute name="author" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="commentTo" optional="YES" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="date" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="flags" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="indent" optional="YES" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="isRead" optional="YES" attributeType="Boolean">
+            <userInfo/>
+        </attribute>
+        <attribute name="msgnum" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="text" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <relationship name="topic" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" indexed="YES">
+            <userInfo/>
+        </relationship>
+        <compoundIndexes>
+            <compoundIndex>
+                <index value="topic"/>
+                <index value="msgnum"/>
+            </compoundIndex>
+            <compoundIndex>
+                <index value="topic"/>
+                <index value="isRead"/>
+                <index value="flags"/>
+            </compoundIndex>
+        </compoundIndexes>
+        <userInfo/>
+    </entity>
+    <entity name="Person" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mugshot" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="moderates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Conference" inverseName="moderators" inverseEntity="Conference" syncable="YES"/>
+    </entity>
+    <entity name="Topic" representedClassName="Topic">
+        <attribute name="flags" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="messageCount" transient="YES" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="messagesUnreadCount" transient="YES" attributeType="Integer 32" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="topicDescr" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <relationship name="conference" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Conference" inverseName="topics" inverseEntity="Conference" indexed="YES">
+            <userInfo/>
+        </relationship>
+        <userInfo/>
+    </entity>
+    <fetchRequest name="FetchRequest" entity="Message" predicateString="name == &quot;$NAME&quot; AND msgnum == 0"/>
+    <elements>
+        <element name="Conference" positionX="-434" positionY="-171" width="128" height="120"/>
+        <element name="Message" positionX="-81" positionY="9" width="128" height="180"/>
+        <element name="Person" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Topic" positionX="-261" positionY="-90" width="110" height="135"/>
+    </elements>
+</model>

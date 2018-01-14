@@ -1,0 +1,209 @@
+/* first bit from http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent; }
+ol { list-style:none; }
+blockquote,q { quotes:none; }
+blockquote:before,blockquote:after,q:before,q:after { content:'';content:none; }
+ins { text-decoration:none; }
+del { text-decoration:line-through; }
+table { border-collapse:collapse;border-spacing:0; }
+
+body {
+    background: #FFFFFF;
+    color: rgb(0, 84, 147);
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+ul {
+    margin-left: 1em;
+    padding-bottom: 0.4em;
+}
+h2 {
+    color: rgb(0, 84, 147);
+    font-family: 'HelveticaNeue-Bold', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding-bottom: 0.4em;
+}
+.inner {
+    margin: 0 auto;
+    width: 800px;
+}
+img {
+    max-width: 100%;
+}
+.logo {
+    float: left;
+    padding: 10px;
+    padding-left: 0;
+}
+.screenshot {
+    float: right;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
+    display: block;
+    margin: 0 auto 1em 1em;
+}
+.main {
+    float: left;
+    width: 95%;
+    line-height: 1.6;
+}
+.main p {
+    padding-bottom: 12px;
+}
+.main ol li ul {
+    line-height: 1.6; padding-left: 24px; text-indent: -20px;
+}
+.intro {
+    float: left;
+    padding: 10px;
+    width: 220px;
+}
+.intro div {
+    line-height: 1.4;
+}
+.screenshots h2 {
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0.75em 0 1em;
+}
+.screenshots ol {
+    float: left;
+    width: 100%;
+}
+.figure {
+    float: left;
+    font-size: 10px;
+    line-height: 1.1;
+    margin: 0 3% 1.5em 0;			/* 21px / 633px */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.figure b {
+    display: block;
+    font-size: 14px;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue', 'Arial', sans-serif;
+    letter-spacing: 0.1em;
+}
+.rrect img {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
+    display: block;
+    margin: 0 auto 1em;
+}
+.Header {
+    /* Specify the gradient umpteen ways for different browsers */
+    background: #f6e6b4; /* Old browsers */
+    background: -moz-linear-gradient(top, #f6e6b4 0%, #ed9017 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6e6b4), color-stop(100%,#ed9017)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f6e6b4 0%,#ed9017 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f6e6b4 0%,#ed9017 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f6e6b4 0%,#ed9017 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f6e6b4 0%,#ed9017 100%); /* W3C */
+    color: rgb(255, 255, 255);
+    font-family: 'HelveticaNeue-Bold', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 auto;
+    width: 800px;
+    padding: 50px 0 20px 40px;
+}
+.paragraph_style_intro {
+    background: rgb(219, 229, 226);
+    color: rgb(18, 132, 186);
+    font-family: 'Helvetica-Oblique', 'Helvetica', 'Arial', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 19px;
+    opacity: 1.00;
+    padding: 10px;
+}
+
+@media (max-width: 888px) {
+    .Header {
+        width: 90%;
+    }
+    .inner {
+        width: 90%;
+    }
+    .figure {
+        width: 33%;
+    }
+    .screenshot {
+        width: 36%;
+    }
+}
+
+@media (max-width: 730px) {
+    .Header {
+        width: 100%;
+        padding: 30px 0 20px 30px;
+    }
+    .inner {
+        position: relative;
+        margin: 0 auto;
+        width: 95%;
+    }
+    .main {
+        float: left;
+        /*width: 50%;*/
+    }
+    .intro {
+        width: 67%;
+        float: right;
+        padding-right: 0;
+    }
+    .screenshot {
+        width: 240px;
+        float: right;
+        padding: 4px;
+    }
+    .figure {
+        width: 240px;
+    }
+    
+}
+@media (max-width: 560px) {
+    .Header {
+        width: 100%;
+        font-size: 26px;
+        padding: 25px 0 10px 20px;
+    }
+    .inner {
+        position: relative;
+        margin: 0 auto;
+        width: 95%;
+    }
+    .logo {
+        width: 30%;
+        padding-right: 0;
+    }
+    .intro {
+        width: 67%;
+        float: right;
+        padding-right: 0;
+    }
+    .screenshot {
+        width: 240px;
+        float: none;
+        padding: 4px;
+        margin: 0 auto 1em;
+    }
+    .main {
+        float: none;
+        width: auto;
+    }
+}
