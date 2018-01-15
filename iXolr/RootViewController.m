@@ -687,25 +687,6 @@ enum SectionEnum {
         return (self.conferences)[indexPath.row];
 }
 
-- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return;  // FIXME
-    if (indexPath.section == ConferencesSection || aTableView != self.tableView)
-    {
-        [self createTopicViewController:[self conferenceAtIndexPath:indexPath inView:aTableView]];
-        [[self navigationController] pushViewController:topicViewController animated:YES];
-        return;
-    }
-    else if (indexPath.section == OutboxSection)
-        otherSubViewController = [[OutboxViewController alloc] initWithStyle:UITableViewStylePlain];
-    else if (indexPath.section == MyMessagesSection)
-        otherSubViewController = [[MyMessagesVC alloc] initWithStyle:UITableViewStylePlain];
-    else if (indexPath.section == StarredSection)
-        otherSubViewController = [[FavouritesVC alloc] initWithStyle:UITableViewStylePlain];
-    otherSubViewController.toolbarItems = self.toolbarItems;   // Keep the toolbar visible
-    [[self navigationController] pushViewController:otherSubViewController animated:YES];
-}
-
 - (void)configureCell:(UITableViewCell *)cell inView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
 {
     UIColor *textColor = [UIColor blackColor];
