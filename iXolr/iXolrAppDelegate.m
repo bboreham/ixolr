@@ -960,7 +960,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     [self popupActivityIndicatorWithTitle:@"Syncing Unread..."];
     if (syncUnread) {
         CixRequestOperation *op = [CixRequestOperation alloc];
-        [op initWithRequest:@"user/cosypointers" params:@"maxresults=8000" consumer:consumer auth:_authStr successBlock:^(NSData* data){
+        op = [op initWithRequest:@"user/cosypointers" params:@"maxresults=8000" consumer:consumer auth:_authStr successBlock:^(NSData* data){
             [self popupActivityIndicatorProgress:0.5f];
             [self.dataController updateUnreadFromJSONData:data underOperation:op];
         }];

@@ -65,6 +65,7 @@ typedef void (^StartedBlock)(CixRequestOperation*);
 + (id)operationWithRequest: (NSString*)requestStr params:(NSString*)params consumer:(OAConsumer*)consumer auth:(NSString*)authStr successBlock:(RequestContinuation)successBlock;
 - (id)initWithRequest: (NSString*)requestUrl consumer:(OAConsumer*)consumer auth:(NSString*)authStr successBlock:(RequestContinuation)successBlock;
 - (id)initWithRequest: (NSString*)requestUrl params:(NSString*)params consumer:(OAConsumer*)consumer auth:(NSString*)authStr successBlock:(RequestContinuation)successBlock;
+- (void) iXolrCancel;
 
 @property (nonatomic, copy) NSData* body;
 @property (nonatomic, copy) NSString* requestStr;
