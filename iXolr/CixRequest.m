@@ -92,7 +92,7 @@
  */
 - (void)makeRequest: (NSString*)urlString params:(NSString*)params httpMethod: (NSString*)httpMethod body: (NSData*)body consumer:(OAConsumer*)consumer auth:(NSString*)authorizationStr timeout: (NSTimeInterval)timeoutSecs {
 	if (authorizationStr == nil) {
-        [self connection:nil didFailWithError:[NSError errorWithDomain:@"This app has not been allowed access to Cix yet." code:401 userInfo:nil]];
+        [self unConnectedDidFailWithError:[NSError errorWithDomain:@"This app has not been allowed access to Cix yet." code:401 userInfo:nil]];
 		return;
 	}
     
@@ -211,12 +211,16 @@ char *urlRoot = "https://api.cixonline.com/v2.0/cix.svc";
 }
 
 - (void)connection:(NSURLConnection*)theConnection didFailWithError:(NSError*)error {
-    NSLog(@"%@", [error localizedDescription]);
     connection = nil;
+    [self unConnectedDidFailWithError:error];
+}
+
+- (void)unConnectedDidFailWithError:(NSError*)error {
+    NSLog(@"%@", [error localizedDescription]);
     data = nil;
-	if (self.delegate && [self.delegate respondsToSelector:@selector(cixRequest:failedWithError:)]) {
-		[self.delegate performSelector:@selector(cixRequest:failedWithError:) withObject:self withObject:error];
-	}
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cixRequest:failedWithError:)]) {
+        [self.delegate performSelector:@selector(cixRequest:failedWithError:) withObject:self withObject:error];
+    }
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [[UIApplication sharedApplication] endBackgroundTask:taskIdentifier];
 }
