@@ -26,7 +26,7 @@
 	self = [super init];
 	if (self) {
         dataController = dc;
-        CIXcalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        CIXcalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         [CIXcalendar setTimeZone:[NSTimeZone timeZoneWithName:@"Europe/London"]];
     }
     return self;

@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Signature";
-    UIBarButtonItem * clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleBordered target:self action:@selector(clearButtonPressed:)];
+    UIBarButtonItem * clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStylePlain target:self action:@selector(clearButtonPressed:)];
     self.navigationItem.rightBarButtonItem = clearButton;
     self.textView.text = [iXolrAppDelegate settings].signature;
 }
