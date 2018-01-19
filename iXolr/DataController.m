@@ -470,12 +470,10 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
 // New messages from myself are added at the beginning so they remain in order
 - (void)addMyMessagesObject:(CIXMessage*)message
 {
-    [_myMessages insertObject:message atIndex:0];
-}
-
-- (void)removeMyMessagesObject:(CIXMessage*)message
-{
-    [_myMessages removeObject:message];
+    NSInteger index=[_myMessages indexOfObject:message];
+    if (NSNotFound == index) {
+        [_myMessages insertObject:message atIndex:0];
+    }
 }
 
 // Pop up an alert for the user
