@@ -66,6 +66,11 @@ enum SectionEnum {
     
 	_filteredConferences = [NSMutableArray arrayWithCapacity:100];
     
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNewMessages:) name:@"newMessages" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChangedConference:) name:@"changedConference" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChangedMessagesInTopic:) name:@"changedMessagesInTopic" object:nil];
@@ -393,10 +398,10 @@ enum SectionEnum {
     [super viewWillAppear:animated];
     // Set property so top-level can control us.  Should really be a push/pop operation.
     [iXolrAppDelegate singleton].conferenceListViewController = self;
-    self.searchDisplayController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     if (self.tableView.contentOffset.y == 0)
         // Move the search bar up out of sight off the top of the window
-        [self.tableView setContentOffset: CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height) animated:NO];
+        [self.tableView setContentOffset: CGPointMake(0, self.searchController.searchBar.frame.size.height) animated:NO];
     [self updateToolbar];
 }
 
@@ -406,7 +411,7 @@ enum SectionEnum {
     otherSubViewController = nil;
     if (self.tableView.contentOffset.y == 0)
         // Move the search bar up out of sight off the top of the window
-        [self.tableView setContentOffset: CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height) animated:NO];
+        [self.tableView setContentOffset: CGPointMake(0, self.searchController.searchBar.frame.size.height) animated:NO];
     [super viewDidAppear:animated];
 }
 
@@ -570,7 +575,7 @@ enum SectionEnum {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	if (tableView != self.tableView) // search results
+	if (self.searchController.active)
         return 1;
     return SectionCount; 
 }
@@ -578,7 +583,7 @@ enum SectionEnum {
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (tableView != self.tableView)
+	if (self.searchController.active)
         return [_filteredConferences count];
     if (section == ConferencesSection)
         return [self.conferences count];
@@ -599,7 +604,7 @@ enum SectionEnum {
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (tableView != self.tableView)
+    if (self.searchController.active)
         return nil;
     if (section == ConferencesSection) {
         if (_reloadConfPending)
@@ -620,7 +625,7 @@ enum SectionEnum {
 {
     static NSString *CellIdentifiers[] = {@"StarredCell", @"OutboxCell", @"MyMessagesCell", @"ConfCell"};
     UITableViewCell *cell;
-    if (tableView != self.tableView)  // search in progress
+    if (self.searchController.active)
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifiers[ConferencesSection]];
     else
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifiers[indexPath.section] forIndexPath:indexPath];
@@ -681,7 +686,7 @@ enum SectionEnum {
 
 - (Conference*)conferenceAtIndexPath: (NSIndexPath *)indexPath inView:(UITableView *)tableView
 {
-	if (tableView != self.tableView)
+    if (self.searchController.active)
         return _filteredConferences[indexPath.row];
     else
         return (self.conferences)[indexPath.row];
@@ -690,7 +695,7 @@ enum SectionEnum {
 - (void)configureCell:(UITableViewCell *)cell inView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
 {
     UIColor *textColor = [UIColor blackColor];
-    if (indexPath.section == ConferencesSection || tableView != self.tableView) {   // Ordinary conference cell or search in progress
+    if (indexPath.section == ConferencesSection || self.searchController.active) {   // Ordinary conference cell or search in progress
         Conference *conf = [self conferenceAtIndexPath:indexPath inView:tableView];
         cell.textLabel.text = conf.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld/%ld", (long)conf.messagesUnreadCount, (long)conf.messageCount];
@@ -761,22 +766,18 @@ enum SectionEnum {
 	
 	for (Conference *conf in self.conferences)
 	{
-        NSRange range = [conf.name rangeOfString:searchText];
-        if (range.location != NSNotFound)
+        if ([searchText isEqualToString:@""] || [conf.name rangeOfString:searchText].location != NSNotFound)
             [_filteredConferences addObject:conf];
 	}
 }
 
 
-#pragma mark - UISearchDisplayController Delegate Methods
+#pragma mark - Protocol UISearchResultsUpdating Methods
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
-    [self filterContentForSearchText:searchString scope:
-     [self.searchDisplayController.searchBar scopeButtonTitles][[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+    [self filterContentForSearchText:searchController.searchBar.text scope: @"unused"];
+    [self.tableView reloadData];
 }
 
 

@@ -12,11 +12,12 @@
 @class Conference;
 @class Topic;
 
-@interface RootViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, SettingsViewControllerDelegate>
+@interface RootViewController : UITableViewController <UISearchResultsUpdating, SettingsViewControllerDelegate>
 
 @property (strong, nonatomic) NSArray *conferences;
 @property (nonatomic, strong) IBOutlet UIProgressView *progressView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *fastForwardBtn;
+@property (nonatomic, strong) IBOutlet UISearchController *searchController;
 
 - (void)gotoConference:(Conference*)conf;
 - (void)gotoTopic:(Topic*)topic msgnum:(NSInteger)msgnum;
