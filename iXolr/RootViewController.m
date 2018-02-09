@@ -39,10 +39,12 @@ enum SectionEnum {
     SectionCount
 };
 
+// Set the toolbar into its static state, not displaying any activity in progress
 - (void)updateToolbar
 {
     [self.toolbarItems updateToolbar];
     [self.toolbarItems setImageOnSquishButton: self.navigationItem.rightBarButtonItem];
+    self.progressView.hidden = YES;
 }
 
 - (void)viewDidLoad
@@ -215,7 +217,6 @@ enum SectionEnum {
 - (void)refreshFinished:(NSNotification*)param
 {
     [self.toolbarItems stopSpinner];
-    self.progressView.hidden = YES;
     if ([param object] != nil)
         [self.toolbarItems statusLabel].text = @"Refresh failed";
     // handleNewMessages will have changed the message so, after a short delay, update the toolbar to its usual look
