@@ -473,11 +473,6 @@ void fixGestureRecognizers(UIView *v) {
     }
     else {
         self.toolbar.delegate = self;
-        // Add custom view BarButtonItem containing search bar to navigation bar
-        NSMutableArray *items = [self.navigationItem.rightBarButtonItems mutableCopy];
-        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchBar.superview];
-        [items addObject:barButtonItem];
-        [self.navigationItem setRightBarButtonItems: items animated:NO];
     }
     
     self.textWebView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
