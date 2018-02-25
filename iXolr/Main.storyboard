@@ -514,6 +514,7 @@
                         <outlet property="lowerView" destination="zkc-1w-IkM" id="023-vp-eGC"/>
                         <outlet property="messageTableView" destination="XyZ-jf-gbE" id="zar-DE-Rz6"/>
                         <outlet property="messageTableViewHeight" destination="E8K-6g-Fme" id="M2m-d0-fj4"/>
+                        <outlet property="searchBar" destination="7Ge-rp-W18" id="N1b-Qd-AsO"/>
                         <outlet property="searchBarWidth" destination="Y7x-6c-s5q" id="fqB-61-43C"/>
                         <outlet property="starButton" destination="srV-Ks-Qmf" id="y4l-5k-Aox"/>
                         <outlet property="textWebView" destination="blq-rY-Ja0" id="MJv-Sh-dKi"/>

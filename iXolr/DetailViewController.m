@@ -469,6 +469,7 @@ void fixGestureRecognizers(UIView *v) {
             recognizer.delegate = self;
             [self.textWebView addGestureRecognizer:recognizer];
         }
+        // Remove the search bar in the title bar
         [self removeSearchBar];
     }
     else {
