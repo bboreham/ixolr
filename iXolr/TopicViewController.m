@@ -50,6 +50,11 @@
             title = [[self.conference.name substringToIndex:title.length - 2] stringByAppendingString: @"…"];
     }
     [self.navigationItem setTitle: title];
+    // Create a back button every time because iOS 11 stopped updating it when this title changes.
+    // See https://stackoverflow.com/q/46691009/448734
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain
+                                target:nil action:nil];
+    self.navigationItem.backBarButtonItem = btnBack;
 }
 
 - (void) configureForConference
