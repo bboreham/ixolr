@@ -173,6 +173,10 @@ enum {
             NSString *str = @"Set back the download timestamp, so future downloads will start from that point";
             [app opTitle:str buttonTitle:@"Set download timestamp" start:app.downloadSince mode:UIDatePickerModeDateAndTime ifConfirmedFrom:self Rect:[aTableView rectForRowAtIndexPath:indexPath] goBlock:^(NSDate *date) {
                 app.downloadSince = date;
+                NSLog(@"Set downloadSince to %@", date);
+                [aTableView beginUpdates];
+                [aTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [aTableView endUpdates];
             }];
             break;
         }
