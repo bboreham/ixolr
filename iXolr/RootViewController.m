@@ -110,6 +110,11 @@ enum SectionEnum {
     NSInteger totalUnread = [iXolrAppDelegate singleton].dataController.countOfUnread;
     NSInteger totalInteresting = [iXolrAppDelegate singleton].dataController.countOfInteresting;
     self.title = [NSString stringWithFormat:@"CIX (%ld)", (long)totalUnread];
+    // Create a back button every time because iOS 11 stopped updating it when this title changes.
+    // See https://stackoverflow.com/q/46691009/448734
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:self.title style:UIBarButtonItemStylePlain
+                                                               target:nil action:nil];
+    self.navigationItem.backBarButtonItem = btnBack;
     if ([iXolrAppDelegate singleton].badgeAllowed)
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalInteresting];
 }
