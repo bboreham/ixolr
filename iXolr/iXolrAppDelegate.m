@@ -584,7 +584,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         NSLog(@"Re-stored oauth key to set accessibility");
         haveFixedKeychainAccessibility = YES;
     }
-    if (error) {
+    if (error && error.code != errSecInteractionNotAllowed) {
         NSLog(@"Error when accessing keychain: %@", error);
         if (error.code != errSecItemNotFound)
             [self addBugReportMessage:error.description];
