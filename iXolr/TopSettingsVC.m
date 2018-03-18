@@ -395,8 +395,8 @@ enum {
     UploadReadStatusSection,
     UploadStarsSection,
     OutboxAlertSection,
-    ShowMessageToolbarSection,
     TimeoutSection,
+    ShowMessageToolbarSection,
     OptionsSectionCount
 };
 
