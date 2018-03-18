@@ -182,10 +182,6 @@
     } else {
         label.text = [lastRefreshed asStringWith:@"Last refreshed: %@"];
     }
-    if (![iXolrAppDelegate iPad]) {
-        label.textColor = [UIColor darkTextColor];
-        label.shadowColor = nil;
-    }
 }
 
 - (void) startSpinner
