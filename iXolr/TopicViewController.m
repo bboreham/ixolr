@@ -286,7 +286,7 @@
 // A specific topic has been selected: pass this on to the message viewer
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.splitViewController == nil || ([iXolrAppDelegate iOS8] && self.splitViewController.collapsed))
+    if(self.splitViewController == nil || self.splitViewController.collapsed)
         [self performSegueWithIdentifier: @"showDetail" sender: self];
     else
         [[iXolrAppDelegate singleton] gotoTopic:topicsArray[indexPath.row] msgnum:0];

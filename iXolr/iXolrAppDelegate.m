@@ -72,11 +72,6 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
 }
 
-+ (BOOL) iOS8
-{
-    return NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1;
-}
-
 #pragma mark - Lifecycle Management
 
 - (void)restoreState 
@@ -356,7 +351,7 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMessageReadCountChanged:) name:@"messageReadCountChanged" object:nil];
 
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    if ([iXolrAppDelegate iOS8]) {
+    {
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
         [application registerUserNotificationSettings:notificationSettings];
     }
@@ -452,11 +447,8 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 
 - (BOOL)badgeAllowed
 {
-    if ([iXolrAppDelegate iOS8]) {
-        UIUserNotificationSettings* notificationSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
-        return notificationSettings.types & UIUserNotificationTypeBadge;
-    } else
-        return YES;
+    UIUserNotificationSettings* notificationSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    return notificationSettings.types & UIUserNotificationTypeBadge;
 }
 
 - (NSInteger) timeoutSecs
@@ -608,7 +600,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         CIXMessage *message = [self messageForCIXurl: url];
         if (message != nil)
             [self gotoTopic:message.topic msgnum:message.msgnum switchSubview:YES];
-    } else if ([url isEqualToString:@"outbox"] && [iXolrAppDelegate iOS8]) {
+    } else if ([url isEqualToString:@"outbox"]) {
         [self.conferenceListViewController switchSubViewToOutbox];
     }
 }
@@ -671,14 +663,10 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         UIDatePickerPopover *popover = [[UIDatePickerPopover alloc] initWithDate:startDate mode:mode
              goBlock:goBlock goButtonTitle: btnTitle];
         [popover presentPopoverFromRect:rect inView:viewController.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-    } else if ([iXolrAppDelegate iOS8]) {
+    } else {
         UIAlertController *alert = [UIAlertController alertControllerWithDate:startDate title:str mode:mode
               goBlock:goBlock cancelButtonTitle:@"Cancel" destructiveButtonTitle:btnTitle];
         [viewController presentViewController:alert animated:YES completion:nil];
-    } else {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithDate:startDate title:str mode:mode
-             goBlock:goBlock cancelButtonTitle:@"Cancel" destructiveButtonTitle:btnTitle otherButtonTitles:nil];
-        [actionSheet showFromToolbar:viewController.navigationController.toolbar];
     }
 }
 

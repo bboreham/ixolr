@@ -51,18 +51,12 @@
             } goButtonTitle:@"Mark read messages older than this" ];
         CGRect frame = [self.tableView rectForSection:MarkReadSection];
         [popover presentPopoverFromRect:frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-    } else if ([iXolrAppDelegate iOS8]) {
+    } else {
         UIAlertController *alert = [UIAlertController alertControllerWithDate:startDate title:str mode:UIDatePickerModeDateAndTime
               goBlock:^(NSDate *date) {
                   [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: date];
               } cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Mark Read Older"];
         [self presentViewController:alert animated:YES completion:nil];
-    } else {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithDate:startDate title:str mode:UIDatePickerModeDateAndTime
-              goBlock:^(NSDate *date) {
-                  [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: date];
-              } cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Mark Read Older" otherButtonTitles:nil];
-        [actionSheet showFromToolbar:self.navigationController.toolbar];
     }
 }
 

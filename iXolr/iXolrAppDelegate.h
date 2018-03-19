@@ -24,7 +24,6 @@
 + (iXolrAppDelegate*) singleton;
 + (iXolrSettings*) settings;    // Singleton's settings, to reduce typing
 + (BOOL) iPad;  // Are we running on an iPad?
-+ (BOOL) iOS8;  // Are we running on iOS 8 or above?
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 
