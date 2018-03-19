@@ -58,7 +58,6 @@
 @interface UIActionSheet (BlockExtensions) <UIActionSheetDelegate>
 
 - (id)initWithTitle:(NSString *)title completionBlock:(void (^)(NSInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
-- (id)initWithDate:(NSDate*)date title:(NSString *)title mode:(UIDatePickerMode)mode goBlock:(void (^)(NSDate* date))goBlock cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles;
 - (void)setCompletionBlock:(void (^)(NSInteger buttonIndex))block;
 @end
 

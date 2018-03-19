@@ -331,20 +331,6 @@
     objc_setAssociatedObject(self, "blockCallback", [block copy], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)initWithDate:(NSDate*)date title:(NSString *)title mode:(UIDatePickerMode)mode goBlock:(void (^)(NSDate* date))goBlock cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles {
-    const char *spacer = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? "\n\n\n\n\n\n\n\n\n" : "\n\n\n\n\n\n\n\n\n\n\n\n" ;
-    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
-    datePicker.datePickerMode = mode;
-    datePicker.date = date;
-    self = [self initWithTitle:[NSString stringWithFormat:@"%s%@", spacer, title] completionBlock:^(NSInteger buttonIndex) {
-        if (buttonIndex == self.destructiveButtonIndex)
-            goBlock(datePicker.date);
-    }
-             cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles:otherButtonTitles, nil];
-    [self addSubview:datePicker];
-    return self;
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     void (^block)(NSUInteger buttonIndex) = objc_getAssociatedObject(self, "blockCallback");
     if (block == nil)
