@@ -37,6 +37,7 @@
     DDFileLogger            *_fileLogger;
     BOOL useBetaAPI, haveFixedKeychainAccessibility, backgroundFetchActive;
     MBProgressHUD *_popup_hud;  // Used to pop up a 'please wait' alert
+    UIDatePickerPopover     *_popover; // hold popover reference until after callback
 }
 
 @synthesize window=_window;
@@ -660,9 +661,9 @@ NSString* const oauthServiceName = @"Callback_OAuth";
 - (void)opTitle:(NSString*)str buttonTitle:(NSString*)btnTitle start: (NSDate*)startDate mode:(UIDatePickerMode)mode ifConfirmedFrom:(UIViewController*) viewController Rect:(CGRect)rect goBlock:(void (^)(NSDate* date))goBlock
 {
     if ([iXolrAppDelegate iPad]) {
-        UIDatePickerPopover *popover = [[UIDatePickerPopover alloc] initWithDate:startDate mode:mode
+        _popover = [[UIDatePickerPopover alloc] initWithDate:startDate mode:mode
              goBlock:goBlock goButtonTitle: btnTitle];
-        [popover presentPopoverFromRect:rect inView:viewController.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+        [_popover presentPopoverFromRect:rect inView:viewController.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithDate:startDate title:str mode:mode
               goBlock:goBlock cancelButtonTitle:@"Cancel" destructiveButtonTitle:btnTitle];
