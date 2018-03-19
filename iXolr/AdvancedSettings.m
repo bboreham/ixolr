@@ -41,23 +41,13 @@
 }
 
 - (void)markReadOlder:(NSInteger) days {
+    iXolrAppDelegate *app = [iXolrAppDelegate singleton];
     NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-(60*60*24)*days];
     NSString *str = @"Mark as read all messages older than this?";
-
-    if ([iXolrAppDelegate iPad]) {
-        UIDatePickerPopover *popover = [[UIDatePickerPopover alloc] initWithDate:startDate mode:UIDatePickerModeDateAndTime
-                goBlock:^(NSDate *date) {
-                    [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: date];
-            } goButtonTitle:@"Mark read messages older than this" ];
-        CGRect frame = [self.tableView rectForSection:MarkReadSection];
-        [popover presentPopoverFromRect:frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-    } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithDate:startDate title:str mode:UIDatePickerModeDateAndTime
-              goBlock:^(NSDate *date) {
-                  [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: date];
-              } cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Mark Read Older"];
-        [self presentViewController:alert animated:YES completion:nil];
-    }
+    [app opTitle:str buttonTitle:@"Mark Read Older" start:startDate mode:UIDatePickerModeDateAndTime
+     ifConfirmedFrom:self Rect:[self.tableView rectForSection:MarkReadSection] goBlock:^(NSDate *date) {
+        [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: date];
+    }];
 }
 
 #pragma mark - Table view data source
