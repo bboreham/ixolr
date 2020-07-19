@@ -445,3 +445,51 @@
 }
 
 @end
+
+#pragma mark Color helper functions
+
+UIColor* basicTextColor() {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor labelColor];
+    } else {
+        return [UIColor blackColor];
+    }
+}
+
+UIColor* grayTextColor() {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor tertiaryLabelColor];
+    } else {
+        return [UIColor grayColor];
+    }
+}
+
+UIColor* authorColor() {
+    if (@available(iOS 11.0, *)) {
+        return [UIColor colorNamed:@"messageAuthorColor"];
+    } else {
+        return [UIColor colorWithRed:0.22 green:0.33 blue:0.53 alpha:1];
+    }
+}
+
+UIColor* priorityColor() {
+    if (@available(iOS 11.0, *)) {
+        return [UIColor colorNamed:@"priorityMessageHeaderColor"];
+    } else {
+        return [UIColor purpleColor];
+    }
+}
+
+NSMutableArray *threadHeaderGradientColors() {
+    NSMutableArray *colors = [[NSMutableArray alloc] initWithCapacity:3];
+    if (@available(iOS 11.0, *)) {
+        [colors addObject:(id)[[UIColor colorNamed:@"threadHeaderColor1"] CGColor]];
+        [colors addObject:(id)[[UIColor colorNamed:@"threadHeaderColor2"] CGColor]];
+        [colors addObject:(id)[[UIColor colorNamed:@"threadHeaderColor3"] CGColor]];
+    } else {
+        [colors addObject:(id)[[UIColor colorWithRed:0.91 green:0.91 blue:1.00 alpha:1.0] CGColor]];
+        [colors addObject:(id)[[UIColor colorWithRed:0.95 green:0.95 blue:0.99 alpha:1.0] CGColor]];
+        [colors addObject:(id)[[UIColor colorWithRed:0.77 green:0.77 blue:0.92 alpha:1.0] CGColor]];
+    }
+    return colors;
+}

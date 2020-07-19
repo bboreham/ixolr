@@ -8,6 +8,7 @@
 
 #import "ThreadHeaderView.h"
 #import "iXolrAppDelegate.h"
+#import "TableViewUtilities.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ThreadHeaderView
@@ -81,10 +82,7 @@
         // Set the colors for the gradient layer.
         static NSMutableArray *colors = nil;
         if (colors == nil) {
-            colors = [[NSMutableArray alloc] initWithCapacity:3];
-            [colors addObject:(id)[[UIColor colorWithRed:0.91 green:0.91 blue:1.00 alpha:1.0] CGColor]];
-            [colors addObject:(id)[[UIColor colorWithRed:0.95 green:0.95 blue:0.99 alpha:1.0] CGColor]];
-            [colors addObject:(id)[[UIColor colorWithRed:0.77 green:0.77 blue:0.92 alpha:1.0] CGColor]];
+            colors = threadHeaderGradientColors();
         }
         [(CAGradientLayer *)self.layer setColors:colors];
         [(CAGradientLayer *)self.layer setLocations:@[@0.0f, @0.95f, @1.0f]];

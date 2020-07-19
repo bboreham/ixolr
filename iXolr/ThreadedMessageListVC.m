@@ -703,10 +703,10 @@
     cell.indentationLevel = indent;
     cell.detailTextLabel.text = message.isOutboxMessage ? @"[Outbox]" : message.author;
     
-    UIColor *textColor = [UIColor blackColor];
-    UIColor *detailColor = [UIColor colorWithRed:0.22 green:0.33 blue:0.53 alpha:1];
+    UIColor *textColor = basicTextColor();
+    UIColor *detailColor = authorColor();
     if (message.isInteresting || message.isOutboxMessage)
-        textColor = [UIColor purpleColor];
+        textColor = priorityColor();
     if (message.isIgnored) {
         textColor = [textColor colorWithAlphaComponent:0.3];
         detailColor = textColor;

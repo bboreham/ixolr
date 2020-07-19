@@ -10,6 +10,7 @@
 #import "Message.h"
 #import "Topic.h"
 #import "Conference.h"
+#import "TableViewUtilities.h"
 
 @implementation FavouritesVC
 
@@ -56,7 +57,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     UILabel *label = [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width-102, 3, 96, 16)];
     label.font = [UIFont systemFontOfSize:14];
-    label.textColor = [UIColor darkGrayColor];
+    label.textColor = grayTextColor();
     label.textAlignment = NSTextAlignmentRight;
     label.tag = DATE_LABEL_TAG;
     [cell.contentView insertSubview:label atIndex:0];

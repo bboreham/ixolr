@@ -73,3 +73,9 @@
 - (id)initWithDate:(NSDate*)date mode:(UIDatePickerMode)mode goBlock:(void (^)(NSDate* date))goBlock goButtonTitle:(NSString *)goButtonTitle;
 
 @end
+
+UIColor* basicTextColor(void);
+UIColor* grayTextColor();
+UIColor* authorColor(void);
+UIColor* priorityColor(void);
+NSMutableArray *threadHeaderGradientColors();

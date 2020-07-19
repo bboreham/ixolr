@@ -700,7 +700,7 @@ enum SectionEnum {
 
 - (void)configureCell:(UITableViewCell *)cell inView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
 {
-    UIColor *textColor = [UIColor blackColor];
+    UIColor *textColor = basicTextColor();
     if (indexPath.section == ConferencesSection || self.searchController.active) {   // Ordinary conference cell or search in progress
         Conference *conf = [self conferenceAtIndexPath:indexPath inView:tableView];
         cell.textLabel.text = conf.name;
@@ -709,7 +709,7 @@ enum SectionEnum {
 
         // Colour grey if resigned
         if (conf.isResigned)
-            textColor = [textColor colorWithAlphaComponent:0.5];
+            textColor = grayTextColor();
         cell.imageView.image = nil;
     }
     else if (indexPath.section == OutboxSection) {

@@ -277,9 +277,9 @@
     else
         cell.textLabel.text = topic.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld/%ld", (long)topic.messagesUnreadCount, (long)topic.messageCount];
-    UIColor *textColor = [UIColor blackColor];
+    UIColor *textColor = basicTextColor();
     if (topic.isMute || topic.isResigned)
-        textColor = [textColor colorWithAlphaComponent:0.5];
+        textColor = grayTextColor();
     cell.textLabel.textColor = textColor;
 }
 
