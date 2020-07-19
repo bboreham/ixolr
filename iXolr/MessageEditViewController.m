@@ -44,6 +44,9 @@
         navigationController.restorationClass = [MessageEditViewController class];
     }
     navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    if (@available(iOS 13.0, *)) {
+        navigationController.modalInPresentation = true;
+    }
     return navigationController;
 }
 
