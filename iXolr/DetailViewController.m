@@ -314,7 +314,7 @@ void fixGestureRecognizers(UIView *v) {
     if (message == nil)
     {
         self.headerLabel.text = @"";
-        [self.textWebView loadHTMLString:@"" baseURL:nil];
+        [self.textWebView loadHTMLString:PlaceholderMessage.HTMLforBlankMessage baseURL:nil];
     }
     else
     {

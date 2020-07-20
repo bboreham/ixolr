@@ -342,9 +342,15 @@ const int CIX_MAX_LINE_LENGTH=70;
     return [self summary];
 }
 
-- (NSString *)textAsHTMLwithSize: (float)size reflow: (BOOL)reflow forWidth: (float)width inlineImages: (BOOL)inlineImages
++ (NSString *)HTMLforBlankMessage
 {
     return @"<html><head><style type=\"text/css\"> :root {color-scheme: light dark;} </style></head><body> </body></html>";
+
+}
+
+- (NSString *)textAsHTMLwithSize: (float)size reflow: (BOOL)reflow forWidth: (float)width inlineImages: (BOOL)inlineImages
+{
+    return PlaceholderMessage.HTMLforBlankMessage;
 }
 
 - (NSString*)textQuoted

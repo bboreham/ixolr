@@ -79,6 +79,7 @@
     int _indentTransient;
 }
 + (id)placeholderWithTopic:(Topic*)topic msgnum:(NSInteger)msgnum;
++ (NSString *)HTMLforBlankMessage;
 @property (nonatomic) int32_t msgnum;
 @property (weak, nonatomic, readonly) NSString * author;
 @property (weak, nonatomic, readonly) NSDate * date;
