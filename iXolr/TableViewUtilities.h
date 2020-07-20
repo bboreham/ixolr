@@ -75,7 +75,7 @@
 @end
 
 UIColor* basicTextColor(void);
-UIColor* grayTextColor();
+UIColor* grayTextColor(void);
 UIColor* authorColor(void);
 UIColor* priorityColor(void);
-NSMutableArray *threadHeaderGradientColors();
+NSMutableArray *threadHeaderGradientColors(void);
