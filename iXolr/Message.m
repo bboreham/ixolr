@@ -199,9 +199,27 @@ typedef enum {
     UIFont *font = (size == 0) ? [UIFont preferredFontForTextStyle:UIFontTextStyleBody] : [UIFont fontWithName:@"helvetica" size:size];
     if (size == 0)
         size = font.pointSize;
-    NSString *headStr = [NSString stringWithFormat:@"<html> <head> \n"
-                         "<style type=\"text/css\"> body {font-family: \"%@\"; font-size: %f;} .inlineimage {max-width: %.0fpx;}  </style> \n"
-                     "</head> \n", font.familyName, size, width-10];
+    NSString *headStr =
+        [NSString stringWithFormat:@"<html> <head> \n"
+         "<style type=\"text/css\"> "
+         ":root {color-scheme: light dark; "
+         "  --text-color: black; "
+         "  --quote-color: blue; "
+         "  --link-color: blue; "
+         "} "
+         "@media screen and (prefers-color-scheme: dark) { "
+         "  :root { "
+         "  --text-color: #AAAAAA; "
+         "  --quote-color: #6666FF; "
+         "  --link-color: #4488FF; "
+         "  }"
+         "} "
+         "body {font-family: \"%@\"; font-size: %f; color: var(--text-color); } "
+         ".quote { color: var(--quote-color); } "
+         "a { color: var(--link-color); } "
+         ".inlineimage {max-width: %.0fpx;} "
+         "</style> \n"
+         "</head> \n", font.familyName, size, width-10];
 
     if (width < 20) // unreasonably small - work round it
         width = 240;
@@ -326,7 +344,7 @@ const int CIX_MAX_LINE_LENGTH=70;
 
 - (NSString *)textAsHTMLwithSize: (float)size reflow: (BOOL)reflow forWidth: (float)width inlineImages: (BOOL)inlineImages
 {
-    return @"<html><body> </body></html>";
+    return @"<html><head><style type=\"text/css\"> :root {color-scheme: light dark;} </style></head><body> </body></html>";
 }
 
 - (NSString*)textQuoted

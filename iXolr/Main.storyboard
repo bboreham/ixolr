@@ -332,7 +332,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="7Kc-Gd-aaP" firstAttribute="leading" secondItem="blq-rY-Ja0" secondAttribute="leading" id="2N3-vW-1P4"/>
                                             <constraint firstAttribute="bottom" secondItem="3hq-vE-IVi" secondAttribute="bottom" constant="20" id="90X-Vk-hlA">
@@ -428,7 +428,6 @@
                                         </variation>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="XyZ-jf-gbE" firstAttribute="leading" secondItem="zkc-1w-IkM" secondAttribute="leading" id="5aN-GI-NON"/>
                                     <constraint firstItem="zkc-1w-IkM" firstAttribute="trailing" secondItem="XyZ-jf-gbE" secondAttribute="trailing" id="Hg5-kC-yJ3"/>
@@ -444,7 +443,6 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="oLa-3O-J0m" secondAttribute="trailing" id="cdf-p4-b8y"/>
                             <constraint firstItem="oLa-3O-J0m" firstAttribute="leading" secondItem="Fh4-UT-s3E" secondAttribute="leading" id="fuc-er-fAd"/>

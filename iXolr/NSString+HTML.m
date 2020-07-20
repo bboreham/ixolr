@@ -116,7 +116,7 @@ static const NSUInteger LINE_BREAK_WIDTH = 50;
     for (NSUInteger i = 0; i < quote_count; ++i)
         [result insertString:htmlOutput ? @"&gt; " : @"> " atIndex:index];
     if (htmlOutput && quote_count > 0)
-        [result insertString:@"<font color='blue'>" atIndex:index];
+        [result insertString:@"<span class=quote>" atIndex:index];
     for (NSUInteger i = 0; i < quote_count; ++i)
         [result_clean insertString:@"> " atIndex:0];
 }
@@ -154,7 +154,7 @@ static const NSUInteger LINE_BREAK_WIDTH = 50;
 {
     if (htmlOutput) {
         if (prev_quote_count > 0)
-            [result appendString:@"</font>"];
+            [result appendString:@"</span>"];
         [result appendString:@"<br>\n"];
     } else {
         [result appendString:@"\n"];
@@ -194,7 +194,7 @@ static const NSUInteger LINE_BREAK_WIDTH = 50;
             [self insertQuoteHeaderAtIndex:end];
             [result insertString:htmlOutput ? @"<br>\n" : @"\n" atIndex:end];
             if (htmlOutput && quote_count > 0)
-                [result insertString:@"</font>" atIndex:end];
+                [result insertString:@"</span>" atIndex:end];
         }
     }
 }
