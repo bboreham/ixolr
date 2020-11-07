@@ -91,6 +91,11 @@
     return self;
 }
 
+- (void)tintColorDidChange
+{
+    [(CAGradientLayer *)self.layer setColors:threadHeaderGradientColors()];
+}
+
 - (void) setFonts
 {
     CGFloat size_scale = self.frame.size.height / 45;
