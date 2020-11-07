@@ -35,7 +35,7 @@
 @property (nonatomic, strong) IBOutlet UITableView *messageTableView;
 @property (nonatomic, strong) IBOutlet UILabel *toolbarTitle;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *searchBarWidth;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *messageTableViewHeight;
 @property (strong, nonatomic) IBOutlet UIView *lowerView;

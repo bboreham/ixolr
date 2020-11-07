@@ -805,9 +805,18 @@ void fixGestureRecognizers(UIView *v) {
         [[iXolrAppDelegate singleton].dataController deleteMessage:tmpMessage];
 }
 
-// Search button is only present on iPhone, thus this code only executes on iPhone
 - (IBAction)searchButtonPressed: (id)sender
 {
+    if ([iXolrAppDelegate iPad]) {
+        [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                self.searchButton.hidden = TRUE;
+                self.searchBar.hidden = FALSE;
+            } completion:^(BOOL finished) {}];
+        [self searchBarShouldBeginEditing:self.searchBar];
+        [self.searchBar becomeFirstResponder];
+        return;
+    }
+    // iPhone version
     // Find the topmost UINavigationController
     UINavigationController *nc = self.navigationController;
     while (nc.navigationController != nil)
@@ -976,7 +985,6 @@ void fixGestureRecognizers(UIView *v) {
 
 #pragma mark - Search Bar
 
-// Widen the search bar when it starts editing
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     // currently displaying actionsheet?
@@ -986,8 +994,6 @@ void fixGestureRecognizers(UIView *v) {
     if ([iXolrAppDelegate iPad]) {
         searchBar.placeholder = @"Search text";
         [searchBar.superview layoutIfNeeded];
-        self.searchBarWidth.constant += 100;
-        [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{[searchBar.superview layoutIfNeeded];} completion:^(BOOL finished) {}];
     }
     return YES;
 }
@@ -996,9 +1002,10 @@ void fixGestureRecognizers(UIView *v) {
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
     if ([iXolrAppDelegate iPad]) {
-        [searchBar.superview layoutIfNeeded];
-        self.searchBarWidth.constant -= 100;
-        [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{[searchBar.superview layoutIfNeeded];} completion:^(BOOL finished) {}];
+        [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                self.searchButton.hidden = FALSE;
+                self.searchBar.hidden = TRUE;
+            } completion:^(BOOL finished) {}];
         searchBar.placeholder = nil;
     } else
         // Animate back up off the top of the screen
