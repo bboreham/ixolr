@@ -79,12 +79,7 @@
         
         [self setFonts];
 
-        // Set the colors for the gradient layer.
-        static NSMutableArray *colors = nil;
-        if (colors == nil) {
-            colors = threadHeaderGradientColors();
-        }
-        [(CAGradientLayer *)self.layer setColors:colors];
+        [(CAGradientLayer *)self.layer setColors:threadHeaderGradientColors()];
         [(CAGradientLayer *)self.layer setLocations:@[@0.0f, @0.95f, @1.0f]];
     }
     
