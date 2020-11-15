@@ -352,6 +352,9 @@
     
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(xpos, 30, 320, 220)];
     datePicker.datePickerMode = mode;
+    if (@available(iOS 13.4, *)) {
+        datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+    }
     datePicker.date = date;
 
     if (destructiveButtonTitle != nil)
@@ -378,6 +381,9 @@
     
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 320, 220)];
     datePicker.datePickerMode = mode;
+    if (@available(iOS 13.4, *)) {
+        datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+    }
     datePicker.date = date;
     [popoverView addSubview:datePicker];
     
