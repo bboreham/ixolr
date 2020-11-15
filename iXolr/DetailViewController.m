@@ -492,30 +492,6 @@ void fixGestureRecognizers(UIView *v) {
     return UIBarPositionTopAttached;
 }
 
-- (void)viewDidUnload
-{
-    [iXolrAppDelegate singleton].detailViewController = nil;
-    [self setSearchBar:nil];
-    [self setHeaderLabel:nil];
-    [self setHeaderView:nil];
-    [self setLowerView:nil];
-    [self setStarButton:nil];
-    [self setEditButton:nil];
-    [self setLockButton:nil];
-    [self setActionBarButtonItem:nil];
-    [self setFastForwardButtonItem:nil];
-	[super viewDidUnload];
-
-	// Release any retained subviews of the main view.
-    self.messageTableView = nil;
-    self.textWebView.delegate = nil;
-    self.textWebView = nil;
-    self.pullDownMessageLabel = nil;
-    self.toolbarTitle = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    lastVisited = nil;
-}
-
 #pragma mark - Web View Delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

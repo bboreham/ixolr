@@ -43,12 +43,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDirectoryCategories:) name:@"directoryCategories" object:nil];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    _categories = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;

@@ -46,17 +46,6 @@
     [self requestCIXProfile];
 }
 
-- (void)viewDidUnload
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self setTestLoginSuccessLabel:nil];
-    [self setTableView:nil];
-    [self setTopicProgress:nil];
-    [self setAuthenticateButton:nil];
-    [self setJoinIXolrConfButton:nil];
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

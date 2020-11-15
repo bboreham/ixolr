@@ -30,12 +30,6 @@
     [super viewWillDisappear: animated];
 }
 
-- (void)viewDidUnload
-{
-    [self setTextView:nil];
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

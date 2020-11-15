@@ -235,16 +235,6 @@
     [super viewWillAppear: animated];
 }
 
-- (void)viewDidUnload
-{
-    [self setMessageTextView:nil];
-    [self setDoneButton:nil];
-    [self setCancelButton:nil];
-    [self setQuoteButton:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
