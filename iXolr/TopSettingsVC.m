@@ -37,11 +37,15 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSString *receiptURLString = [receiptURL path];
+    BOOL isBeta = ([receiptURLString rangeOfString:@"sandboxReceipt"].location != NSNotFound);
+
     appVersionLabel.text = [NSString stringWithFormat:@"iXolr %@ %@", [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"],
 #if DEBUG
         @"debug build"
 #else
-        @"release"
+        isBeta ? @"beta" : @"release"
 #endif
     ];
 }
