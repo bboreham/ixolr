@@ -956,9 +956,8 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         op.failureBlock = ^(NSError* error){ [self handleOperationError:error]; };
         [_CIXRequestManager addOperation: op];
     };
-    [_CIXRequestManager addOperationWithBlock:^{
+    [self addTidyOperationOnMainThread:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshFinished" object:nil];
-        [[iXolrAppDelegate singleton] popdownActivityIndicator];
     }];
 }
 
