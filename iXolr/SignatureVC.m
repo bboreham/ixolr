@@ -30,12 +30,6 @@
     [super viewWillDisappear: animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
-
 
 - (IBAction)clearButtonPressed:(id)sender {
     self.textView.text = @"";

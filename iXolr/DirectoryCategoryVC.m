@@ -43,11 +43,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDirectoryCategories:) name:@"directoryCategories" object:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
-}
-
 // App Delegate has finished loading top-level data
 - (void)handleDirectoryCategories:(NSNotification*)param
 {

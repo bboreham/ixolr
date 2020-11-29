@@ -409,10 +409,6 @@ void fixGestureRecognizers(UIView *v) {
     hasAppeared = NO;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self showMessageDetail:self.currentMessage movingBack:NO];

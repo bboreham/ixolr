@@ -34,11 +34,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDirectoryCategoryForums:) name:@"directoryCategoryForums" object:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
-}
-
 // App Delegate has finished loading directory data
 - (void)handleDirectoryCategoryForums:(NSNotification*)param
 {

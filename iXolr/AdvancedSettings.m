@@ -28,12 +28,6 @@
     self.navigationItem.title = @"Advanced Commands";
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
-
 - (void)markReadOlder:(NSInteger) days {
     iXolrAppDelegate *app = [iXolrAppDelegate singleton];
     NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-(60*60*24)*days];

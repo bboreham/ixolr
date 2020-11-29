@@ -56,12 +56,6 @@
     [super viewWillAppear: animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
-
 
 - (IBAction)infoButtonPressed:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://bryan.boreham.org/iXolr/iXolr_4_Settings.html"]];
