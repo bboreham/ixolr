@@ -58,7 +58,6 @@
         CGRect titleLabelFrame = self.frame;
         titleLabelFrame.origin.x += size_scale * 30;
         titleLabelFrame.size.width -= size_scale * 120;
-        CGRectInset(titleLabelFrame, 3.0, size_scale * 8 - 3);
         _titleLabel = [[UILabel alloc] initWithFrame:titleLabelFrame];
         _titleLabel.text = title;
         [self setupLabel:_titleLabel];
@@ -68,7 +67,6 @@
         CGRect countsLabelFrame = self.frame;
         countsLabelFrame.origin.x += countsLabelFrame.size.width - size_scale * 90;
         countsLabelFrame.size.width = size_scale * 85;
-        CGRectInset(countsLabelFrame, 0.0, size_scale * 8 - 3);
         _countsLabel = [[UILabel alloc] initWithFrame:countsLabelFrame];
         _countsLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         _countsLabel.textAlignment = NSTextAlignmentRight;
