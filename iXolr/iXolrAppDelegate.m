@@ -1287,15 +1287,11 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     return [NSString stringWithFormat:@"CIX (%ld)", (long)totalUnread];
 }
 
-- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController: (UIPopoverController *)pc
-{
-    barButtonItem.title = [self totalUnreadDisplay];
-    [[svc.viewControllers[1] topViewController].navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-}
+- (void)splitViewController:(UISplitViewController *)svc
+    willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode {
 
-// Called when the view is shown again in the split view, invalidating the button and popover controller.
-- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    [[svc.viewControllers[1] topViewController].navigationItem setLeftBarButtonItem:nil animated:YES];
+    if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        [svc.viewControllers[1] topViewController].navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
+    }
 }
 @end
