@@ -409,11 +409,6 @@ void fixGestureRecognizers(UIView *v) {
     hasAppeared = NO;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [self showMessageDetail:self.currentMessage movingBack:NO];
-}
-
 // Move the header bar to a specific y-coord, repositioning anything else that needs moved to suit
 - (void)positionHeaderAtYCoord: (CGFloat)y
 {

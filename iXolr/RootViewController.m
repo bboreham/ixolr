@@ -431,12 +431,6 @@ enum SectionEnum {
 	[super viewDidDisappear:animated];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    [self updateToolbar];
-}
-
 // This view is going into or out of editing mode: change the display to reflect this.
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {

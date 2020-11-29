@@ -98,13 +98,6 @@
     [super viewWillAppear: animated];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    // Get the toolbar colouration correct
-    [self.toolbarItems updateToolbar];
-}
-
 - (BOOL)updateCountsOnTopic:(Topic*)topic andGlow:(BOOL)glow
 {
     NSUInteger row = [topicsArray indexOfObject:topic];
