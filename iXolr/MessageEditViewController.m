@@ -46,6 +46,9 @@
     navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     if (@available(iOS 13.0, *)) {
         navigationController.modalInPresentation = true;
+        if (![iXolrAppDelegate iPad]) { // don't want "card-style" presentation as it breaks drag-down
+            navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+        }
     }
     return navigationController;
 }
