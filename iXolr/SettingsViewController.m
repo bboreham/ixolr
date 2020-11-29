@@ -127,9 +127,9 @@
 - (BOOL) requestCIXProfile {
     return [[iXolrAppDelegate singleton] requestCIXProfileWithCompletion:^(NSDictionary* results){
         self.profileData = results;
-        [iXolrAppDelegate singleton].CIXusername = profileData[@"Uname"];
+        [iXolrAppDelegate singleton].CIXusername = self->profileData[@"Uname"];
         NSLog(@"CIX username returned in profile: %@", [iXolrAppDelegate singleton].CIXusername);
-        [tableView reloadData];
+        [self->tableView reloadData];
     }];
 }
 

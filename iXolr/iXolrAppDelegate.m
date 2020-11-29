@@ -474,7 +474,7 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
                 completionHandler(UIBackgroundFetchResultNoData);
             else
                 completionHandler(UIBackgroundFetchResultFailed);
-            backgroundFetchActive = NO;
+            self->backgroundFetchActive = NO;
         }])
         ;
     else {
@@ -788,7 +788,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"postingMessage" object:message];
             };
             op.failureBlock = ^(NSError* error){
-                [_CIXRequestManager cancelAllCIXOperations];
+                [self->_CIXRequestManager cancelAllCIXOperations];
                 if (error.code == 400 && [error.domain hasPrefix:@"\"RO topic"])
                     [UIAlertView showWithTitle:@"Read-only Topic" message:[NSString stringWithFormat:@"While attempting to post a message, CIX sent back: %@",[error domain]] completionBlock:^(NSUInteger b){} cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 else
@@ -812,7 +812,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     CixRequestOperation *op = [CixRequestOperation operationWithRequest:request params:nil consumer:consumer auth:_authStr successBlock: nil];
     op.body = [Parser JSONRangesfromMessageLinks:[messages allObjects]];
     op.successBlock = ^(NSData* data){
-        [(isRead ? _pendingMarkRead : _pendingMarkUnread) minusSet: messages];
+        [(isRead ? self->_pendingMarkRead : self->_pendingMarkUnread) minusSet: messages];
     };
     op.failureBlock = ^(NSError* error){
         if (wantErrorUI)
@@ -832,7 +832,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         if (isAdd)
             op.body = [Parser JSONfromMessageLink:link];
         op.successBlock = ^(NSData* data){
-            [(isAdd ? _pendingStar : _pendingUnstar) removeObject:link];
+            [(isAdd ? self->_pendingStar : self->_pendingUnstar) removeObject:link];
         };
         CixRequestOperation *__weak weakOp = op;
         op.failureBlock = ^(NSError* error){
@@ -1090,12 +1090,12 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         // Add an operation for each conference, to get the topics
         for (NSString *confName in conferences) {
             NSString *request = [NSString stringWithFormat:@"user/%@/topics", confName];
-            CixRequestOperation *op = [CixRequestOperation operationWithRequest:request params:nil consumer:consumer auth:_authStr successBlock:^(NSData* data){
+            CixRequestOperation *op = [CixRequestOperation operationWithRequest:request params:nil consumer:self->consumer auth:self->_authStr successBlock:^(NSData* data){
                 [[iXolrAppDelegate singleton] popupActivityIndicatorProgress:n / total];
                 [self.dataController updateTopicsInConference:confName fromJSONData:data];
             }];
             op.failureBlock = ^(NSError* error){ [self handleOperationError:error]; };
-            [_CIXRequestManager addOperation: op];
+            [self->_CIXRequestManager addOperation: op];
             ++n;
         }
         [self addTidyOperationOnMainThread:^{

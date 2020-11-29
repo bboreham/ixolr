@@ -97,9 +97,9 @@
 	}
     
     taskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{   // Tell IOS we want this to finish
-        NSLog(@"expiration of BackgroundTask %lu", (unsigned long)taskIdentifier);
-        [[UIApplication sharedApplication] endBackgroundTask:taskIdentifier];
-        taskIdentifier = UIBackgroundTaskInvalid;
+        NSLog(@"expiration of BackgroundTask %lu", (unsigned long)self->taskIdentifier);
+        [[UIApplication sharedApplication] endBackgroundTask:self->taskIdentifier];
+        self->taskIdentifier = UIBackgroundTaskInvalid;
     }];
     
 	OAToken *token = [[OAToken alloc] initWithHTTPResponseBody:authorizationStr];
@@ -304,14 +304,14 @@ char *urlRoot = "https://api.cixonline.com/v2.0/cix.svc";
         _inProgress = YES;
         // Kick off on main queue, because NSUrlConnection requests need a run-loop to work.  Means all callbacks come on main thread too.
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        if (_startedBlock != nil)
-            _startedBlock(self);
-        _request = [CixRequest requestWithDelegate:self];
-        _request.postProgressNotifications = self.postProgressNotifications;
-        if (_body != nil)
-            [_request makeGenericPostRequest:_requestStr body:_body consumer:_consumer auth:_authStr];
+        if (self->_startedBlock != nil)
+            self->_startedBlock(self);
+        self->_request = [CixRequest requestWithDelegate:self];
+        self->_request.postProgressNotifications = self.postProgressNotifications;
+        if (self->_body != nil)
+            [self->_request makeGenericPostRequest:self->_requestStr body:self->_body consumer:self->_consumer auth:self->_authStr];
         else
-            [_request makeGenericRequest:_requestStr params:_params consumer:_consumer auth:_authStr];
+            [self->_request makeGenericRequest:self->_requestStr params:self->_params consumer:self->_consumer auth:self->_authStr];
         }];
     }
     else {

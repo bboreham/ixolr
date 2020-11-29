@@ -348,8 +348,8 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
         [self setOutboxMessages: new_outbox];
         [self setFavouriteMessages: new_favourites];
         [self setMyMessages:new_myMessages];
-        _firstTimeInitPending = NO;
-        _firstTimeInitialized = YES;
+        self->_firstTimeInitPending = NO;
+        self->_firstTimeInitialized = YES;
         NSLog(@"Finished async initialize");
     }];
 }

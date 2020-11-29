@@ -630,7 +630,7 @@
         [CATransaction setCompletionBlock:^(void){
             for (NSIndexPath *path in paths) {
                 UITableViewCell *cell = [self.messageTableView cellForRowAtIndexPath:path];
-                cell.indentationWidth = threadIndentWidth;
+                cell.indentationWidth = self->threadIndentWidth;
                 //NSLog(@"(completion) setting cell %p path %d/%d indent to %d", cell, path.section, path.row, cell.indentationLevel + indentDelta);
                 cell.indentationLevel = cell.indentationLevel + indentDelta;
             }

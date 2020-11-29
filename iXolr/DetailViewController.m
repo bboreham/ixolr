@@ -728,7 +728,7 @@ void fixGestureRecognizers(UIView *v) {
     }
     actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
     [actionSheet setCompletionBlock:^(NSInteger buttonIndex) {
-        _actionSheet = nil;
+        self->_actionSheet = nil;
         id<GenericMessage> msg = self.currentMessage;
         
         if (buttonIndex == -1 || buttonIndex == actionSheet.cancelButtonIndex)

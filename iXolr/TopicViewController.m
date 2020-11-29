@@ -199,7 +199,7 @@
             NSString *message2 = nil;
             switch (buttonIndex) {
                 case 1:
-                    message2 = [NSString stringWithFormat:@"Do you want to mark all messages in conference '%@' as read?", conference.name];
+                    message2 = [NSString stringWithFormat:@"Do you want to mark all messages in conference '%@' as read?", self->conference.name];
                     break;
                 case 2:
                     message2 = @"Do you want to fly to the moon?";
@@ -209,7 +209,7 @@
                 if (button2Index == 1)
                     switch (buttonIndex) {
                         case 1:
-                            [conference markAllMessagesRead];
+                            [self->conference markAllMessagesRead];
                             break;
                         case 2:
                             break;

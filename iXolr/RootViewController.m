@@ -287,7 +287,7 @@ enum SectionEnum {
 - (void)asyncLoadConferences
 {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        _reloadConfPending = NO;
+        self->_reloadConfPending = NO;
         [[iXolrAppDelegate singleton].dataController fetchAllTopicCounts];
         [self reloadConferences];
     }];
