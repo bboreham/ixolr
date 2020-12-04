@@ -272,6 +272,7 @@
         // Inset the label and move down to suit the height of text
         NSString *text = commentedToMessage.text;
         text = [iXolrAppDelegate settings].reflowText ? [text stringWithReflow] : text;
+        text = [text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         self.pullDownMessageLabel.frame = [MessageEditViewController pullDownMessageFrame:self.textWebView.frame forText:text];
         self.pullDownMessageLabel.text = text;
     }

@@ -201,6 +201,7 @@
 + (UILabel*)pullDownMessageLabelWithFrame: (CGRect)frame text: (NSString*)text
 {
     text = [iXolrAppDelegate settings].reflowText ? [text stringWithReflow] : text;
+    text = [text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     UILabel *commentToLabel = [[UILabel alloc] initWithFrame:[MessageEditViewController pullDownMessageFrame:frame forText:text]];
     commentToLabel.numberOfLines = 0;
     commentToLabel.lineBreakMode = NSLineBreakByWordWrapping;
