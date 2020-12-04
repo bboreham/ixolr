@@ -194,8 +194,8 @@
 + (CGRect)pullDownMessageFrame: (CGRect) frame forText: (NSString*)text
 {
     // Inset the label and move down to suit the height of text
-    CGSize textSize = [text sizeWithFont:[MessageEditViewController pullDownMessageFont] constrainedToSize:CGSizeMake(frame.size.width, 250) lineBreakMode:NSLineBreakByWordWrapping];
-    return CGRectMake(5, -textSize.height, frame.size.width-10, textSize.height);
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [MessageEditViewController pullDownMessageFont]} context:nil];
+    return CGRectMake(5, -rect.size.height, frame.size.width-10, rect.size.height);
 }
 
 + (UILabel*)pullDownMessageLabelWithFrame: (CGRect)frame text: (NSString*)text
@@ -229,11 +229,10 @@
     //NSLog(@"MessageEdit viewWillAppear");
     if (self.commentedToMessage != nil)
     {   // Show the message that this is a comment to in a label that will appear if the view is dragged down
-        CGRect frame = CGRectMake(5, -175, self.messageTextView.frame.size.width-10, 175);
-        UIView *commentToLabel = [MessageEditViewController pullDownMessageLabelWithFrame:frame text:commentedToMessage.text];
+        UIView *commentToLabel = [MessageEditViewController pullDownMessageLabelWithFrame:self.messageTextView.frame text:commentedToMessage.text];
         [self.messageTextView addSubview:commentToLabel];
         self.messageTextView.alwaysBounceVertical = YES;
-        [self.messageTextView.layer insertSublayer:[MessageEditViewController pullDownMessageGradientWithFrame:frame] below:commentToLabel.layer];
+        [self.messageTextView.layer insertSublayer:[MessageEditViewController pullDownMessageGradientWithFrame:commentToLabel.frame] below:commentToLabel.layer];
     }
     [super viewWillAppear: animated];
 }

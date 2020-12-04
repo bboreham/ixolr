@@ -46,7 +46,8 @@
 {
     NSString *title = self.conference.name;
     if (![iXolrAppDelegate iPad]) {
-        while ([title sizeWithFont:[UIFont systemFontOfSize:34]].width > 215) // Shorten if too long
+        UIFont* font = [UIFont systemFontOfSize:34];
+        while ([title sizeWithAttributes: @{NSFontAttributeName: font}].width > 215) // Shorten if too long
             title = [[self.conference.name substringToIndex:title.length - 2] stringByAppendingString: @"…"];
     }
     [self.navigationItem setTitle: title];

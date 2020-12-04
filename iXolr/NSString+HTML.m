@@ -168,7 +168,7 @@ static const NSUInteger LINE_BREAK_WIDTH = 50;
 {
     NSUInteger skip = [result length]-end;
     NSString *lineSubstring = [result_clean substringToIndex:[result_clean length]-skip];
-    CGSize size = [lineSubstring sizeWithFont:font];
+    CGSize size = [lineSubstring sizeWithAttributes: @{NSFontAttributeName: font}];
     return size.width;
 }
 
