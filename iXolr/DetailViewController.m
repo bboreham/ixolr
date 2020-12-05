@@ -807,6 +807,8 @@ void fixGestureRecognizers(UIView *v) {
 {
     [self.searchBar removeFromSuperview];
     self.searchBar = nil;
+    [self.searchButton removeFromSuperview];
+    self.searchButton.hidden = FALSE;
 }
 
 #pragma mark - Movement Buttons
