@@ -989,12 +989,6 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
     return next;
 }
 
-- (void)alertNoMoreUnread
-{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No more unread" message:@"There are no more unread messages in your messagebase." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-}
-
 - (CIXMessage*)createNewOutboxMessage:(CIXMessage*)origMessage topic:(Topic*)topic
 {
     CIXMessage *message = [self createNewMessage];
@@ -1318,10 +1312,9 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
     {
         NSLog(@"Error in addPersistentStoreWithType %@, %@", error, [error userInfo]);
         NSString *str = [NSString stringWithFormat:@"Unable to open messagebase: error message %@.  \nIf you delete the messagebase you will lose any messages downloaded from CIX, although you should be able to re-download them.  Hit the Home button if you want to quit iXolr without deleting anything", [error localizedDescription]];
-        [UIAlertView showWithTitle:@"Error opening messagebase" message:str completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex == 0)
-                [self deleteMessageStore];
-        } cancelButtonTitle:nil otherButtonTitles:@"Delete messagebase", nil];
+        [[iXolrAppDelegate singleton] confirm:str title:@"Error opening messagebase" actionTitle:@"Delete messagebase" ifConfirmed:^{
+            [self deleteMessageStore];
+        }];
     }    
     
     return __persistentStoreCoordinator;
@@ -1345,10 +1338,9 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
         {
             NSLog(@"Error in VacuumStore %@, %@", error, [error userInfo]);
             NSString *str = [NSString stringWithFormat:@"A problem was reported during this operation: error message %@.  \nIf you delete the messagebase you will lose any messages downloaded from CIX, although you should be able to re-download them.  Hit the Home button if you want to quit iXolr without deleting anything", [error localizedDescription]];
-            [UIAlertView showWithTitle:@"Error compacting messagebase" message:str completionBlock:^(NSUInteger buttonIndex) {
-                if (buttonIndex == 0)
-                    [self deleteMessageStore];
-            } cancelButtonTitle:nil otherButtonTitles:@"Delete messagebase", nil];
+            [[iXolrAppDelegate singleton] confirm:str title:@"Error compacting messagebase" actionTitle:@"Delete messagebase" ifConfirmed:^{
+                [self deleteMessageStore];
+            }];
         }
     }]];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{

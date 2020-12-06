@@ -52,6 +52,7 @@
 - (void)gotoTopic:(Topic*)topic msgnum:(NSInteger)msgnum;
 - (void)gotoTopic:(Topic*)topic msgnum:(NSInteger)msgnum switchSubview:(BOOL)switchSubview;
 - (CIXMessage *)messageForCIXurl:(NSString *)path;
+- (void)alertNoMoreUnread;
 - (void)popupActivityIndicatorWithTitle: (NSString*)title;
 - (void)popupActivityIndicatorWithTitle: (NSString*)title cancellable:(BOOL)cancellable;
 - (void)popupActivityIndicatorProgress: (float)progress;

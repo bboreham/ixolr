@@ -393,7 +393,7 @@ enum SectionEnum {
         if (topic != nil) {
             [self gotoTopic:topic msgnum:0];
         } else
-            [[iXolrAppDelegate singleton].dataController alertNoMoreUnread];
+            [[iXolrAppDelegate singleton] alertNoMoreUnread];
     }
 }
 

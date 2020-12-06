@@ -56,7 +56,6 @@
 - (NSArray*)messagesSortedForThreadingInTopic:(Topic*)topic;
 - (Topic*)nextTopicWithUnreadAfter:(Topic*)topic;
 - (Topic*)nextInterestingTopicAfter:(Topic*)topic;
-- (void)alertNoMoreUnread;
 - (CIXMessage*)createNewOutboxMessage:(CIXMessage*)origMessage topic:(Topic*)topic;
 - (void)removeOutboxMessagesObject:(CIXMessage*)message;
 - (void)addMyMessagesObject:(CIXMessage*)message;

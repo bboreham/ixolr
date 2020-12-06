@@ -881,7 +881,7 @@ void fixGestureRecognizers(UIView *v) {
     } else if (next != nil) {
         [[iXolrAppDelegate singleton] gotoTopic:next msgnum:0 switchSubview:YES];
     } else
-        [[iXolrAppDelegate singleton].dataController alertNoMoreUnread];
+        [[iXolrAppDelegate singleton] alertNoMoreUnread];
 }
 
 - (IBAction)gotoNextPriotrity:(id)sender

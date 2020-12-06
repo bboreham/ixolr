@@ -701,6 +701,11 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     [alert show];
 }
 
+- (void)alertNoMoreUnread
+{
+    [self displayErrorMessage:@"There are no more unread messages in your messagebase." title:@"No more unread"];
+}
+
 - (void)handleOperationError:(NSError*)error
 {
     [_CIXRequestManager cancelAllCIXOperations];
