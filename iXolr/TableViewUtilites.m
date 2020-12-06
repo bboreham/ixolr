@@ -273,37 +273,50 @@
 @end
 
 
-@implementation UIAlertView (BlockExtensions)
-
-+ (void)showWithTitle:(NSString *)title message:(NSString *)message completionBlock:(void (^)(NSUInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
-    alert.delegate = alert;
-    va_list args;
-    va_start(args, otherButtonTitles);
-    for (NSString *arg = otherButtonTitles; arg != nil; arg = va_arg(args, NSString*)) {
-        [alert addButtonWithTitle:arg];
-    }
-    va_end(args);
-    objc_setAssociatedObject(alert, "blockCallback", [block copy], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [alert show];
+@implementation UIAlertController (Popups)
++ (instancetype)popupWithTitle:(NSString *)title message:(NSString *)message {
+    return [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message completionBlock:(void (^)(NSUInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
-    self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
-    va_list args;
-    va_start(args, otherButtonTitles);
-    for (NSString *arg = otherButtonTitles; arg != nil; arg = va_arg(args, NSString*)) {  
-        [self addButtonWithTitle:arg];  
-    }
-    va_end(args);
-    objc_setAssociatedObject(self, "blockCallback", [block copy], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    return self;
++ (instancetype)popupWithTitle:(NSString *)title message:(NSString *)message sourceView:(UIView*)view sourceRect:(CGRect)r {
+
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
+    alert.popoverPresentationController.sourceView = view;
+    alert.popoverPresentationController.sourceRect = r;
+
+    return alert;
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    void (^block)(NSUInteger buttonIndex) = objc_getAssociatedObject(self, "blockCallback");
-    block(buttonIndex);
-    objc_setAssociatedObject(self, "blockCallback", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
++ (void)showWithTitle:(NSString *)title message:(NSString *)message actionTitle:(NSString *)actionTitle from:(UIViewController*)view ifConfirmed:(void (^)(void))block {
+    [self showWithTitle:title message:message actionTitle:actionTitle cancelTitle:@"Cancel" from:view ifConfirmed:block];
+}
+
++ (void)showWithTitle:(NSString *)title message:(NSString *)message actionTitle:(NSString *)actionTitle cancelTitle:(NSString *)cancelTitle from:(UIViewController*)vc ifConfirmed:(void (^)(void))block {
+    UIAlertController *alert = [UIAlertController popupWithTitle:title message:message];
+    [alert action:actionTitle block:^{ block(); }];
+    [alert addCancelAction:^{}];
+
+    [vc presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)action:(NSString *)title block:(void (^)(void))block {
+    [self addAction: [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        block();
+    }]];
+}
+
+- (void)addActionWithTitle:(NSString *)title ifConfirmed:(NSString *)message from:(UIViewController*)vc block:(void (^)(void))block {
+    [self action:title block:^{
+        [UIAlertController showWithTitle:@"Confirm" message:message actionTitle:@"Confirm" from:vc ifConfirmed:^{
+            block();
+        }];
+    }];
+}
+
+- (void)addCancelAction:(void (^)(void))block {
+    [self addAction: [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        block();
+    }]];
 }
 
 @end

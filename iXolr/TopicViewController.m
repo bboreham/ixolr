@@ -184,34 +184,14 @@
 - (void)titleSwipeCommands 
 {
     NSString *message = [NSString stringWithFormat:@"Available actions for conference %@:", conference.name];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Actions" message:message completionBlock:^(NSUInteger buttonIndex) {
-        if (buttonIndex > 0) {
-            NSString *message2 = nil;
-            switch (buttonIndex) {
-                case 1:
-                    message2 = [NSString stringWithFormat:@"Do you want to mark all messages in conference '%@' as read?", self->conference.name];
-                    break;
-                case 2:
-                    message2 = @"Do you want to fly to the moon?";
-                    break;
-            }
-            UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:message2 completionBlock:^(NSUInteger button2Index) {
-                if (button2Index == 1)
-                    switch (buttonIndex) {
-                        case 1:
-                            [self->conference markAllMessagesRead];
-                            break;
-                        case 2:
-                            break;
-                    }
-            }
-                                                   cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-            [alert2 show];
-        }
-    }
-                                          cancelButtonTitle:@"Cancel" otherButtonTitles:@"Mark All Read", nil];
-    
-    [alert show];
+    UIAlertController * alert = [UIAlertController popupWithTitle:@"Actions" message:message sourceView:self.navigationController.navigationBar sourceRect:self.navigationController.navigationBar.frame];
+
+    [alert addActionWithTitle:@"Mark All Read" ifConfirmed:[NSString stringWithFormat:@"Do you want to mark all messages in conference '%@' as read?", self->conference.name] from:self block:^() {
+        [self->conference markAllMessagesRead];
+    }];
+    [alert addCancelAction:^{}];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Segues
@@ -292,70 +272,37 @@
     {
         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         Topic *topic = topicsArray[indexPath.row];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Topic Actions" message:nil completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex > 0) {
-                NSString *message2 = nil;
-                UIAlertView *alert2 = nil;
-                switch (buttonIndex) {
-                    case 1:
-                    {
-                        message2 = [NSString stringWithFormat:@"Please confirm you want to mark all messages in topic %@ as read?", topic.name];
-                        alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:message2 completionBlock:^(NSUInteger button2Index) {
-                            if (button2Index == 1)
-                                [topic markAllMessagesRead];
-                        }
-                           cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-                        break;
-                    }
-                    case 2:
-                    {
-                        NSString *title2 = [NSString stringWithFormat:@"Backfill %@/%@?", topic.conference.name, topic.name];
-                        alert2 = [[UIAlertView alloc] initWithTitle:title2 message:@"Download older messages from CIX" completionBlock:^(NSUInteger button2Index) {
-                            switch (button2Index) {
-                                case 1:
-                                    [topic downloadMissingMessages:10];
-                                    break;
-                                case 2:
-                                    [topic downloadMissingMessages:100];
-                                    break;
-                                case 3:
-                                    [topic downloadMissingMessages:500];
-                                    break;
-                                case 4:
-                                    [topic downloadMissingMessages:99999];
-                                    break;
-                            }
-                        }
-                            cancelButtonTitle:@"Cancel" otherButtonTitles:@"10 messages", @"100 messages", @"500 messages", @"All messages", nil];
-                        break;
-                    }
-                    case 3:
-                    {
-                        message2 = [NSString stringWithFormat:@"Please confirm you want to mark topic %@ as %@?", topic.name, topic.isMute ? @"non-mute" : @"mute"];
-                        alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:message2 completionBlock:^(NSUInteger button2Index) {
-                            if (button2Index == 1)
-                                topic.isMute = !topic.isMute;
-                        }
-                                                  cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-                        break;
-                    }
-                    case 4:
-                    {
-                        message2 = [NSString stringWithFormat:@"Please confirm you want to resign topic %@", topic.name];
-                        alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:message2 completionBlock:^(NSUInteger button2Index) {
-                            if (button2Index == 1)
-                                [[iXolrAppDelegate singleton] resignConference:topic.conference.name topic:topic.name];
-                        }
-                                                  cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-                        break;
-                    }
-                }
-                [alert2 show];
-            }
-        }
-                                              cancelButtonTitle:@"Cancel" otherButtonTitles:@"Mark All Read", @"Backfill older messages",topic.isMute ? @"Un-mute topic" : @"Mute topic", @"Resign topic", nil];
-        
-        [alert show];
+        UIAlertController * alert = [UIAlertController popupWithTitle:@"Topic Actions" message:nil sourceView:self.tableView sourceRect:CGRectMake(location.x, location.y, 1, 1)];
+
+        [alert addActionWithTitle:@"Mark All Read" ifConfirmed:[NSString stringWithFormat:@"Do you want to mark all messages in topic '%@' as read?", topic.name] from:self block:^() {
+            [topic markAllMessagesRead];
+        }];
+
+        [alert action:@"Backfill older messages" block:^{
+            NSString *title2 = [NSString stringWithFormat:@"Backfill %@/%@?", topic.conference.name, topic.name];
+            UIAlertController * alert = [UIAlertController popupWithTitle:title2 message:@"Download older messages from CIX"];
+
+            [alert action: @"10 messages" block:^{ [topic downloadMissingMessages: 10]; }];
+            [alert action:@"100 messages" block:^{ [topic downloadMissingMessages:100]; }];
+            [alert action:@"500 messages" block:^{ [topic downloadMissingMessages:500]; }];
+            [alert action:@"All messages" block:^{ [topic downloadMissingMessages:99999]; }];
+            [alert addCancelAction:^{}];
+
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+
+        NSString *message2 = [NSString stringWithFormat:@"Please confirm you want to mark topic %@ as %@?", topic.name, topic.isMute ? @"non-mute" : @"mute"];
+        [alert addActionWithTitle:topic.isMute ? @"Un-mute topic" : @"Mute topic" ifConfirmed:message2 from:self block:^() {
+            topic.isMute = !topic.isMute;
+        }];
+
+        [alert addActionWithTitle:@"Resign topic" ifConfirmed:[NSString stringWithFormat:@"Please confirm you want to resign topic %@", topic.name] from:self block:^() {
+            [[iXolrAppDelegate singleton] resignConference:topic.conference.name topic:topic.name];
+        }];
+
+        [alert addCancelAction:^{}];
+
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

@@ -523,18 +523,20 @@ void fixGestureRecognizers(UIView *v) {
 - (IBAction)popupNewMessageEditCommentTo:(CIXMessage*)origMessage {
     if (self.topic.isReadOnly) {
         NSString *str = [NSString stringWithFormat:@"Topic %@ is read-only; are you sure you want to post?", self.topic.fullName];
-        [UIAlertView showWithTitle:@"Read-only Topic" message:str completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex == 1)
-                [self reallyPopupNewMessageEditCommentTo:origMessage];
-        } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
+        [UIAlertController showWithTitle:@"Read-only Topic" message:str actionTitle:@"Continue" from:self ifConfirmed:^{
+            [self reallyPopupNewMessageEditCommentTo:origMessage];
+        }];
     } else if ([self.topic.conference.name isEqualToString:@"noticeboard"] && origMessage != nil) {
         NSString *str = [NSString stringWithFormat:@"Comments are forbidden in cix:noticeboard; are you sure you want to post?"];
-        [UIAlertView showWithTitle:@"Comment in Noticeboard" message:str completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex == 1)
-                [self reallyPopupNewMessageEditCommentTo:origMessage];
-            else if (buttonIndex == 2)
-                [self replyViaEmailTo:origMessage];
-        } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", @"Use email instead", nil];
+        UIAlertController *alert = [UIAlertController popupWithTitle:@"Comment in Noticeboard" message:str];
+        [alert action:@"Continue" block:^{
+            [self reallyPopupNewMessageEditCommentTo:origMessage];
+        }];
+        [alert action:@"Use email instead" block:^{
+            [self replyViaEmailTo:origMessage];
+        }];
+        [alert addCancelAction:^{}];
+        [self presentViewController:alert animated:YES completion:nil];
     } else
         [self reallyPopupNewMessageEditCommentTo:origMessage];
 }
@@ -565,8 +567,7 @@ void fixGestureRecognizers(UIView *v) {
                 [self presentViewController:mailCont animated:YES completion:nil];
             }];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to send email" message:@"You must have email configured on this device in order to send a reply via email." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        [alert show];
+        [[iXolrAppDelegate singleton] displayErrorMessage:@"You must have email configured on this device in order to send a reply via email." title:@"Unable to send email"];
     }
 }
 
@@ -896,8 +897,7 @@ void fixGestureRecognizers(UIView *v) {
         if (next != nil) {
             [[iXolrAppDelegate singleton] gotoTopic:next msgnum:-1 switchSubview:YES];
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No more priority messages" message:@"There are no more priority messages in your messagebase." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+            [[iXolrAppDelegate singleton] displayErrorMessage:@"There are no more priority messages in your messagebase." title:@"No more priority messages"];
         }
     }
 }

@@ -458,52 +458,33 @@ enum SectionEnum {
     {
         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         Conference *actionConference = (self.conferences)[indexPath.row];
-        NSString *resignRejoin = [actionConference isResigned] ? @"e-join" : @"esign";
         NSString *message = [NSString stringWithFormat:@"Available actions for conference %@:", actionConference.name];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Conference Actions" message:message completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex > 0) {
-                NSString *message2 = nil;
-                switch (buttonIndex) {
-                    case 1:
-                        message2 = [NSString stringWithFormat:@"Please confirm you want to mark all messages in conference %@ as read?", actionConference.name];
-                        break;
-                    case 2:
-                        message2 = [NSString stringWithFormat:@"Please confirm you want to r%@ conference %@?", resignRejoin, actionConference.name];
-                        break;
-                    case 3:
-                        if ([actionConference isResigned])
-                            message2 = [NSString stringWithFormat:@"Please confirm you want to delete conference %@ from the database?", actionConference.name];
-                        else
-                            [self setEditing:YES animated:YES];
-                        break;
-                }
-                if (message2 != nil) {
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:message2 completionBlock:^(NSUInteger button2Index) {
-                    if (button2Index == 1)
-                        switch (buttonIndex) {
-                            case 1:
-                                [actionConference markAllMessagesRead];
-                                break;
-                            case 2:
-                                if (actionConference.isResigned)
-                                    [[iXolrAppDelegate singleton] joinConference:actionConference.name];
-                                else
-                                    [[iXolrAppDelegate singleton] resignConference:actionConference.name];
-                                break;
-                            case 3:
-                                [[iXolrAppDelegate singleton].dataController deleteConference:actionConference];
-                                break;
-                        }
-                }
-                                                      cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-                [alert2 show];
-                }
-            }
-        }
-        cancelButtonTitle:@"Cancel" otherButtonTitles:@"Mark All Read", [@"R" stringByAppendingString:resignRejoin],
-                              [actionConference isResigned] ? @"Delete" : @"Re-order", nil];
 
-        [alert show];
+        UIAlertController * alert = [UIAlertController popupWithTitle:@"Conference Actions" message:message sourceView:self.tableView sourceRect:CGRectMake(location.x, location.y, 1, 1)];
+
+        [alert addActionWithTitle:@"Mark All Read" ifConfirmed:[NSString stringWithFormat:@"Do you want to mark all messages in conference '%@' as read?", actionConference.name] from:self block:^() {
+            [actionConference markAllMessagesRead];
+        }];
+
+        if ([actionConference isResigned]) {
+            [alert addActionWithTitle:@"Re-join" ifConfirmed:[NSString stringWithFormat:@"Please confirm you want to re-join conference %@?", actionConference.name] from:self block:^() {
+                [[iXolrAppDelegate singleton] joinConference:actionConference.name];
+            }];
+            [alert addActionWithTitle:@"Delete" ifConfirmed:[NSString stringWithFormat:@"Please confirm you want to delete conference %@?", actionConference.name] from:self block:^() {
+                [[iXolrAppDelegate singleton].dataController deleteConference:actionConference];
+            }];
+        } else {
+            [alert addActionWithTitle:@"Resign" ifConfirmed:[NSString stringWithFormat:@"Please confirm you want to resign conference %@?", actionConference.name] from:self block:^() {
+                [[iXolrAppDelegate singleton] resignConference:actionConference.name];
+            }];
+            [alert action:@"Re-order" block:^{
+                [self setEditing:YES animated:YES];
+            }];
+        }
+
+        [alert addCancelAction:^{}];
+
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -518,40 +499,20 @@ enum SectionEnum {
 // Swipe-right on title to perform an action across all conferences
 - (void)titleSwipeCommands
 {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Top-Level Actions" message:@"These actions apply across all conferences" completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex > 0) {
-                NSString *message2 = nil;
-                switch (buttonIndex) {
-                    case 1:
-                        message2 = @"Do you want to mark all messages in all conferences as read?";
-                        break;
-                    case 2:
-                        message2 = @"Do you want to sync the unread status of all messages with CIX?";
-                        break;
-                    case 3:
-                        [[iXolrAppDelegate singleton] purgeIfConfirmedFrom:self Rect:[self.view convertRect: self.navigationController.navigationBar.frame fromView:self.navigationController.navigationBar]];
-                        break;
-                }
-                if (message2 != nil) {
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:message2 completionBlock:^(NSUInteger button2Index) {
-                    if (button2Index == 1)
-                        switch (buttonIndex) {
-                            case 1:
-                                [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: [NSDate distantFuture]];
-                                break;
-                            case 2:
-                                [[iXolrAppDelegate singleton] cosySync: YES];
-                                break;
-                        }
-                }
-                   cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-                [alert2 show];
-                }
-            }
-        }
-          cancelButtonTitle:@"Cancel" otherButtonTitles:@"Mark All Read", @"Sync Unread with CIX", @"Purge old messages", nil];
-            
-        [alert show];
+    UIAlertController * alert = [UIAlertController popupWithTitle:@"Top-Level Actions" message:@"These actions apply across all conferences" sourceView:self.navigationController.navigationBar sourceRect:self.navigationController.navigationBar.frame];
+
+    [alert addActionWithTitle:@"Mark All Read" ifConfirmed:@"Do you want to mark all messages in all conferences as read?" from:self block:^() {
+        [[iXolrAppDelegate singleton].dataController markReadOlderThanDate: [NSDate distantFuture]];
+    }];
+    [alert addActionWithTitle:@"Sync Unread with CIX" ifConfirmed:@"Do you want to sync the unread status of all messages with CIX?" from:self block:^() {
+        [[iXolrAppDelegate singleton] cosySync: YES];
+    }];
+    [alert action:@"Purge old messages" block:^{
+        [[iXolrAppDelegate singleton] purgeIfConfirmedFrom:self Rect:[self.view convertRect: self.navigationController.navigationBar.frame fromView:self.navigationController.navigationBar]];
+    }];
+    [alert addCancelAction:^{}];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Segues

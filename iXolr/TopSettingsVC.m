@@ -82,8 +82,7 @@
         
         [self presentViewController:mailCont animated:YES completion:nil];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to send report" message:@"You must have email configured on this device in order to send a bug report." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        [alert show];
+        [[iXolrAppDelegate singleton] displayErrorMessage:@"You must have email configured on this device in order to send a bug report." title:@"Unable to send email"];
     }
 }
 

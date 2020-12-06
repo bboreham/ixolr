@@ -107,14 +107,10 @@
         message.isHeld = saved_isHeld_state;
         [delegate messageEditViewControllerCancelled:self];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm cancel" message:@"Do you want to cancel this edit and lose any changes made?" completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex == 1) {
-                self->message.isHeld = self->saved_isHeld_state;
-                [self->delegate messageEditViewControllerCancelled:self];
-            }
-        }
-           cancelButtonTitle:@"Keep editing" otherButtonTitles:@"Lose changes", nil];
-        [alert show];
+        [UIAlertController showWithTitle:@"Confirm cancel" message:@"Do you want to cancel this edit and lose any changes made?" actionTitle:@"Lose changes" cancelTitle:@"Keep editing" from:self ifConfirmed:^{
+            self->message.isHeld = self->saved_isHeld_state;
+            [self->delegate messageEditViewControllerCancelled:self];
+        }];
     }
 }
 

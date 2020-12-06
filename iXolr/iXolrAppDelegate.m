@@ -239,10 +239,9 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 {
     //    [[iXolrAppDelegate singleton] requestTopicInfoForConfName:confName];
     NSString *str = [NSString stringWithFormat:@"You are not a member of conference \"%@\". Do you want to join?", confName];
-    [UIAlertView showWithTitle:@"Confirm Join" message:str completionBlock:^(NSUInteger buttonIndex) {
-        if (buttonIndex == 1)
-            [self joinConference:confName];
-    } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Join", nil];
+    [self confirm:str title:@"Confirm Join" actionTitle:@"Join" ifConfirmed:^{
+        [self joinConference:confName];
+    }];
 }
 
 - (void) gotoConfName: (NSString*) confName topic: (NSString*) topicName msgnum: (NSString*) msgnum
@@ -697,8 +696,13 @@ NSString* const oauthServiceName = @"Callback_OAuth";
 
 - (void)displayErrorMessage: (NSString*)message title: (NSString*)title
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UIAlertController * alert = [UIAlertController popupWithTitle:title message:message];
+    [alert action:@"OK" block:^{}];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)displayErrorTitle: (NSString*)title message:(NSString*)message {
+    [self displayErrorMessage:message title:title];
 }
 
 - (void)alertNoMoreUnread
@@ -710,6 +714,13 @@ NSString* const oauthServiceName = @"Callback_OAuth";
 {
     [_CIXRequestManager cancelAllCIXOperations];
     [self displayErrorMessage:[error localizedDescription] title:@"Communication Failure"];
+}
+
+- (void)confirm:(NSString*)message title: (NSString*)title actionTitle:(NSString *)actionTitle ifConfirmed:(void (^)(void))block
+{
+    [UIAlertController showWithTitle:title message:message actionTitle:actionTitle from:self.window.rootViewController ifConfirmed:^{
+        block();
+    }];
 }
 
 #pragma mark - CIX Requests
@@ -795,9 +806,9 @@ NSString* const oauthServiceName = @"Callback_OAuth";
             op.failureBlock = ^(NSError* error){
                 [self->_CIXRequestManager cancelAllCIXOperations];
                 if (error.code == 400 && [error.domain hasPrefix:@"\"RO topic"])
-                    [UIAlertView showWithTitle:@"Read-only Topic" message:[NSString stringWithFormat:@"While attempting to post a message, CIX sent back: %@",[error domain]] completionBlock:^(NSUInteger b){} cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [self displayErrorMessage:[NSString stringWithFormat:@"While attempting to post a message, CIX sent back: %@",[error domain]] title:@"Read-only Topic"];
                 else
-                    [UIAlertView showWithTitle:@"Communication Failure" message:[error localizedDescription] completionBlock:^(NSUInteger b){} cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [self displayErrorMessage:[error localizedDescription] title:@"Communication Failure"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshFinished" object:error];
             };
             op.body = [DataController JSONfromMessage:message];

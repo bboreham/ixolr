@@ -48,11 +48,14 @@
 - (void) insertOrDeletePath: (NSIndexPath*)path flag:(BOOL)on;
 @end
 
-// UIAlertView using blocks, from http://www.wannabegeek.com/?p=96
-@interface UIAlertView (BlockExtensions) <UIAlertViewDelegate>
-
-+ (void)showWithTitle:(NSString *)title message:(NSString *)message completionBlock:(void (^)(NSUInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
-- (id)initWithTitle:(NSString *)title message:(NSString *)message completionBlock:(void (^)(NSUInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
+@interface UIAlertController (Popups)
++ (void)showWithTitle:(NSString *)title message:(NSString *)message actionTitle:(NSString *)actionTitle from:(UIViewController*)view ifConfirmed:(void (^)(void))block;
++ (void)showWithTitle:(NSString *)title message:(NSString *)message actionTitle:(NSString *)actionTitle cancelTitle:(NSString *)cancelTitle from:(UIViewController*)view ifConfirmed:(void (^)(void))block;
++ (instancetype)popupWithTitle:(NSString *)title message:(NSString *)message;
++ (instancetype)popupWithTitle:(NSString *)title message:(NSString *)message sourceView:(UIView*)view sourceRect:(CGRect)r;
+- (void)action:(NSString *)title block:(void (^)(void))block;
+- (void)addCancelAction:(void (^)(void))block;
+- (void)addActionWithTitle:(NSString *)title ifConfirmed:(NSString *)message from:(UIViewController*)view block:(void (^)(void))block;
 @end
 
 @interface UIActionSheet (BlockExtensions) <UIActionSheetDelegate>

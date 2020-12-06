@@ -387,8 +387,7 @@ NSUInteger insertTopLevelMessage(NSObject<GenericMessage> *__strong*messageArray
 
 - (void)displayErrorMessage: (NSString*)message
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Topic error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    [[iXolrAppDelegate singleton] displayErrorMessage:message title:@"Topic error"];
 }
 
 - (void)downloadMissingMessages: (NSInteger)max

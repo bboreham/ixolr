@@ -779,38 +779,21 @@
     CIXThread *thread = threadArray[section];
     CIXMessage *rootMsg = messageArray[thread->_startPosition];
     NSString *threadTitle = [thread titleInMessageArray:messageArray];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thread Actions"
-        message:[NSString stringWithFormat:@"Which action do you want to perform on this thread?"]
-        completionBlock:^(NSUInteger buttonIndex) {
-            if (buttonIndex > 0) {
-                NSString *messageStr = nil;
-                if (buttonIndex == 1)
-                    messageStr = [NSString stringWithFormat:@"Do you want to mark all messages in thread '%@' as read?", threadTitle];
-                else if (buttonIndex == 2)
-                    messageStr = [NSString stringWithFormat:@"Do you want to mark all messages in thread '%@' as unread?", threadTitle];
-                else if (buttonIndex == 3) {
-                    if (rootMsg.isIgnored)
-                        messageStr = [NSString stringWithFormat:@"Clear the ignored flag on thread '%@'?", threadTitle];
-                    else
-                        messageStr = [NSString stringWithFormat:@"Mark thread '%@' as ignored?", threadTitle];
-                }
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Confirm" message:messageStr completionBlock:^(NSUInteger button2Index) {
-                    if (button2Index == 1) {
-                        if (buttonIndex == 1)
-                            [self markThreadRead:thread status:YES];
-                        else if (buttonIndex == 2)
-                            [self markThreadRead:thread status:NO];
-                        else if (buttonIndex == 3)
-                            [self markSubthreadIgnored:rootMsg status:!rootMsg.isIgnored];
-                    }
-                }
-                    cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-                [alert2 show];
-            }
-        }
-      cancelButtonTitle:@"Cancel" otherButtonTitles:@"Mark All Read", @"Mark All Unread", rootMsg.isIgnored ? @"Clear Ignored" : @"Mark Thread Ignored", nil];
-    
-    [alert show];
+    UIAlertController * alert = [UIAlertController popupWithTitle:@"Thread Actions" message:nil sourceView:threadHeaderView sourceRect:CGRectMake(0, 0, threadHeaderView.frame.size.width, threadHeaderView.frame.size.height)];
+    UIViewController *rootVC = [iXolrAppDelegate singleton].window.rootViewController;
+
+    [alert addActionWithTitle:@"Mark All Read" ifConfirmed:[NSString stringWithFormat:@"Do you want to mark all messages in thread '%@' as read?", threadTitle] from:rootVC block:^() {
+        [self markThreadRead:thread status:YES];
+    }];
+    [alert addActionWithTitle:@"Mark All Unread" ifConfirmed:[NSString stringWithFormat:@"Do you want to mark all messages in thread '%@' as unread?", threadTitle] from:rootVC block:^() {
+        [self markThreadRead:thread status:NO];
+    }];
+    [alert addActionWithTitle:rootMsg.isIgnored ? @"Clear Ignored" : @"Mark Thread Ignored" ifConfirmed:[NSString stringWithFormat:rootMsg.isIgnored ? @"Clear the ignored flag on thread '%@'?" : @"Mark thread '%@' as ignored?", threadTitle] from:rootVC block:^() {
+        [self markSubthreadIgnored:rootMsg status:!rootMsg.isIgnored];
+    }];
+    [alert addCancelAction:^{}];
+
+    [rootVC presentViewController:alert animated:YES completion:nil];
 }
 
 @end

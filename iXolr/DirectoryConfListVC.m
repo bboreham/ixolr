@@ -9,6 +9,7 @@
 #import "DirectoryConfListVC.h"
 #import "iXolrAppDelegate.h"
 #import "DataController.h"
+#import "TableViewUtilities.h"
 
 @implementation DirectoryConfListVC
 
@@ -97,25 +98,13 @@
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CIXSubCategory *cat = _categories[indexPath.section];
     NSString *confName = [(cat.forums)[indexPath.row] valueForKey:@"Forum"];
     NSString *str = [NSString stringWithFormat:@"Do you want to join conference %@?", confName];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm Join" message:str delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Join", nil];
-	[alert show];
-}
-
-#pragma mark - Alert view delegate
-
-- (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        CIXSubCategory *cat = _categories[indexPath.section];
-        NSString *confName = [(cat.forums)[indexPath.row] valueForKey:@"Forum"];
+    [UIAlertController showWithTitle:@"Confirm Join" message:str actionTitle:@"Join" cancelTitle:@"Cancel" from:self ifConfirmed:^{
         [[iXolrAppDelegate singleton] joinConference: confName];
-    }
+    }];
 }
-
 @end

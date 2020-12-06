@@ -159,27 +159,18 @@ enum {
             [[iXolrAppDelegate singleton] purgeIfConfirmedFrom:self Rect:[aTableView rectForRowAtIndexPath:indexPath] ];
             break;
         case CompactDBSection:
-        {
-            [UIAlertView showWithTitle:@"Confirm Compaction" message:@"Please confirm you want to compact the database file?" completionBlock:^(NSUInteger buttonIndex) {
-                if (buttonIndex == 1)
-                {
-                    [[[iXolrAppDelegate singleton] dataController] VacuumStore];
-                }
-            } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Compact", nil];
-            break;
-        }
+            [UIAlertController showWithTitle:@"Confirm Compaction" message:@"Please confirm you want to compact the database file?" actionTitle:@"Compact" from:self ifConfirmed:^{
+                [[[iXolrAppDelegate singleton] dataController] VacuumStore];
+            }];
             break;
         case RefreshTopicListSection:
             [[iXolrAppDelegate singleton] refreshTopicList];
             break;
         case SyncWithCoSySection:
         {
-            [UIAlertView showWithTitle:@"Confirm Sync" message:@"Do you want to sync the unread status of all messages with CIX?" completionBlock:^(NSUInteger buttonIndex) {
-                if (buttonIndex == 1)
-                {
-                    [[iXolrAppDelegate singleton] cosySync: YES];
-                }
-            } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Sync", nil];
+            [UIAlertController showWithTitle:@"Confirm Sync" message:@"Do you want to sync the unread status of all messages with CIX?" actionTitle:@"Sync" from:self ifConfirmed:^{
+                [[iXolrAppDelegate singleton] cosySync: YES];
+            }];
             break;
         }
     }

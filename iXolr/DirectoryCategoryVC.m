@@ -91,8 +91,7 @@
     CIXCategory *cat = _categories[indexPath.section];
     // Send the http request that the new view will receive the results from.  Bit of a race condition here between setting up the view and receiving the results.
     if (![[iXolrAppDelegate singleton] requestDirectoryForCategory:cat.name]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Service Failure" message:@"CIX is unable to process this category name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        [[iXolrAppDelegate singleton] displayErrorTitle:@"Service Failure" message:@"CIX is unable to process this category name"];
         return;
     }
     // Create and push another view controller.
