@@ -15,11 +15,10 @@
 @class CIXMessage;
 @protocol GenericMessage;
 
-@interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UIWebViewDelegate, UISearchBarDelegate, SettingsViewControllerDelegate, MessageEditViewControllerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, UIToolbarDelegate, ThreadedMessageListDelegate> {
+@interface DetailViewController : UIViewController <UIWebViewDelegate, UISearchBarDelegate, SettingsViewControllerDelegate, MessageEditViewControllerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, UIToolbarDelegate, ThreadedMessageListDelegate> {
 @private
     NSMutableArray *lastVisited;
     UILabel *_toolbarTitle;
-    UIPopoverController *_activityPopover;
     BOOL buttonsVisible;
     BOOL hasAppeared;
 }

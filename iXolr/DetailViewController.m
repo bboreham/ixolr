@@ -644,11 +644,9 @@ void fixGestureRecognizers(UIView *v) {
         //activityViewController.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact ];
         
         if ([iXolrAppDelegate iPad]) {
-            _activityPopover = [[UIPopoverController alloc] initWithContentViewController:activityViewController];
-            [_activityPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-        } else {
-            [self presentViewController:activityViewController animated:YES completion:NULL];
+            activityViewController.popoverPresentationController.barButtonItem = sender;
         }
+        [self presentViewController:activityViewController animated:YES completion:NULL];
     }
 }
 

@@ -397,11 +397,6 @@
      // because we did a retain when setting ourselves as the delegate
 }
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-}
-
-
 @end
 
 // Category to allow multiple buttons to be set on left and right button bar item
