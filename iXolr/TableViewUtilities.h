@@ -58,12 +58,6 @@
 - (void)addActionWithTitle:(NSString *)title ifConfirmed:(NSString *)message from:(UIViewController*)view block:(void (^)(void))block;
 @end
 
-@interface UIActionSheet (BlockExtensions) <UIActionSheetDelegate>
-
-- (id)initWithTitle:(NSString *)title completionBlock:(void (^)(NSInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
-- (void)setCompletionBlock:(void (^)(NSInteger buttonIndex))block;
-@end
-
 @interface UIAlertController (BlockExtensions)
 + (id)alertControllerWithDate:(NSDate*)date title:(NSString *)title mode:(UIDatePickerMode)mode goBlock:(void (^)(NSDate* date))goBlock cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle;
 @end

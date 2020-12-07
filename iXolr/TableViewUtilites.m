@@ -321,41 +321,6 @@
 
 @end
 
-@implementation UIActionSheet (BlockExtensions)
-
-- (id)initWithTitle:(NSString *)title completionBlock:(void (^)(NSInteger buttonIndex))block cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
-    self = [self initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:destructiveButtonTitle otherButtonTitles:nil, nil];
-    va_list args;
-    va_start(args, otherButtonTitles);
-    int i = 0;
-    for (NSString *arg = otherButtonTitles; arg != nil; arg = va_arg(args, NSString*), ++i) {  
-        [self addButtonWithTitle:arg];
-    }
-    va_end(args);
-    if (cancelButtonTitle != nil)
-        self.cancelButtonIndex = [self addButtonWithTitle:cancelButtonTitle];
-    if (block != nil)
-        [self setCompletionBlock:block];
-    return self;
-}
-
-- (void)setCompletionBlock:(void (^)(NSInteger buttonIndex))block
-{
-    objc_setAssociatedObject(self, "blockCallback", [block copy], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    void (^block)(NSUInteger buttonIndex) = objc_getAssociatedObject(self, "blockCallback");
-    if (block == nil)
-        return; // don't understand why this is getting called twice.
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        block(buttonIndex);
-    }];
-    objc_setAssociatedObject(self, "blockCallback", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-@end
-
 @implementation UIAlertController (BlockExtensions)
 + (id)alertControllerWithDate:(NSDate*)date title:(NSString *)title mode:(UIDatePickerMode)mode goBlock:(void (^)(NSDate* date))goBlock cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle {
     NSString *spacer = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? @"\n\n\n\n\n\n\n\n" : @"\n\n\n\n\n\n\n\n\n\n";

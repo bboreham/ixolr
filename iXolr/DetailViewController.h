@@ -19,7 +19,6 @@
 @private
     NSMutableArray *lastVisited;
     UILabel *_toolbarTitle;
-    UIActionSheet *_actionSheet;
     UIPopoverController *_activityPopover;
     BOOL buttonsVisible;
     BOOL hasAppeared;

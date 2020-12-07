@@ -580,9 +580,9 @@ void fixGestureRecognizers(UIView *v) {
 
 - (IBAction)settingsButtonPressed:(id)sender {
     // currently displaying actionsheet?
-    if (_actionSheet || _activityPopover)
-        [self popdownActionSheet];
-    
+    if (self.presentedViewController != nil)
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+
     TopSettingsVC *settingsVC = [[TopSettingsVC alloc] initWithNibName:@"TopSettings" bundle:nil];
     settingsVC.delegate = self;
     // Create the navigation controller and present it modally.
@@ -601,55 +601,35 @@ void fixGestureRecognizers(UIView *v) {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) popdownActionSheet {
-    if (_actionSheet) {
-        [_actionSheet dismissWithClickedButtonIndex:-1 animated:YES];
-        _actionSheet = nil;
-    }
-    if (_activityPopover) {
-        [_activityPopover dismissPopoverAnimated:YES];
-        _activityPopover = nil;
-    }
-}
-
 -(void)popupReplyActionSheet:(id)sender withShare:(BOOL)withShare {
-    _actionSheet = [[UIActionSheet alloc] initWithTitle:@"Actions" completionBlock:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    NSInteger replyCIX=-1, replyEmail=-1, share=-1, startThread=-1;
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Actions" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    alert.popoverPresentationController.barButtonItem = sender;
+
     if (self.topic == nil)
-        _actionSheet.title = @"No actions";
+        alert.title = @"No actions";
     else {
         if (self.currentMessage != nil && !self.currentMessage.isOutboxMessage && !self.currentMessage.isPlaceholder) { // Check it's not an outbox message - no actions allowed on those
-            replyCIX = [_actionSheet addButtonWithTitle:@"Reply via CIX"];
-            replyEmail = [_actionSheet addButtonWithTitle:@"Reply via email"];
+            CIXMessage *msg = (CIXMessage*) self.currentMessage; // Can cast because we know it's not a placeholder per the above test
+            [alert action:@"Reply via CIX" block:^{
+                [self popupNewMessageEditCommentTo: msg];
+            }];
+            [alert action:@"Reply via email" block:^{
+                [self replyViaEmailTo:(CIXMessage*)msg];
+            }];
+
             if (withShare)
-                share = [_actionSheet addButtonWithTitle:@"Share..."];
+                [alert action:@"Share..." block:^{
+                    [self popupActivitySheetFrom:sender];
+                }];
+            [alert action:@"Start new thread" block:^{
+                [self popupNewMessageEditCommentTo:nil];
+            }];
         }
-        startThread = [_actionSheet addButtonWithTitle:@"Start new thread"];
     }
 
-    _actionSheet.cancelButtonIndex = [_actionSheet addButtonWithTitle:@"Cancel"];
+    [alert addCancelAction:^{}];
 
-    DetailViewController * __weak weakSelf = self;
-    [_actionSheet setCompletionBlock:^(NSInteger buttonIndex) {
-        DetailViewController *vc = weakSelf;
-        if (vc == nil)
-            return;
-        NSInteger cancelButtonIndex = vc->_actionSheet.cancelButtonIndex;
-        vc->_actionSheet = nil;
-        
-        id<GenericMessage> msg = vc.currentMessage;
-        if (buttonIndex == -1 || buttonIndex == cancelButtonIndex)
-            ;   // Do nothing
-        else if (buttonIndex == startThread)
-            [vc popupNewMessageEditCommentTo:nil];
-        else if (buttonIndex == replyCIX)
-            [vc popupNewMessageEditCommentTo:(CIXMessage*) msg];     // Can cast because we know it's not a placeholder per the above test
-        else if (buttonIndex == replyEmail)
-            [vc replyViaEmailTo:(CIXMessage*)msg];
-        else if (buttonIndex == share)
-            [vc popupActivitySheetFrom:sender];
-    }];
-    [_actionSheet showFromBarButtonItem:sender animated:YES];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)popupActivitySheetFrom:(id)sender {
@@ -674,16 +654,16 @@ void fixGestureRecognizers(UIView *v) {
 
 - (IBAction)replyButtonPressed:(id)sender {
     // currently displaying actionsheet?
-    if (_actionSheet || _activityPopover) {
-        [self popdownActionSheet];
+    if (self.presentedViewController != nil) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
         return;
     }
     [self popupReplyActionSheet:sender withShare:![iXolrAppDelegate iPad]];
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
-    if (_actionSheet || _activityPopover) {
-        [self popdownActionSheet];
+    if (self.presentedViewController != nil) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
         return;
     }
     if ([iXolrAppDelegate iPad])
@@ -703,49 +683,47 @@ void fixGestureRecognizers(UIView *v) {
 -(void)popupMessageActionSheet:(id)sender {
     if (self.currentMessage == nil)
         return;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Message Actions" completionBlock:nil
-        cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles: nil];
-    _actionSheet = actionSheet;
-    NSInteger withdraw=-1, markRead=-1, markPriority=-1, markIgnored=-1, downloadMessage=-1, cixLink=-1, backFill=-1;
-    if (self.currentMessage.isPlaceholder) {
-        downloadMessage = [actionSheet addButtonWithTitle:@"Download message"];
-        backFill = [actionSheet addButtonWithTitle:@"Back-fill thread"];
-    } else {
-        withdraw     = [actionSheet addButtonWithTitle: @"Withdraw message"];
-        markRead     = [actionSheet addButtonWithTitle: self.currentMessage.isRead ? @"Mark unread" : @"Mark read"];
-        markPriority = [actionSheet addButtonWithTitle: self.currentMessage.isInteresting ? @"Clear priority" : @"Mark priority"];
-        markIgnored  = [actionSheet addButtonWithTitle: self.currentMessage.isIgnored ? @"Clear Ignore flag" : @"Mark ignored"];
-        cixLink      = [actionSheet addButtonWithTitle: @"Copy cix: link"];
-        if ([self currentMessageOriginal].isPlaceholder)
-            backFill = [actionSheet addButtonWithTitle:@"Back-fill thread"];
-    }
-    actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
-    [actionSheet setCompletionBlock:^(NSInteger buttonIndex) {
-        self->_actionSheet = nil;
-        id<GenericMessage> msg = self.currentMessage;
-        
-        if (buttonIndex == -1 || buttonIndex == actionSheet.cancelButtonIndex)
-            ;   // Do nothing
-        else if (buttonIndex == markRead)
-            [self markMessageRead:self.currentMessage status:!self.currentMessage.isRead ];
-        else if (buttonIndex == markPriority)
-            [self.messageTableController markSubthreadPriority:(CIXMessage*)msg status:!msg.isInteresting ];
-        else if (buttonIndex == markIgnored)
-            [self.messageTableController markSubthreadIgnored:(CIXMessage*)msg status:!msg.isIgnored ];
-        else if (buttonIndex == cixLink)      // Copy CIX Link
-            [UIPasteboard generalPasteboard].string = msg.cixLink;
-        else if (buttonIndex == downloadMessage)
-            [[iXolrAppDelegate singleton] downloadMessages:@[@(msg.msgnum_int)] conf:msg.topic.conference.name topic:msg.topic.name];
-        else if (buttonIndex == backFill)
-            [[iXolrAppDelegate singleton] backfillThread:msg.msgnum_int conf:msg.topic.conference.name topic:msg.topic.name];
-        else if (buttonIndex == withdraw)
-            [[iXolrAppDelegate singleton] withdrawMessage:(CIXMessage*)msg];
-    }];
 
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Message Actions" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     if ([sender isKindOfClass:[UIBarButtonItem class]])
-        [actionSheet showFromBarButtonItem:sender animated:YES];
-    else
-        [actionSheet showFromRect:[sender frame] inView:sender animated:YES];
+        alert.popoverPresentationController.barButtonItem = sender;
+    else {
+        alert.popoverPresentationController.sourceView = sender;
+        alert.popoverPresentationController.sourceRect = [sender frame];
+    }
+
+    if (self.currentMessage.isPlaceholder) {
+        id<GenericMessage> msg = self.currentMessage;
+        [alert action:@"Download message" block:^{
+            [[iXolrAppDelegate singleton] downloadMessages:@[@(msg.msgnum_int)] conf:msg.topic.conference.name topic:msg.topic.name];
+        }];
+    } else {
+        CIXMessage *msg = (CIXMessage*) self.currentMessage; // not a placeholder per the above test
+        [alert action:@"Withdraw message" block:^{
+            [[iXolrAppDelegate singleton] withdrawMessage:msg];
+        }];
+        [alert action: msg.isRead ? @"Mark unread" : @"Mark read" block:^{
+            [self markMessageRead:msg status:!msg.isRead ];
+        }];
+        [alert action: msg.isInteresting ? @"Clear priority" : @"Mark priority" block:^{
+            [self.messageTableController markSubthreadPriority:msg status:!msg.isInteresting ];
+        }];
+        [alert action: msg.isIgnored ? @"Clear Ignore flag" : @"Mark ignored" block:^{
+            [self.messageTableController markSubthreadIgnored:msg status:!msg.isIgnored ];
+        }];
+        [alert action:@"Copy cix: link" block:^{
+            [UIPasteboard generalPasteboard].string = msg.cixLink;
+        }];
+    }
+    if (self.currentMessage.isPlaceholder || [self currentMessageOriginal].isPlaceholder) {
+        id<GenericMessage> msg = self.currentMessage;
+        [alert action:@"Back-fill thread" block:^{
+            [[iXolrAppDelegate singleton] backfillThread:msg.msgnum_int conf:msg.topic.conference.name topic:msg.topic.name];
+        }];
+    }
+    [alert addCancelAction:^{}];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 // Callback from message edit window
@@ -958,8 +936,8 @@ void fixGestureRecognizers(UIView *v) {
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     // currently displaying actionsheet?
-    if (_actionSheet || _activityPopover)
-        [self popdownActionSheet];
+    if (self.presentedViewController != nil)
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 
     if ([iXolrAppDelegate iPad]) {
         searchBar.placeholder = @"Search text";
