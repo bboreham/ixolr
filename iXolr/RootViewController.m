@@ -91,6 +91,8 @@ enum SectionEnum {
 
 - (BOOL)updateCountsOnConference:(Conference*)conf andGlow:(BOOL)glow
 {
+    if (self.tableView.window == nil) // nothing to do if not on screen
+        return;
     NSUInteger row = [self.conferences indexOfObject:conf];
     if (row != NSNotFound)
     {

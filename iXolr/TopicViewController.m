@@ -101,6 +101,8 @@
 
 - (BOOL)updateCountsOnTopic:(Topic*)topic andGlow:(BOOL)glow
 {
+    if (self.tableView.window == nil) // nothing to do if not on screen
+        return;
     NSUInteger row = [topicsArray indexOfObject:topic];
     if (row != NSNotFound)
     {
