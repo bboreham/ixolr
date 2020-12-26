@@ -99,7 +99,7 @@
     [super viewWillAppear: animated];
 }
 
-- (BOOL)updateCountsOnTopic:(Topic*)topic andGlow:(BOOL)glow
+- (void)updateCountsOnTopic:(Topic*)topic andGlow:(BOOL)glow
 {
     if (self.tableView.window == nil) // nothing to do if not on screen
         return;
@@ -111,10 +111,8 @@
         [self configureCell:cell atIndexPath:path];
         if (glow)
             [cell.detailTextLabel pulseGlow];
-        return YES;
     }
-    else
-        return NO;
+    // @TODO 'else': If I knew which order the topic list is in, I could add this new topic at the right place
 }
 
 // Notification has arrived of new messages in one topic
@@ -122,8 +120,7 @@
 {
     Topic *topic = [param object];
     if (topic.conference == self.conference)
-        if (![self updateCountsOnTopic:topic andGlow:YES])
-            return;   // @TODO: If I knew which order the topic list is in, I could add this new topic at the right place
+        [self updateCountsOnTopic:topic andGlow:YES];
 }
 
 // Notification has arrived of new messages in the database

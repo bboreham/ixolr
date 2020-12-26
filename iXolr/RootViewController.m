@@ -89,7 +89,7 @@ enum SectionEnum {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePostingMessage:) name:@"postingMessage" object:nil];
 }
 
-- (BOOL)updateCountsOnConference:(Conference*)conf andGlow:(BOOL)glow
+- (void)updateCountsOnConference:(Conference*)conf andGlow:(BOOL)glow
 {
     if (self.tableView.window == nil) // nothing to do if not on screen
         return;
@@ -101,10 +101,9 @@ enum SectionEnum {
         [self configureCell:cell inView:self.tableView atIndexPath:path];
         if (glow)
             [cell.detailTextLabel pulseGlow];
-        return YES;
     }
     else
-        return NO;
+        [self addOneConference:conf];
 }
 
 - (void)updateTotalUnreadDisplay
@@ -125,8 +124,7 @@ enum SectionEnum {
 - (void)handleChangedMessagesInTopic:(NSNotification*)param
 {
     Topic *topic = [param object];
-    if (![self updateCountsOnConference:topic.conference andGlow:YES])
-        [self addOneConference:topic.conference];
+    [self updateCountsOnConference:topic.conference andGlow:YES];
 }
 
 // Notification has arrived of new messages in the database; update the status text
@@ -143,16 +141,14 @@ enum SectionEnum {
 // Notification has arrived that something changed about a conference: either new topics were added, or it was resigned
 - (void)handleChangedConference:(NSNotification*)param
 {
-    if (![self updateCountsOnConference:[param object] andGlow:NO])
-        [self addOneConference:[param object]];
+    [self updateCountsOnConference:[param object] andGlow:NO];
 }
 
 // Notification has arrived that the read-count of a topic has changed.
 - (void)handleMessageReadCountChanged:(NSNotification*)param
 {
     Topic *topic = [param object];
-    if (![self updateCountsOnConference:topic.conference andGlow:NO])
-        [self addOneConference:topic.conference];
+    [self updateCountsOnConference:topic.conference andGlow:NO];
 }
 
 // If showing something like the Outbox, get rid of it and show a TopicViewController with the specified Topic
