@@ -108,7 +108,14 @@
 	[request setTimeoutInterval:timeoutSecs];
 	
 	[request setHTTPMethod:httpMethod];
-	[request prepare];
+    @try {
+        [request prepare];
+    } @catch (NSException *exception) {
+        NSString *msg = [NSString stringWithFormat:@"Exception preparing request: %@", exception.reason];
+        NSLog(@"%@ %@", msg, [exception callStackSymbols]);
+        [self unConnectedDidFailWithError:[NSError errorWithDomain:msg code:501 userInfo:nil]];
+        return;
+    }
     // Need to set body after 'prepare' to avoid crash in OAuth lib
 	if (body) {
 		[request setHTTPBody:body];
