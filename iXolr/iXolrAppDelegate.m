@@ -358,10 +358,7 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     
     if ([self.window.rootViewController isKindOfClass:[UISplitViewController class]])
         ((UISplitViewController*)self.window.rootViewController).delegate = self;
-    
-    // Add the split view controller's view to the window and display.
-    [self.window makeKeyAndVisible];
-    
+
 	_CIXhostReach = [Reachability reachabilityWithHostName: @"api.cixonline.com"];
 	[_CIXhostReach startNotifier];
     _CIXRequestManager = [[CixRequestManager alloc] init];
