@@ -124,8 +124,8 @@
     if (params)
     {
         NSString *oldURL = [[request URL] absoluteString];
-        NSString *newURL = [oldURL stringByAppendingFormat:@"&%@", [params stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        [request setURL:[NSURL URLWithString:newURL]];
+        NSString *encodedParams = [params stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@&%@", oldURL, encodedParams]]];
     }
 	
 	data = [[NSMutableData alloc] initWithCapacity:1024];
@@ -158,8 +158,8 @@ char *urlRoot = "https://api.cixonline.com/v2.0/cix.svc";
         NSLog(@"CIXrequest makeGenericRequest: disallowed characters in '%@' - request ignored", request);
         return NO;
     }
-    NSString *urlStringBase = [NSString stringWithFormat:@"%s/%@.json", urlRoot, request];
-    NSString *urlString = [urlStringBase stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *encodedRequest = [request stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
+    NSString *urlString = [NSString stringWithFormat:@"%s/%@.json", urlRoot, encodedRequest];
     [self makeRequest: urlString params:nil httpMethod:@"GET" body:nil consumer:consumer auth:authStr timeout:standardTimeout()];
     return YES;
 }
