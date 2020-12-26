@@ -435,8 +435,8 @@ void fixGestureRecognizers(UIView *v) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleThreadSettingsChanged:) name:@"threadSettingsChanged" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMessageReadCountChanged:) name:@"messageReadCountChanged" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userTextSizeDidChange) name:UIContentSizeCategoryDidChangeNotification object:nil];
-    [[iXolrAppDelegate singleton].dataController addObserver:self forKeyPath:@"countOfUnread" options:NSKeyValueObservingOptionInitial context:nil];
-    [[iXolrAppDelegate singleton].dataController addObserver:self forKeyPath:@"countOfInteresting" options:NSKeyValueObservingOptionInitial context:nil];
+    [[iXolrAppDelegate singleton].dataController addObserver:self forKeyPath:@"countOfUnread" options:0 context:nil];
+    [[iXolrAppDelegate singleton].dataController addObserver:self forKeyPath:@"countOfInteresting" options:0 context:nil];
     [super viewDidLoad];
 
     if ([iXolrAppDelegate settings].showMessageToolbar) {
