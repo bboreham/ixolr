@@ -83,18 +83,16 @@
     }
     
     CIXSubCategory *cat = _categories[indexPath.section];
-    cell.textLabel.text = [(cat.forums)[indexPath.row] valueForKey:@"Forum"];
-    cell.detailTextLabel.text = [(cat.forums)[indexPath.row] valueForKey:@"Title"];
-    NSInteger numRecent = [[(cat.forums)[indexPath.row] valueForKey:@"Recent"] integerValue];
+    NSDictionary *fields = (cat.forums)[indexPath.row];
+    NSInteger numRecent = [fields[@"Recent"] integerValue];
+    NSString *activityLevel = @"  💤";
     if (numRecent > 100)
-        cell.imageView.image = [UIImage imageNamed:@"bright_sun.png"];
+        activityLevel = @"  🔥🔥🔥";
     else if (numRecent > 10)
-        cell.imageView.image = [UIImage imageNamed:@"dim_sun.png"];
-    else if (numRecent > 0)
-        cell.imageView.image = [UIImage imageNamed:@"moon.png"];
-    else
-        cell.imageView.image = [UIImage imageNamed:@"clear.png"];
-                                
+        activityLevel = @"  🔥";
+    cell.textLabel.text = [fields[@"Forum"] stringByAppendingString:activityLevel];
+    cell.detailTextLabel.text = fields[@"Title"];
+
     return cell;
 }
 

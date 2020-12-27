@@ -112,10 +112,6 @@
 		938393921527872800E6BC53 /* ixolr_icon_144b.png in Resources */ = {isa = PBXBuildFile; fileRef = 938393911527872800E6BC53 /* ixolr_icon_144b.png */; };
 		9387F1F3149E59EA00EC3253 /* DirectoryConfListVC.h in Resources */ = {isa = PBXBuildFile; fileRef = 9387F1F2149E59EA00EC3253 /* DirectoryConfListVC.h */; };
 		9387F1F5149E5A0F00EC3253 /* DirectoryConfListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387F1F4149E5A0F00EC3253 /* DirectoryConfListVC.m */; };
-		9387F209149EB21B00EC3253 /* bright_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 9387F1F6149EB21B00EC3253 /* bright_sun.png */; };
-		9387F20A149EB21B00EC3253 /* dim_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 9387F1F7149EB21B00EC3253 /* dim_sun.png */; };
-		9387F213149EB21B00EC3253 /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9387F208149EB21B00EC3253 /* moon.png */; };
-		9387F215149EB48400EC3253 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 9387F214149EB48400EC3253 /* clear.png */; };
 		9396CCAE14D46A38004FBEBD /* gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9396CCAD14D46A38004FBEBD /* gear2.png */; };
 		9396CCB214D48F17004FBEBD /* gear2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9396CCB114D48F17004FBEBD /* gear2@2x.png */; };
 		93A21F471F6FC26A00008A63 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AEA8041F6F129600AF602A /* libCocoaLumberjack.a */; };
@@ -416,10 +412,6 @@
 		938393911527872800E6BC53 /* ixolr_icon_144b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ixolr_icon_144b.png; path = ../ixolr_icon_144b.png; sourceTree = "<group>"; };
 		9387F1F2149E59EA00EC3253 /* DirectoryConfListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryConfListVC.h; sourceTree = "<group>"; };
 		9387F1F4149E5A0F00EC3253 /* DirectoryConfListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryConfListVC.m; sourceTree = "<group>"; };
-		9387F1F6149EB21B00EC3253 /* bright_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bright_sun.png; sourceTree = "<group>"; };
-		9387F1F7149EB21B00EC3253 /* dim_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dim_sun.png; sourceTree = "<group>"; };
-		9387F208149EB21B00EC3253 /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon.png; sourceTree = "<group>"; };
-		9387F214149EB48400EC3253 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		9387F21614A528C000EC3253 /* iXolr 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iXolr 3.xcdatamodel"; sourceTree = "<group>"; };
 		9396CCAD14D46A38004FBEBD /* gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear2.png; sourceTree = "<group>"; };
 		9396CCB114D48F17004FBEBD /* gear2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear2@2x.png"; sourceTree = "<group>"; };
@@ -651,10 +643,6 @@
 				934FA6711668C6E60014ADE4 /* lock.png */,
 				934FA674166A34610014ADE4 /* lock-outline.png */,
 				932719AA14BBA887007D1A72 /* Star.png */,
-				9387F214149EB48400EC3253 /* clear.png */,
-				9387F1F6149EB21B00EC3253 /* bright_sun.png */,
-				9387F1F7149EB21B00EC3253 /* dim_sun.png */,
-				9387F208149EB21B00EC3253 /* moon.png */,
 				930450E017E656DC00A9A427 /* OpeningScreen7-568h@2x.png */,
 				930450DF17E656C000A9A427 /* OpeningScreen7@2x.png */,
 				930450E417E66DBA00A9A427 /* OpeningScreen7-Landscape~ipad.png */,
@@ -1022,11 +1010,7 @@
 				44D71BC8148442300036FB52 /* TopSettings.xib in Resources */,
 				44D71BCD1486DC470036FB52 /* SignatureView.xib in Resources */,
 				9387F1F3149E59EA00EC3253 /* DirectoryConfListVC.h in Resources */,
-				9387F209149EB21B00EC3253 /* bright_sun.png in Resources */,
-				9387F20A149EB21B00EC3253 /* dim_sun.png in Resources */,
 				93F8DD521BB70298003904E3 /* Launch Screen.storyboard in Resources */,
-				9387F213149EB21B00EC3253 /* moon.png in Resources */,
-				9387F215149EB48400EC3253 /* clear.png in Resources */,
 				932719AB14BBA887007D1A72 /* Star.png in Resources */,
 				932719B114C33833007D1A72 /* outbox2.png in Resources */,
 				93271B3C14D438C9007D1A72 /* Icon.png in Resources */,
