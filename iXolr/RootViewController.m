@@ -91,15 +91,13 @@ enum SectionEnum {
 
 - (void)updateCountsOnConference:(Conference*)conf andGlow:(BOOL)glow
 {
-    if (self.tableView.window == nil) // nothing to do if not on screen
-        return;
     NSUInteger row = [self.conferences indexOfObject:conf];
     if (row != NSNotFound)
     {
         NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:ConferencesSection];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
         [self configureCell:cell inView:self.tableView atIndexPath:path];
-        if (glow)
+        if (glow && self.tableView.window != nil)
             [cell.detailTextLabel pulseGlow];
     }
     else

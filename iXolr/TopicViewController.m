@@ -101,15 +101,13 @@
 
 - (void)updateCountsOnTopic:(Topic*)topic andGlow:(BOOL)glow
 {
-    if (self.tableView.window == nil) // nothing to do if not on screen
-        return;
     NSUInteger row = [topicsArray indexOfObject:topic];
     if (row != NSNotFound)
     {
         NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:0];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
         [self configureCell:cell atIndexPath:path];
-        if (glow)
+        if (glow && self.tableView.window != nil)
             [cell.detailTextLabel pulseGlow];
     }
     // @TODO 'else': If I knew which order the topic list is in, I could add this new topic at the right place

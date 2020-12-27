@@ -203,10 +203,7 @@
 @implementation UITableView (iXolrHelpers)
 - (void) reloadSection:(NSInteger)section
 {
-    if (self.window == nil) { // nothing to do if not on screen
-        return;
-    }
-    if (![iXolrAppDelegate settings].animationsOn)
+    if (self.window == nil || ![iXolrAppDelegate settings].animationsOn)
         [self reloadData];
     else
         [self reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
@@ -214,12 +211,9 @@
 
 - (void) updateWithAdded:(NSArray *)rowsAdded andDeleted:(NSArray *)rowsDeleted inSection:(NSInteger)section
 {
-    if (self.window == nil) { // nothing to do if not on screen
-        return;
-    }
     // If the entire section appeared or disappeared (rows went from 0 to N or N to 0), reload the whole section so the section header is re-fetched
     NSUInteger numRowsNow = [self.dataSource tableView:self numberOfRowsInSection:section];
-    if (![iXolrAppDelegate settings].animationsOn)
+    if (self.window == nil || ![iXolrAppDelegate settings].animationsOn)
         [self reloadData];
     else if (numRowsNow == 0 || numRowsNow == [rowsAdded count] || rowsAdded == nil)
         [self reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationBottom];
