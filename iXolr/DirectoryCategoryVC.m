@@ -36,10 +36,6 @@
     searchBar.placeholder = @"Search the entire directory";
     self.tableView.tableHeaderView = searchBar;    
 
-    // Tweak heights: we will actually draw the section footer inside the row
-    self.tableView.sectionHeaderHeight = 4;
-    self.tableView.sectionFooterHeight = 6;
-
     self.title = @"Categories";
     [[iXolrAppDelegate singleton] requestDirectoryCategories];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDirectoryCategories:) name:@"directoryCategories" object:nil];
@@ -54,20 +50,9 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [_categories count];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    CIXCategory *cat = _categories[section];
-    return [cat.subCategories componentsJoinedByString:@", "];
+    return [_categories count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,11 +61,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    CIXCategory *cat = _categories[indexPath.section];
+    CIXCategory *cat = _categories[indexPath.row];
     cell.textLabel.text = cat.name;
+    cell.detailTextLabel.text = [cat.subCategories componentsJoinedByString:@", "];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
@@ -90,7 +76,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CIXCategory *cat = _categories[indexPath.section];
+    CIXCategory *cat = _categories[indexPath.row];
     // Send the http request that the new view will receive the results from.  Bit of a race condition here between setting up the view and receiving the results.
     if (![[iXolrAppDelegate singleton] requestDirectoryForCategory:cat.name]) {
         [[iXolrAppDelegate singleton] displayErrorTitle:@"Service Failure" message:@"CIX is unable to process this category name"];
