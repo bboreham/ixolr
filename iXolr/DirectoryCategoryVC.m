@@ -35,8 +35,10 @@
     searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     searchBar.placeholder = @"Search the entire directory";
     self.tableView.tableHeaderView = searchBar;    
+
+    // Tweak heights: we will actually draw the section footer inside the row
     self.tableView.sectionHeaderHeight = 4;
-    self.tableView.sectionFooterHeight = 2;
+    self.tableView.sectionFooterHeight = 6;
 
     self.title = @"Categories";
     [[iXolrAppDelegate singleton] requestDirectoryCategories];
