@@ -602,7 +602,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     }
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     NSLog(@"handleOpenURL: %@", url);
     if ([[url scheme] isEqualToString:@"cix"]) {
         [self gotoCIXurl:url];
