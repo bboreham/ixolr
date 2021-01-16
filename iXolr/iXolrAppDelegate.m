@@ -1264,42 +1264,6 @@ NSString* const oauthServiceName = @"Callback_OAuth";
 
 #pragma mark - Split view support
 
-// New callback in iOS 8 - return YES to indicate that the secondary controller should be discarded.
-- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if (self.detailViewController == nil || self.detailViewController.topic == nil) {
-        self.detailViewController = nil; // don't want this pointer hanging around after the object is discarded
-        return YES;
-    }
-    UINavigationController *pnc = (UINavigationController*)primaryViewController;
-    UIViewController *topView = pnc.topViewController;
-    // If primary view is on root then create an intervening topic view controller
-    if ([topView isKindOfClass:[RootViewController class]]) {
-        UIViewController *topicView = [(RootViewController*)topView createTopicViewController:[self.dataController conferenceWithName:self.currentConferenceName]];
-        [pnc pushViewController:topicView animated:NO];
-    }
-    return NO;
-}
-
-- (UIViewController *)splitViewController:(UISplitViewController *)splitViewController separateSecondaryViewControllerFromPrimaryViewController:(UIViewController *)primaryViewController {
-    UINavigationController *pnc = (UINavigationController*)primaryViewController;
-    UIViewController *topView = pnc.topViewController;
-    if ([topView isKindOfClass:[UINavigationController class]]) {
-        [pnc popViewControllerAnimated: false];
-    } else {
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        topView = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
-        self.detailViewController = (DetailViewController*)[(UINavigationController*)topView topViewController];
-        [self gotoSavedLocation];
-    }
-    return topView;
-}
-
-- (NSString*)totalUnreadDisplay
-{
-    NSInteger totalUnread = [iXolrAppDelegate singleton].dataController.countOfUnread;
-    return [NSString stringWithFormat:@"CIX (%ld)", (long)totalUnread];
-}
-
 - (void)splitViewController:(UISplitViewController *)svc
     willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode {
 
