@@ -621,10 +621,10 @@ void fixGestureRecognizers(UIView *v) {
                 [alert action:@"Share..." block:^{
                     [self popupActivitySheetFrom:sender];
                 }];
-            [alert action:@"Start new thread" block:^{
-                [self popupNewMessageEditCommentTo:nil];
-            }];
         }
+        [alert action:@"Start new thread" block:^{
+            [self popupNewMessageEditCommentTo:nil];
+        }];
     }
 
     [alert addCancelAction:^{}];
