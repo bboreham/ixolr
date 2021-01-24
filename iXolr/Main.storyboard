@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,10 +33,6 @@
         <scene sceneID="yUG-lL-AsK">
             <objects>
                 <viewController restorationIdentifier="detailView" title="Detail" id="JEX-9P-axG" customClass="DetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
-                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
-                    </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Fh4-UT-s3E">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -444,11 +441,12 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="RCS-Gs-TKH"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="oLa-3O-J0m" secondAttribute="trailing" id="cdf-p4-b8y"/>
-                            <constraint firstItem="oLa-3O-J0m" firstAttribute="leading" secondItem="Fh4-UT-s3E" secondAttribute="leading" id="fuc-er-fAd"/>
+                            <constraint firstItem="RCS-Gs-TKH" firstAttribute="trailing" secondItem="oLa-3O-J0m" secondAttribute="trailing" id="cdf-p4-b8y"/>
+                            <constraint firstItem="oLa-3O-J0m" firstAttribute="leading" secondItem="RCS-Gs-TKH" secondAttribute="leading" id="fuc-er-fAd"/>
                             <constraint firstAttribute="bottom" secondItem="oLa-3O-J0m" secondAttribute="bottom" id="nJj-G3-23b"/>
-                            <constraint firstItem="oLa-3O-J0m" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="rTn-x2-hb8"/>
+                            <constraint firstItem="oLa-3O-J0m" firstAttribute="top" secondItem="RCS-Gs-TKH" secondAttribute="top" id="rTn-x2-hb8"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -560,6 +558,7 @@
                             </connections>
                         </searchBar>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="jkN-3N-rin"/>
                 </stackView>
             </objects>
             <point key="canvasLocation" x="3162" y="-298"/>
@@ -929,7 +928,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nxz-nL-c5R"/>
+        <segue reference="Cxl-cG-Kvu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="File_edit.png" width="64" height="64"/>
