@@ -1267,8 +1267,11 @@ NSString* const oauthServiceName = @"Callback_OAuth";
 - (void)splitViewController:(UISplitViewController *)svc
     willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode {
 
+    UINavigationController *nc = svc.viewControllers.lastObject;
     if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
-        [svc.viewControllers[1] topViewController].navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
+        nc.topViewController.navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
+    } else {
+        nc.topViewController.navigationItem.leftBarButtonItem = nil;
     }
 }
 @end
