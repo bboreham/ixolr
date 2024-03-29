@@ -126,6 +126,7 @@
 
 - (void)serviceTicket:(OAServiceTicket*)ticket didFailWithError:(NSError*)err {
     NSLog(@"Authorization failed: %@", [err localizedDescription]);
+    NSLog(@"Authorization failed detail: %@", [err userInfo]);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginStatus" object:err];
 }
