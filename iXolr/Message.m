@@ -196,11 +196,19 @@ typedef enum {
 
 - (NSString *)textAsHTMLwithSize: (float)size reflow: (BOOL)reflow forWidth: (float)width inlineImages: (BOOL)inlineImages
 {
-    UIFont *font = (size == 0) ? [UIFont preferredFontForTextStyle:UIFontTextStyleBody] : [UIFont fontWithName:@"helvetica" size:size];
-    if (size == 0)
-        size = font.pointSize;
+    UIFont *font;
+    NSString *fontString;
+    if (size == 0) {
+        font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        fontString = @"font: -apple-system-body";
+    } else {
+        font = [UIFont fontWithName:@"helvetica" size:size];
+        fontString = [NSString stringWithFormat:@"font.familyName; font-family: \"%@\"; font-size: %.1f", font.familyName, font.pointSize];
+    }
     NSString *headStr =
         [NSString stringWithFormat:@"<html> <head> \n"
+         "<meta charset=\"UTF-8\"> "
+         "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1\"> "
          "<style type=\"text/css\"> "
          ":root {color-scheme: light dark; "
          "  --text-color: black; "
@@ -214,12 +222,12 @@ typedef enum {
          "  --link-color: #4488FF; "
          "  }"
          "} "
-         "body {font-family: \"%@\"; font-size: %f; color: var(--text-color); } "
+         "body {%@; color: var(--text-color); } "
          ".quote { color: var(--quote-color); } "
          "a { color: var(--link-color); } "
          ".inlineimage {max-width: %.0fpx;} "
          "</style> \n"
-         "</head> \n", font.familyName, size, width-10];
+         "</head> \n", fontString, width-10];
 
     if (width < 20) // unreasonably small - work round it
         width = 240;
