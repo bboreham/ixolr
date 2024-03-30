@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "TopSettingsVC.h"
 #import "MessageEditViewController.h"
 #import "ThreadedMessageListVC.h"
@@ -15,7 +16,7 @@
 @class CIXMessage;
 @protocol GenericMessage;
 
-@interface DetailViewController : UIViewController <UIWebViewDelegate, UISearchBarDelegate, SettingsViewControllerDelegate, MessageEditViewControllerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, UIToolbarDelegate, ThreadedMessageListDelegate> {
+@interface DetailViewController : UIViewController <WKNavigationDelegate, UISearchBarDelegate, SettingsViewControllerDelegate, MessageEditViewControllerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, MFMailComposeViewControllerDelegate, UIToolbarDelegate, ThreadedMessageListDelegate> {
 @private
     NSMutableArray *lastVisited;
     UILabel *_toolbarTitle;
@@ -29,7 +30,7 @@
 @property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, strong) Topic *topic;
 @property (nonatomic, strong) NSObject<GenericMessage> *currentMessage;
-@property (nonatomic, strong) IBOutlet UIWebView *textWebView;
+@property (nonatomic, strong) IBOutlet WKWebView *textWebView;
 @property (nonatomic, strong) IBOutlet UITableView *messageTableView;
 @property (nonatomic, strong) IBOutlet UILabel *toolbarTitle;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
