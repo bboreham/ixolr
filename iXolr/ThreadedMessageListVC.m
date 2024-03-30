@@ -261,6 +261,9 @@
 {
     self.messageTableView.rowHeight = [self messageTableRowHeight];
     self.messageTableView.sectionHeaderHeight = _threadHeadersVisibleInThisTopic ? self.messageTableView.rowHeight : 0;
+    if (@available(iOS 15.0, *)) {
+        self.messageTableView.sectionHeaderTopPadding = 0;
+    }
 }
 
 #pragma mark - Message and Thread flags
