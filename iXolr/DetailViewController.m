@@ -280,25 +280,6 @@
         self.pullDownMessageLabel.text = @"";
 }
 
-// Work round bug in iOS 9 where UIWebView internal class UIWebBrowserView gets an ever-increasing list of _UITextSelectionForceGesture
-// Since mentioning an internal class will get the app rejected from the App Store, recurse over overy subview
-// and blindly truncate any view with an excessive list.
-void fixGestureRecognizers(UIView *v) {
-    const int maxRecognizers=12;
-    if (v.gestureRecognizers.count > maxRecognizers) {
-        //NSLog(@"%@: %d", v.class, v.gestureRecognizers.count);
-        //for (UIGestureRecognizer* g in v.gestureRecognizers)
-        //    NSLog(@"%@", g);
-        NSMutableArray* a = [NSMutableArray arrayWithCapacity:maxRecognizers];
-        for (int i = 0; i < maxRecognizers; ++i)
-            a[i] = v.gestureRecognizers[i];
-        v.gestureRecognizers = a;
-    }
-    for (UIView* c in v.subviews) {
-        fixGestureRecognizers(c);
-    }
-}
-
 // Set up the detail view to show the given message, and remember where we've been so we can go back
 - (void)showMessageDetail:(NSObject<GenericMessage>*)message movingBack:(BOOL)back
 {
@@ -321,7 +302,6 @@ void fixGestureRecognizers(UIView *v) {
     {
         self.headerLabel.text = message.headerLine;
         [self.textWebView loadHTMLString: [self getHTMLforMessage:message] baseURL:nil];
-        fixGestureRecognizers(self.textWebView);
         [self performSelector:@selector(flashScrollbarsIfNecessary) withObject:nil afterDelay:0.1]; // do this after display has recalculated
         [self setUpPulldownView: [self currentMessageOriginal]];
         [message addObserver:self forKeyPath:@"text" options:0 context:nil];
@@ -470,7 +450,7 @@ void fixGestureRecognizers(UIView *v) {
     
     self.textWebView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
     self.textWebView.scrollView.scrollsToTop = NO;  // Leave message list as the sole scrollview that will scroll to top on tap on status bar
-    self.textWebView.delegate = self;
+    self.textWebView.navigationDelegate = self;
     self.textWebView.allowsLinkPreview = YES;
     lastVisited = [[NSMutableArray alloc] initWithCapacity:10];
 
@@ -486,15 +466,15 @@ void fixGestureRecognizers(UIView *v) {
 
 #pragma mark - Web View Delegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
     // Redirect http and mail links to Safari and Mail
-    if (navigationType == UIWebViewNavigationTypeLinkClicked)
-    {
-        [[UIApplication sharedApplication] openURL:[request URL]];
-        return NO;
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        [[UIApplication sharedApplication] openURL: navigationAction.request.URL];
+        return;
     }
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 #pragma mark - Memory management
