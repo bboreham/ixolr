@@ -83,14 +83,14 @@
 // Restore UI state
 - (void) decodeRestorableStateWithCoder:(NSCoder *)coder {
     [super decodeRestorableStateWithCoder:coder];
-    NSString *msgLink = [coder decodeObjectForKey:@"message"];
+    NSString *msgLink = [coder decodeObjectOfClass:[NSString class] forKey:@"message"];
     self.message = [[iXolrAppDelegate singleton] messageForCIXurl:msgLink];
     self.title = [message summary];
-    msgLink = [coder decodeObjectForKey:@"commentedToMessage"];
+    msgLink = [coder decodeObjectOfClass:[NSString class] forKey:@"commentedToMessage"];
     self.commentedToMessage = [[iXolrAppDelegate singleton] messageForCIXurl:msgLink];
     delegate = [coder decodeObjectForKey:@"delegate"];
     self.messageTextView.delegate = [coder decodeObjectForKey:@"textViewDelegate"];
-    self.messageTextView.text = [coder decodeObjectForKey:@"text"];
+    self.messageTextView.text = [coder decodeObjectOfClass:[NSString class] forKey:@"text"];
 }
 
 
