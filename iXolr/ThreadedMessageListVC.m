@@ -349,7 +349,12 @@
 }
 
 - (void) decodeRestorableStateWithCoder:(NSCoder *)coder {
-    NSArray *openThreads = [coder decodeObjectForKey:@"tableOpenThreads"];
+    NSArray *openThreads;
+    if (@available(iOS 14.0, *)) {
+        openThreads = [coder decodeArrayOfObjectsOfClass:[NSNumber class] forKey:@"tableOpenThreads"];
+    } else {
+        openThreads = [coder decodeObjectForKey:@"tableOpenThreads"];
+    }
     if (openThreads != nil) {
         for (NSNumber *num in openThreads)
             [self threadForRootMessageNumber: num.intValue].isExpanded = YES;

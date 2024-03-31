@@ -120,14 +120,14 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     [[NSUserDefaults standardUserDefaults] setObject:[_pendingUnstar     allObjects] forKey:@"pendingUnstar"];
 }
 
-- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+- (BOOL)application:(UIApplication *)application shouldSaveSecureApplicationState:(NSCoder *)coder
 {
     [coder encodeInt:8 forKey:@"iXolrEncodingVersion"];
     [coder encodeInt:[iXolrAppDelegate iPad]+3 forKey:@"iXolrIPadVersion"];
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+- (BOOL)application:(UIApplication *)application shouldRestoreSecureApplicationState:(NSCoder *)coder
 {
     //int iXolrEncodingVersion = [coder decodeIntForKey:@"iXolrEncodingVersion"]; not used for now
     int iXolrIPadVersion = [coder decodeIntForKey:@"iXolrIPadVersion"];
