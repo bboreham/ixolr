@@ -198,6 +198,7 @@
         }
         threadArray = newThreadsFound;
         messageArray = newMessages;
+
         if (![iXolrAppDelegate settings].animationsOn)
             [self.messageTableView reloadData];
         else {

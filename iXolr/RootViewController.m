@@ -94,11 +94,13 @@ enum SectionEnum {
     NSUInteger row = [self.conferences indexOfObject:conf];
     if (row != NSNotFound)
     {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:ConferencesSection];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-        [self configureCell:cell inView:self.tableView atIndexPath:path];
-        if (glow && self.tableView.window != nil)
-            [cell.detailTextLabel pulseGlow];
+        if (self.isViewLoaded) {
+            NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:ConferencesSection];
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+            [self configureCell:cell inView:self.tableView atIndexPath:path];
+            if (glow && self.tableView.window != nil)
+                [cell.detailTextLabel pulseGlow];
+        }
     }
     else
         [self addOneConference:conf];
