@@ -919,6 +919,7 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
             [topic setCachedUnreadCount:unreadcount];
             [topic setCachedInterestingCount:sqlite3_column_int(count_statement, 3)];
         }
+        sqlite3_finalize(count_statement);
         }
     }
     sqlite3_close(database);
