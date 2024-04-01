@@ -394,7 +394,8 @@
 - (void)positionHeaderAtYCoord: (CGFloat)y
 {
     self.messageTableViewHeight.constant = y;
-    [self.view layoutIfNeeded];
+    if (hasAppeared)
+        [self.view layoutIfNeeded];
 }
 
 // Remove action button on iPhone - it doesn't fit
