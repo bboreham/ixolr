@@ -543,7 +543,7 @@ void logMemUsage(void) {
 }
 
 // Not really a username, but this is the slot we store it under in the keychain
-static NSString* oauthUserName()
+static NSString* oauthUserName(void)
 {
     return [iXolrAppDelegate iPad] ? @"cix_oauth_data" : @"cix_oauth_dataM";
 }

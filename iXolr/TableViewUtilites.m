@@ -427,7 +427,7 @@
 
 #pragma mark Color helper functions
 
-UIColor* basicTextColor() {
+UIColor* basicTextColor(void) {
     if (@available(iOS 13.0, *)) {
         return [UIColor labelColor];
     } else {
@@ -435,7 +435,7 @@ UIColor* basicTextColor() {
     }
 }
 
-UIColor* grayTextColor() {
+UIColor* grayTextColor(void) {
     if (@available(iOS 13.0, *)) {
         return [UIColor tertiaryLabelColor];
     } else {
@@ -443,7 +443,7 @@ UIColor* grayTextColor() {
     }
 }
 
-UIColor* authorColor() {
+UIColor* authorColor(void) {
     if (@available(iOS 11.0, *)) {
         return [UIColor colorNamed:@"messageAuthorColor"];
     } else {
@@ -451,7 +451,7 @@ UIColor* authorColor() {
     }
 }
 
-UIColor* priorityColor() {
+UIColor* priorityColor(void) {
     if (@available(iOS 11.0, *)) {
         return [UIColor colorNamed:@"priorityMessageHeaderColor"];
     } else {
@@ -459,7 +459,7 @@ UIColor* priorityColor() {
     }
 }
 
-NSMutableArray *threadHeaderGradientColors() {
+NSMutableArray *threadHeaderGradientColors(void) {
     NSMutableArray *colors = [[NSMutableArray alloc] initWithCapacity:3];
     if (@available(iOS 11.0, *)) {
         [colors addObject:(id)[[UIColor colorNamed:@"threadHeaderColor1"] CGColor]];

@@ -169,7 +169,7 @@
     [dataTask resume];
 }
 
-NSTimeInterval standardTimeout()
+NSTimeInterval standardTimeout(void)
 {
     NSInteger timeoutSecs = 120;
     NSNumber *timeoutNum = [((NSObject*)UIApplication.sharedApplication.delegate) valueForKey:@"timeoutSecs"];
