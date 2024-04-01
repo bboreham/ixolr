@@ -22,11 +22,11 @@
 typedef void (^RequestContinuation)(NSData*);
 typedef void (^FailureBlock)(NSError*);
 
-@interface CixRequest : NSObject<NSURLConnectionDataDelegate> {
+@interface CixRequest : NSObject<NSURLSessionDataDelegate> {
 @private
-    NSURLConnection	*connection;
+    NSURLSessionDataTask *dataTask;
     long long contentSize;
-	NSMutableData	*data;
+    NSUInteger bytesReceived;
 	NSObject<CixRequestDelegate> *delegate;
     UIBackgroundTaskIdentifier  taskIdentifier; // To tell IOS we have completed this operation
 }
