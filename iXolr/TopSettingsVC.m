@@ -58,7 +58,7 @@
 
 
 - (IBAction)infoButtonPressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://bryan.boreham.org/iXolr/iXolr_4_Settings.html"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://bryan.boreham.org/iXolr/iXolr_4_Settings.html"] options: @{} completionHandler: nil];
 }
 
 - (IBAction)doneButtonPressed:(id)sender {

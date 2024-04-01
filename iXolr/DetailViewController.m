@@ -472,7 +472,7 @@
     // Redirect http and mail links to Safari and Mail
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         decisionHandler(WKNavigationActionPolicyCancel);
-        [[UIApplication sharedApplication] openURL: navigationAction.request.URL];
+        [[UIApplication sharedApplication] openURL: navigationAction.request.URL options:@{} completionHandler:nil];
         return;
     }
     decisionHandler(WKNavigationActionPolicyAllow);
