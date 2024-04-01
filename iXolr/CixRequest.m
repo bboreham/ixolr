@@ -127,14 +127,46 @@
         NSString *encodedParams = [params stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@&%@", oldURL, encodedParams]]];
     }
-	
-	data = [[NSMutableData alloc] initWithCapacity:1024];
     
     NSLog(@"Sending request: %@", [request URL]);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
-	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    // At this point, 'self' has been retained as the delegate, and 'request' has been deep-copied
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request
+        completionHandler:^(NSData * newData, NSURLResponse * response, NSError * error) {
+        if (error != nil) {
+            self->dataTask = nil;
+            [self unConnectedDidFailWithError:error];
+            return;
+        }
+        if (response == nil) {
+            NSLog(@"Nil response from request");
+            return;
+        }
+        if (newData == nil) {
+            NSLog(@"Nil data from request");
+            return;
+        }
+        //NSLog(@"Data received: %@", [newData asUTF8String]);
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        // Callback comes on background thread; jump back to main thread to update UI etc.
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if ((httpResponse.statusCode / 100) != 2) {
+                NSString *responseString = newData == nil ? nil : [newData asUTF8String];
+                NSLog(@"HTTP error %zd: %@", (ssize_t) httpResponse.statusCode, responseString);
+                [self unConnectedDidFailWithError:[NSError errorWithDomain:responseString code:httpResponse.statusCode userInfo:nil]];
+                return;
+            }
+            if (self.delegate && [self.delegate respondsToSelector:@selector(cixRequest:finishedLoadingData:)]) {
+                [self.delegate performSelector:@selector(cixRequest:finishedLoadingData:) withObject:self withObject:newData];
+            }
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [[UIApplication sharedApplication] endBackgroundTask:self->taskIdentifier];
+        }];
+    }];
+    if (@available(iOS 15.0, *)) {
+        //dataTask.delegate = self;
+    }
+    [dataTask resume];
 }
 
 NSTimeInterval standardTimeout()
@@ -183,67 +215,38 @@ char *urlRoot = "https://api.cixonline.com/v2.0/cix.svc";
 - (void)cancel {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	self.delegate = nil;
-	if (connection) {
+	if (dataTask) {
         NSLog(@"CIXRequest operation cancelled (background task %lu)", (unsigned long)taskIdentifier);
         [[UIApplication sharedApplication] endBackgroundTask:taskIdentifier];
-		[connection cancel];
+		[dataTask cancel];
 	}
 }
 
 #pragma mark -
-#pragma mark NSURLConnectionDataDelegate methods
+#pragma mark NSURLSessionDataDelegate methods
 
-// We don't want to cache responses from CIX
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
-    return nil;
-}
-
-/**
- * check that the HTTP status code is 2xx and that the Content-Type is acceptable.
- */
-- (void)connection:(NSURLConnection*)theConnection didReceiveResponse:(NSURLResponse*)response {
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     httpResponse = (NSHTTPURLResponse*)response;
-        contentSize = [httpResponse expectedContentLength];
-        if (self.postProgressNotifications)
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshProgress" object:nil];
+    self->contentSize = [httpResponse expectedContentLength];
+    if (self.postProgressNotifications)
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshProgress" object:nil];
+    completionHandler(NSURLSessionResponseAllow);
 }
 
-- (void)connection:(NSURLConnection*)theConnection didReceiveData:(NSData*)newData {
-    //NSLog(@"Data received: %@", [newData asUTF8String]);
-	[data appendData:newData];
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)newData {
+    NSLog(@"Data received: %lu bytes", (unsigned long)[newData length]);
+    bytesReceived += [newData length];
     if (self.postProgressNotifications) {
-        float progress = (float)[data length] / (float)contentSize * 0.5;  // Multiply by 0.5 so that network download is half of progress; parsing is second half
+        float progress = (float)bytesReceived / (float)contentSize * 0.5;  // Multiply by 0.5 so that network download is half of progress; parsing is second half
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshProgress" object:@(progress)];
     }
 }
 
-- (void)connection:(NSURLConnection*)theConnection didFailWithError:(NSError*)error {
-    connection = nil;
-    [self unConnectedDidFailWithError:error];
-}
-
 - (void)unConnectedDidFailWithError:(NSError*)error {
     NSLog(@"%@", [error localizedDescription]);
-    data = nil;
     if (self.delegate && [self.delegate respondsToSelector:@selector(cixRequest:failedWithError:)]) {
         [self.delegate performSelector:@selector(cixRequest:failedWithError:) withObject:self withObject:error];
     }
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [[UIApplication sharedApplication] endBackgroundTask:taskIdentifier];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
-    if ((httpResponse.statusCode / 100) != 2) {
-        NSString *responseString = data == nil ? nil : [data asUTF8String];
-        NSLog(@"HTTP error %zd: %@", (ssize_t) httpResponse.statusCode, responseString);
-        [self connection:theConnection didFailWithError:[NSError errorWithDomain:responseString code:httpResponse.statusCode userInfo:nil]];
-        return;
-    }
-	if (self.delegate && [self.delegate respondsToSelector:@selector(cixRequest:finishedLoadingData:)]) {
-		[self.delegate performSelector:@selector(cixRequest:finishedLoadingData:) withObject:self withObject:data];
-	}
-    connection = nil;
-    data = nil;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [[UIApplication sharedApplication] endBackgroundTask:taskIdentifier];
 }
@@ -309,7 +312,7 @@ char *urlRoot = "https://api.cixonline.com/v2.0/cix.svc";
 	if (![self isCancelled])
 	{
         _inProgress = YES;
-        // Kick off on main queue, because NSUrlConnection requests need a run-loop to work.  Means all callbacks come on main thread too.
+        // Kick off on main queue.  Means all callbacks come on main thread too.
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         if (self->_startedBlock != nil)
             self->_startedBlock(self);
