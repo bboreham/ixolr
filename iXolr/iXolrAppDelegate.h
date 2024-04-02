@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 #import "CixRequest.h"
 #import "iXolrSettings.h"
 
@@ -18,7 +19,7 @@
 @class CIXMessage;
 @protocol GenericMessage;
 
-@interface iXolrAppDelegate : NSObject <UIApplicationDelegate,UIAlertViewDelegate,CixRequestDelegate,UISplitViewControllerDelegate> 
+@interface iXolrAppDelegate : NSObject <UIApplicationDelegate,UIAlertViewDelegate,CixRequestDelegate,UISplitViewControllerDelegate,UNUserNotificationCenterDelegate> 
 
 // Return the singleton delegate for the current application
 + (iXolrAppDelegate*) singleton;
