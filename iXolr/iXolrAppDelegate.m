@@ -31,7 +31,7 @@
     Reachability            *_CIXhostReach;
     NSMutableSet            *_pendingMarkRead, *_pendingMarkUnread;
     NSMutableSet            *_pendingStar, *_pendingUnstar;
-    UILocalNotification     *_notification;
+    UNNotificationRequest   *_notification;
     NSOperationQueue        *_queueForMessageParsing;
     CixRequestManager       *_CIXRequestManager;
     DDFileLogger            *_fileLogger;
@@ -352,8 +352,10 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     {
-        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
-        [application registerUserNotificationSettings:notificationSettings];
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler: ^(BOOL granted, NSError *error){
+        }];
     }
     
     if ([self.window.rootViewController isKindOfClass:[UISplitViewController class]])
@@ -365,13 +367,9 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     _queueForMessageParsing = [[NSOperationQueue alloc] init];
     _queueForMessageParsing.maxConcurrentOperationCount = 1;
 
-    UILocalNotification *notification = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     // Do rest of init on the operation queue so we don't take the hit in the init routine
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        if (notification != nil)
-            [self application:application didReceiveLocalNotification:notification];
-        else
-            [self gotoSavedLocation];
+        [self gotoSavedLocation];
     }];
     
     return YES;
@@ -397,11 +395,13 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     NSLog(@"applicationDidEnterBackground");
     _notification = nil;
     if (self.settings.outboxAlert && [self.dataController outboxMessageCountToUpload] > 0) {
-        _notification = [[UILocalNotification alloc] init];
-        _notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:60 * self.settings.outboxAlertMinutesDelay];
-        _notification.alertBody = @"iXolr has pending outbox messages";
-        _notification.userInfo = @{@"link": @"outbox"};
-        [[UIApplication sharedApplication] scheduleLocalNotification: _notification];
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
+                    triggerWithTimeInterval:60 * self.settings.outboxAlertMinutesDelay repeats:NO];
+        content.body = @"iXolr has pending outbox messages";
+        content.userInfo = @{@"link": @"outbox"};
+        _notification = [UNNotificationRequest requestWithIdentifier:@"PendingOutbox" content:content trigger:trigger];
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:_notification withCompletionHandler:nil];
     }
     [self saveState];
 }
@@ -409,7 +409,7 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 - (void) cancelOutboxNotification
 {
     if (_notification != nil) {
-        [[UIApplication sharedApplication] cancelLocalNotification:_notification];
+        [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:@[_notification.identifier]];
         _notification = nil;
     }
 }
@@ -444,8 +444,11 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 
 - (BOOL)badgeAllowed
 {
-    UIUserNotificationSettings* notificationSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
-    return notificationSettings.types & UIUserNotificationTypeBadge;
+    __block bool ret = false;
+    [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+        ret = (settings.badgeSetting == UNNotificationSettingEnabled);
+    }];
+    return ret;
 }
 
 - (NSInteger) timeoutSecs
@@ -590,9 +593,9 @@ NSString* const oauthServiceName = @"Callback_OAuth";
         consumer = [[OAConsumer alloc] initWithKey:@"e388392fe9034809b72d5312f63380" secret:@"<redacted>"];
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    NSLog(@"didReceiveLocalNotification: %@", notification);
-    NSString *url = notification.userInfo[@"link"];
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    NSLog(@"didReceiveNotificationResponse: %@", response);
+    NSString *url = response.notification.request.content.userInfo[@"link"];
     if ([url hasPrefix:@"cix:"]) {
         CIXMessage *message = [self messageForCIXurl: url];
         if (message != nil)

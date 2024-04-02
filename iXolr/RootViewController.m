@@ -117,7 +117,11 @@ enum SectionEnum {
                                                                target:nil action:nil];
     self.navigationItem.backBarButtonItem = btnBack;
     if ([iXolrAppDelegate singleton].badgeAllowed)
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalInteresting];
+        if (@available(iOS 16.0, *)) {
+            [[UNUserNotificationCenter currentNotificationCenter] setBadgeCount:totalInteresting withCompletionHandler:nil];
+        } else {
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalInteresting];
+        }
 }
 
 // Notification has arrived of new messages in one topic

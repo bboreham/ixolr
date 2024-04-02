@@ -482,13 +482,13 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
     // If we fire when active then it just runs the callback. Need to build our own UI FIXME
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
         return;
-    UILocalNotification *note = [[UILocalNotification alloc] init];
-    if ([note respondsToSelector:@selector(setAlertTitle:)]) { // New in IOS 8.2
-        note.alertTitle = message.summary;
-    }
-    note.alertBody = [NSString stringWithFormat:@"%@: %@", message.author, [message firstLineWithMaxLength:100]];
-    note.userInfo = @{@"link": message.cixLink};
-    [[UIApplication sharedApplication] presentLocalNotificationNow:note];
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = message.summary;
+    content.body = [NSString stringWithFormat:@"%@: %@", message.author, [message firstLineWithMaxLength:100]];
+    content.userInfo = @{@"link": message.cixLink};
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
+                content:content trigger:nil];
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
 }
 
 // Called (on main thread) when a set of new messages is read in
