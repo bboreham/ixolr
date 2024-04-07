@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AuthenticationServices/AuthenticationServices.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<ASWebAuthenticationPresentationContextProviding>
 
 - (void)requestRequestToken: (UINavigationController*)nc;
-
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end
