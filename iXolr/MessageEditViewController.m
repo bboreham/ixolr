@@ -229,6 +229,10 @@
         UIView *commentToLabel = [MessageEditViewController pullDownMessageLabelWithFrame:self.messageTextView.frame text:commentedToMessage.text];
         [self.messageTextView addSubview:commentToLabel];
         self.messageTextView.alwaysBounceVertical = YES;
+        if (@available(iOS 13.0, *)) {
+            // Stop the nav-bar being translucent.
+            self.navigationController.navigationBar.scrollEdgeAppearance = [[UINavigationBarAppearance alloc] init];
+        }
         [self.messageTextView.layer insertSublayer:[MessageEditViewController pullDownMessageGradientWithFrame:commentToLabel.frame] below:commentToLabel.layer];
     }
     [super viewWillAppear: animated];
