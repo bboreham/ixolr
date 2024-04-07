@@ -39,9 +39,13 @@
     [dataFetcher start];
 }
 
+- (ASPresentationAnchor)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession *)session {
+    return _saveNC.view.window;
+}
+
 /**
  * Once a request token has been obtained, store it and
- * tell the delegate it can load the authorization webpage.
+ * load the authorization webpage.
  */
 - (void)setRequestToken:(OAServiceTicket *)ticket withData:(NSData *)data {
     NSString *dataString = [data asUTF8String];
@@ -62,19 +66,28 @@
     
     _requestToken = [[OAToken alloc] initWithHTTPResponseBody:dataString];
     
-    [_saveNC pushViewController:self animated:YES];
-    [self.view layoutIfNeeded];
-    [self startAuthorization:[self authorizeURLRequest]];
-}
+    NSURL *url = [self authorizeURLRequest].URL;
+    ASWebAuthenticationSession *authSessionAS = [[ASWebAuthenticationSession alloc]initWithURL:url callbackURLScheme:@"x-com-ixolr-oauth" completionHandler:^(NSURL *callbackURL, NSError *error) {
+        if (error != nil) {
+            [self serviceTicket:nil didFailWithError:error];
+            return;
+        }
+        if ([[callbackURL host] isEqualToString:@"success"]) {
+            [self performSelector:@selector(requestAccessToken) withObject:[callbackURL absoluteString] afterDelay:0.1];
+        }
+    }];
 
-- (void)setRequestToken:(NSString*)dataString
-{
-    _requestToken = [[OAToken alloc] initWithHTTPResponseBody:dataString];
+    if (@available(iOS 13, *)) {
+        authSessionAS.presentationContextProvider = self;
+    }
+
+    NSLog(@"Opening: %@", url);
+
+    [authSessionAS start];
 }
 
 /**
- * This generates a URL request that can be passed to a UIWebView.
- * It will open a page in which the user must enter their credentials
+ * This generates a URL request that can be passed to CIX.
  */
 - (NSURLRequest*)authorizeURLRequest {
     OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:
@@ -103,7 +116,7 @@
 }
 
 /**
- * The access token has been obtained. Store it and use it for making API calls.
+ * The access token has been obtained. Store it and use it for making API calls.setAccess
  */
 - (void)setAccessToken:(OAServiceTicket*)ticket withData:(NSData*)data {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -129,52 +142,5 @@
     NSLog(@"Authorization failed detail: %@", [err userInfo]);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginStatus" object:err];
-}
-
-/**
- * Request token is in. Let user enter credentials in webpage.
- */
-- (void)startAuthorization:(NSURLRequest*)request {
-    NSLog(@"Opening: %@", [request URL]);
-    [self.webView loadRequest:request];
-}
-
-// Check what is happening in the webview
-- (BOOL)webView:(UIWebView*)wv shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
-    
-    BOOL    response = YES;
-    NSURL 	*requestURL = [request URL];
-    
-    NSLog(@"Login webview URL: %@", [requestURL description]);
-    if ([[requestURL host] isEqualToString:@"success"]) {
-        [self performSelector:@selector(requestAccessToken) withObject:[requestURL absoluteString] afterDelay:0.1];
-        return NO;
-    }
-    
-    switch (navigationType) {
-        case UIWebViewNavigationTypeLinkClicked:
-            [[UIApplication sharedApplication] openURL:[request URL]];
-            response = NO;
-            break;
-        case UIWebViewNavigationTypeFormSubmitted:
-            NSLog(@"Authenticating...");
-            break;
-        case UIWebViewNavigationTypeBackForward:
-            response = NO;
-            break;
-        case UIWebViewNavigationTypeReload:
-            break;
-        case UIWebViewNavigationTypeFormResubmitted:
-            break;
-        case UIWebViewNavigationTypeOther:
-            break;
-        default:
-            break;
-    }
-    return response;
-}
-
-- (void)webView:(UIWebView*)wv didFailLoadWithError:(NSError*)error {
-    NSLog(@"%@", [error localizedDescription]);
 }
 @end

@@ -84,6 +84,7 @@
 		9316C1F1152267B900DCAC8C /* ixolr_icon_114b.png in Resources */ = {isa = PBXBuildFile; fileRef = 9316C1F0152267B900DCAC8C /* ixolr_icon_114b.png */; };
 		9316C1F315226C4F00DCAC8C /* ixolr_icon_57b.png in Resources */ = {isa = PBXBuildFile; fileRef = 9316C1F215226C4F00DCAC8C /* ixolr_icon_57b.png */; };
 		9316C1F515226CC800DCAC8C /* ixolr_icon_72b.png in Resources */ = {isa = PBXBuildFile; fileRef = 9316C1F415226CC800DCAC8C /* ixolr_icon_72b.png */; };
+		93242C142BC2BB4B0046BB90 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93242C042BC2BB4B0046BB90 /* AuthenticationServices.framework */; };
 		9326E604176FB3C9005A8517 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9326E603176FB3C9005A8517 /* libsqlite3.dylib */; };
 		932719AB14BBA887007D1A72 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 932719AA14BBA887007D1A72 /* Star.png */; };
 		932719B114C33833007D1A72 /* outbox2.png in Resources */ = {isa = PBXBuildFile; fileRef = 932719B014C33833007D1A72 /* outbox2.png */; };
@@ -121,7 +122,6 @@
 		93C94D8A19F8EA0F00B35154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C94D8919F8EA0F00B35154 /* Main.storyboard */; };
 		93D4DE0A1A1355FE001341C5 /* iXolrSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D4DE091A1355FE001341C5 /* iXolrSettings.m */; };
 		93E93976161F459D005D5A19 /* Conference.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E93975161F459D005D5A19 /* Conference.m */; };
-		93EF73D71A5438C600666537 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EF73D61A5438C600666537 /* LoginView.xib */; };
 		93EF73DA1A54390800666537 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF73D91A54390800666537 /* LoginViewController.m */; };
 		93F8DD521BB70298003904E3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93F8DD511BB70298003904E3 /* Launch Screen.storyboard */; };
 		93F9DB1B1542C90700C0BB9F /* ThreadHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F9DB1A1542C90700C0BB9F /* ThreadHeaderView.m */; };
@@ -376,6 +376,7 @@
 		9316C1F0152267B900DCAC8C /* ixolr_icon_114b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ixolr_icon_114b.png; path = ../ixolr_icon_114b.png; sourceTree = "<group>"; };
 		9316C1F215226C4F00DCAC8C /* ixolr_icon_57b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ixolr_icon_57b.png; path = ../ixolr_icon_57b.png; sourceTree = "<group>"; };
 		9316C1F415226CC800DCAC8C /* ixolr_icon_72b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ixolr_icon_72b.png; path = ../ixolr_icon_72b.png; sourceTree = "<group>"; };
+		93242C042BC2BB4B0046BB90 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		9326E60217653499005A8517 /* iXolr 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iXolr 6.xcdatamodel"; sourceTree = "<group>"; };
 		9326E603176FB3C9005A8517 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		932719AA14BBA887007D1A72 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
@@ -428,7 +429,6 @@
 		93E65B34150DE6CE00D002CE /* iXolr 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iXolr 4.xcdatamodel"; sourceTree = "<group>"; };
 		93E93974161F459D005D5A19 /* Conference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conference.h; sourceTree = "<group>"; };
 		93E93975161F459D005D5A19 /* Conference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conference.m; sourceTree = "<group>"; };
-		93EF73D61A5438C600666537 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		93EF73D81A54390800666537 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		93EF73D91A54390800666537 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		93F8DD511BB70298003904E3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -445,6 +445,7 @@
 				9326E604176FB3C9005A8517 /* libsqlite3.dylib in Frameworks */,
 				44989DA8147C66F300E2ABEC /* MessageUI.framework in Frameworks */,
 				44E2D03814700E5000155B9F /* SystemConfiguration.framework in Frameworks */,
+				93242C142BC2BB4B0046BB90 /* AuthenticationServices.framework in Frameworks */,
 				44931E831449D1FF00D481C8 /* QuartzCore.framework in Frameworks */,
 				441B226214152EAB00CE893C /* Security.framework in Frameworks */,
 				44990673136A984E0093F00C /* UIKit.framework in Frameworks */,
@@ -596,6 +597,7 @@
 		44990671136A984E0093F00C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93242C042BC2BB4B0046BB90 /* AuthenticationServices.framework */,
 				93AEA7B61F6F089700AF602A /* SAMKeychain */,
 				930450D717E610F500A9A427 /* MBProgressHUD */,
 				9326E603176FB3C9005A8517 /* libsqlite3.dylib */,
@@ -745,7 +747,6 @@
 				93449E9514DF29FE003E61FB /* FontSizeVC.m */,
 				93D4DE081A1355FE001341C5 /* iXolrSettings.h */,
 				93D4DE091A1355FE001341C5 /* iXolrSettings.m */,
-				93EF73D61A5438C600666537 /* LoginView.xib */,
 				93EF73D81A54390800666537 /* LoginViewController.h */,
 				93EF73D91A54390800666537 /* LoginViewController.m */,
 			);
@@ -1016,7 +1017,6 @@
 				93271B3C14D438C9007D1A72 /* Icon.png in Resources */,
 				93271B3D14D438C9007D1A72 /* Icon@2x.png in Resources */,
 				9396CCAE14D46A38004FBEBD /* gear2.png in Resources */,
-				93EF73D71A5438C600666537 /* LoginView.xib in Resources */,
 				9396CCB214D48F17004FBEBD /* gear2@2x.png in Resources */,
 				93449E9D14E6F50E003E61FB /* Default.png in Resources */,
 				9316C1F1152267B900DCAC8C /* ixolr_icon_114b.png in Resources */,
