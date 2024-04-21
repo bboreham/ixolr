@@ -804,12 +804,15 @@ NSString* const oauthServiceName = @"Callback_OAuth";
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"postingMessage" object:message];
             };
             op.failureBlock = ^(NSError* error){
-                [self->_CIXRequestManager cancelAllCIXOperations];
-                if (error.code == 400 && [error.domain hasPrefix:@"\"RO topic"])
-                    [self displayErrorMessage:[NSString stringWithFormat:@"While attempting to post a message, CIX sent back: %@",[error domain]] title:@"Read-only Topic"];
-                else
-                    [self displayErrorMessage:[error localizedDescription] title:@"Communication Failure"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshFinished" object:error];
+                // Run on main thread
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [self->_CIXRequestManager cancelAllCIXOperations];
+                    if (error.code == 400 && [error.domain hasPrefix:@"\"RO topic"])
+                        [self displayErrorMessage:[NSString stringWithFormat:@"While attempting to post a message, CIX sent back: %@",[error domain]] title:@"Read-only Topic"];
+                    else
+                        [self displayErrorMessage:[error localizedDescription] title:@"Communication Failure"];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshFinished" object:error];
+                }];
             };
             op.body = [DataController JSONfromMessage:message];
             [_CIXRequestManager addOperation: op];
