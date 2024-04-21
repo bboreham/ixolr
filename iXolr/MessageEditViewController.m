@@ -86,7 +86,6 @@
     [super decodeRestorableStateWithCoder:coder];
     NSString *msgLink = [coder decodeObjectOfClass:[NSString class] forKey:@"message"];
     self.message = [[iXolrAppDelegate singleton] messageForCIXurl:msgLink];
-    self.title = [message summary];
     if (self.message == nil) {
         NSLog(@"MessageEditViewController:decodeRestorableStateWithCoder - nil message restored.");
     }
@@ -143,21 +142,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (![iXolrAppDelegate iPad]) { // Create a label for the title so we can set adjustsFontSizeToFitWidth
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
-        label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont boldSystemFontOfSize: 18.0f];
-        label.adjustsFontSizeToFitWidth = YES;
-        label.minimumScaleFactor = 0.5;
-        label.textAlignment = NSTextAlignmentCenter;
-        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        label.textColor = [UIColor darkTextColor];
-        label.text = self.title;
-        
-        self.navigationItem.titleView = label;
-        
-    } else
-        self.navigationItem.title = self.title;
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     if (self.commentedToMessage != nil) 
         self.navigationItem.rightBarButtonItem = self.quoteButton;
@@ -228,6 +212,23 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     //NSLog(@"MessageEdit viewWillAppear");
+    self.title = [message summary];
+    if (![iXolrAppDelegate iPad]) { // Create a label for the title so we can set adjustsFontSizeToFitWidth
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize: 18.0f];
+        label.adjustsFontSizeToFitWidth = YES;
+        label.minimumScaleFactor = 0.5;
+        label.textAlignment = NSTextAlignmentCenter;
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        label.textColor = [UIColor darkTextColor];
+        label.text = self.title;
+        
+        self.navigationItem.titleView = label;
+        
+    } else
+        self.navigationItem.title = self.title;
+
     if (self.commentedToMessage != nil)
     {   // Show the message that this is a comment to in a label that will appear if the view is dragged down
         UIView *commentToLabel = [MessageEditViewController pullDownMessageLabelWithFrame:self.messageTextView.frame text:commentedToMessage.text];
