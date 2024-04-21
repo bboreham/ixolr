@@ -709,6 +709,10 @@
 - (void)messageEditViewControllerConfirmed:(MessageEditViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    if (controller.message == nil) {
+        NSLog(@"messageEditViewControllerConfirmed: nil message");
+        return;
+    }
     controller.message.date = [NSDate date];   // get the time now
     [[iXolrAppDelegate singleton].dataController addOutboxMessagesObject:controller.message];
     [[iXolrAppDelegate singleton].dataController saveContext];  // Commit to database
