@@ -87,6 +87,9 @@
     NSString *msgLink = [coder decodeObjectOfClass:[NSString class] forKey:@"message"];
     self.message = [[iXolrAppDelegate singleton] messageForCIXurl:msgLink];
     self.title = [message summary];
+    if (self.message == nil) {
+        NSLog(@"MessageEditViewController:decodeRestorableStateWithCoder - nil message restored.");
+    }
     msgLink = [coder decodeObjectOfClass:[NSString class] forKey:@"commentedToMessage"];
     self.commentedToMessage = [[iXolrAppDelegate singleton] messageForCIXurl:msgLink];
     // For NSSecureCoder, we need to list here the classes which are possible delegates.
