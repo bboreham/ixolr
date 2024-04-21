@@ -7,6 +7,8 @@
 //
 
 #import "MessageEditViewController.h"
+#import "DetailViewController.h"
+#import "OutboxViewController.h"
 #import "Message.h"
 #import "iXolrAppDelegate.h"
 #import "DataController.h"
@@ -76,7 +78,6 @@
     if (self.commentedToMessage != nil)
         [coder encodeObject:self.commentedToMessage.cixLink forKey:@"commentedToMessage"];
     [coder encodeObject:delegate forKey:@"delegate"];
-    [coder encodeObject:self.messageTextView.delegate forKey:@"textViewDelegate"];
     [coder encodeObject:self.messageTextView.text forKey:@"text"];
 }
 
@@ -88,8 +89,8 @@
     self.title = [message summary];
     msgLink = [coder decodeObjectOfClass:[NSString class] forKey:@"commentedToMessage"];
     self.commentedToMessage = [[iXolrAppDelegate singleton] messageForCIXurl:msgLink];
-    delegate = [coder decodeObjectForKey:@"delegate"];
-    self.messageTextView.delegate = [coder decodeObjectForKey:@"textViewDelegate"];
+    // For NSSecureCoder, we need to list here the classes which are possible delegates.
+    delegate = [coder decodeObjectOfClasses:[NSSet setWithObjects: [DetailViewController class], [OutboxViewController class], nil] forKey:@"delegate"];
     self.messageTextView.text = [coder decodeObjectOfClass:[NSString class] forKey:@"text"];
 }
 
