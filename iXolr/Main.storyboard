@@ -366,18 +366,18 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="R0O-Mm-ERB"/>
-                                                <exclude reference="MQu-bv-BM4"/>
                                                 <exclude reference="qBs-B1-EIA"/>
+                                                <exclude reference="MQu-bv-BM4"/>
                                                 <exclude reference="KYv-9E-qGB"/>
                                                 <exclude reference="pC6-Jq-00E"/>
                                                 <exclude reference="JAu-OQ-YdR"/>
                                                 <exclude reference="KuE-mO-tus"/>
-                                                <exclude reference="TEb-HE-vrP"/>
                                                 <exclude reference="U6I-WW-eVf"/>
                                                 <exclude reference="ucW-L1-0Xb"/>
-                                                <exclude reference="Ltb-39-hU7"/>
+                                                <exclude reference="TEb-HE-vrP"/>
                                                 <exclude reference="PoO-i6-TMe"/>
                                                 <exclude reference="sbq-DA-cY2"/>
+                                                <exclude reference="Ltb-39-hU7"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=compact">
@@ -389,21 +389,21 @@
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="R0O-Mm-ERB"/>
-                                                <exclude reference="MQu-bv-BM4"/>
                                                 <exclude reference="qBs-B1-EIA"/>
+                                                <exclude reference="MQu-bv-BM4"/>
                                                 <include reference="pC6-Jq-00E"/>
                                                 <include reference="JAu-OQ-YdR"/>
                                                 <include reference="KuE-mO-tus"/>
-                                                <exclude reference="TEb-HE-vrP"/>
                                                 <exclude reference="U6I-WW-eVf"/>
+                                                <exclude reference="TEb-HE-vrP"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=regular">
                                             <mask key="constraints">
                                                 <include reference="KYv-9E-qGB"/>
-                                                <include reference="TEb-HE-vrP"/>
                                                 <include reference="U6I-WW-eVf"/>
                                                 <include reference="ucW-L1-0Xb"/>
+                                                <include reference="TEb-HE-vrP"/>
                                                 <include reference="Ltb-39-hU7"/>
                                             </mask>
                                         </variation>
@@ -414,9 +414,9 @@
                                                 <include reference="pC6-Jq-00E"/>
                                                 <include reference="JAu-OQ-YdR"/>
                                                 <include reference="KuE-mO-tus"/>
-                                                <exclude reference="TEb-HE-vrP"/>
                                                 <exclude reference="U6I-WW-eVf"/>
                                                 <exclude reference="ucW-L1-0Xb"/>
+                                                <exclude reference="TEb-HE-vrP"/>
                                                 <exclude reference="Ltb-39-hU7"/>
                                             </mask>
                                         </variation>
