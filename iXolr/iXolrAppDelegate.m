@@ -1216,6 +1216,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     return [userRequest makeGenericRequest:request consumer:consumer auth:_authStr];
 }
 
+/* unused at present
 - (void)fetchPrivateMessages
 {
 	CixRequest *userRequest = [CixRequest requestWithDelegate:self];
@@ -1224,6 +1225,7 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     };
     [userRequest makeGenericRequest:@"personalmessage/inbox" consumer:consumer auth:_authStr];
 }
+*/
 
 #pragma mark - Request Callbacks
 

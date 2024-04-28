@@ -39,8 +39,9 @@
     
     NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
     NSString *receiptURLString = [receiptURL path];
+#if !DEBUG
     BOOL isBeta = ([receiptURLString rangeOfString:@"sandboxReceipt"].location != NSNotFound);
-
+#endif
     appVersionLabel.text = [NSString stringWithFormat:@"iXolr %@ %@", [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"],
 #if DEBUG
         @"debug build"
