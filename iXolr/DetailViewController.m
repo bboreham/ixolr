@@ -85,6 +85,7 @@
         if ([coder containsValueForKey:@"msgnum"]) {
             int msgnum = [coder decodeIntForKey:@"msgnum"];
             CIXMessage *message = [topic messageWithNumber:msgnum];
+            NSLog(@"DetailViewController.decodeRestorableStateWithCoder: message %@", message.description);
             [self showMessageDetail:message movingBack:NO];
         }
     }
@@ -359,6 +360,7 @@
     if (self.currentMessage != nil) {
         [self moveToDisplayMessage:self.currentMessage movingBack:NO];
     }
+    NSLog(@"DetailViewController.viewWillAppear: showing message %@", self.currentMessage.description);
     [self showMessageDetail:self.currentMessage movingBack:NO];
 }
 
@@ -476,6 +478,11 @@
         return;
     }
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView
+{
+    NSLog(@"webViewWebContentProcessDidTerminate");
 }
 
 #pragma mark - Memory management
