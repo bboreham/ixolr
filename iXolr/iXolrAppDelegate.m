@@ -33,6 +33,7 @@
     NSMutableSet            *_pendingStar, *_pendingUnstar;
     UNNotificationRequest   *_notification;
     NSOperationQueue        *_queueForMessageParsing;
+    NSOperation             *_activationOp;
     CixRequestManager       *_CIXRequestManager;
     DDFileLogger            *_fileLogger;
     BOOL useBetaAPI, haveFixedKeychainAccessibility, backgroundFetchActive;
@@ -386,6 +387,7 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 {
     NSLog(@"applicationDidEnterBackground");
     _notification = nil;
+    _activationOp = nil;
     if (self.settings.outboxAlert && [self.dataController outboxMessageCountToUpload] > 0) {
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
         UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
@@ -419,12 +421,19 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
         [self oauthInitAuthorization];
 	[_CIXhostReach startNotifier];
     [self setupRefreshTimer];
+    [_activationOp start];
+    _activationOp = nil;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [self saveState];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)performOnActivate: (void (^)(void)) block
+{
+    _activationOp = [NSBlockOperation blockOperationWithBlock: block];
 }
 
 - (BOOL)badgeAllowed

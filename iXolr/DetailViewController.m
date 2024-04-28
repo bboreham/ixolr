@@ -483,6 +483,9 @@
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView
 {
     NSLog(@"webViewWebContentProcessDidTerminate");
+    [[iXolrAppDelegate singleton] performOnActivate: ^{
+        [self showMessageDetail:self.currentMessage movingBack:NO];
+    }];
 }
 
 #pragma mark - Memory management
