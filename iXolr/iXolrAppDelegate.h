@@ -63,6 +63,7 @@
 - (void)popdownActivityIndicator;
 - (void)uploadStarsTurnedOn;
 - (NSString*)recentLogs;
+- (void)performOnActivate: (void (^)(void))block;
 
 @property (nonatomic, strong) RootViewController *conferenceListViewController;
 @property (nonatomic, strong) DetailViewController *detailViewController;
