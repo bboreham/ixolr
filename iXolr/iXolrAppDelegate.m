@@ -32,6 +32,7 @@
     NSMutableSet            *_pendingMarkRead, *_pendingMarkUnread;
     NSMutableSet            *_pendingStar, *_pendingUnstar;
     UNNotificationRequest   *_notification;
+    BOOL                    _badgeAllowed;
     NSOperationQueue        *_queueForMessageParsing;
     NSOperation             *_activationOp;
     CixRequestManager       *_CIXRequestManager;
@@ -420,6 +421,9 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
     if (_authStr == nil || consumer == nil)
         [self oauthInitAuthorization];
 	[_CIXhostReach startNotifier];
+    [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
+        self->_badgeAllowed = (settings.badgeSetting == UNNotificationSettingEnabled);
+    }];
     [self setupRefreshTimer];
     [_activationOp start];
     _activationOp = nil;
@@ -438,11 +442,7 @@ NSString * const IXSettingUseDynamicType = @"useDynamicType";
 
 - (BOOL)badgeAllowed
 {
-    __block bool ret = false;
-    [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings *settings) {
-        ret = (settings.badgeSetting == UNNotificationSettingEnabled);
-    }];
-    return ret;
+    return _badgeAllowed;
 }
 
 - (NSInteger) timeoutSecs
