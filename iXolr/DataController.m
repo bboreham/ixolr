@@ -314,8 +314,12 @@ typedef void (^CancellableBlock)(NSOperation*);   // Used to define a block whic
     NSNumber *prevUnread = [param userInfo][@"PreviousUnreadCount"];
     NSNumber *prevInteresting = [param userInfo][@"PreviousInterestingCount"];
     if (prevUnread != nil) {
-        self.countOfUnread += (topic.messagesUnreadCount - [prevUnread integerValue]);
-        self.countOfInteresting += (topic.interestingMessagesCount - [prevInteresting integerValue]);
+        NSInteger diffUnread = (topic.messagesUnreadCount - [prevUnread integerValue]);
+        if (diffUnread != 0)
+            self.countOfUnread += diffUnread;
+        NSInteger diffInteresting = (topic.interestingMessagesCount - [prevInteresting integerValue]);
+        if (diffInteresting != 0)
+            self.countOfInteresting += diffInteresting;
     } else
         [self recomputeTotalUnread];
 }
