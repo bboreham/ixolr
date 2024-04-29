@@ -26,6 +26,8 @@
     BOOL _reloadConfPending;
     UIBarButtonItem *_savedRightButtonItem;
     UIGestureRecognizer *_longPressGestureRecognier;
+    NSInteger _cachedTotalUnread;
+    NSInteger _cachedTotalInteresting;
 }
 
 @synthesize conferences=_conferences;
@@ -110,18 +112,22 @@ enum SectionEnum {
 {
     NSInteger totalUnread = [iXolrAppDelegate singleton].dataController.countOfUnread;
     NSInteger totalInteresting = [iXolrAppDelegate singleton].dataController.countOfInteresting;
-    self.title = [NSString stringWithFormat:@"CIX (%ld)", (long)totalUnread];
-    // Create a back button every time because iOS 11 stopped updating it when this title changes.
-    // See https://stackoverflow.com/q/46691009/448734
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:self.title style:UIBarButtonItemStylePlain
-                                                               target:nil action:nil];
-    self.navigationItem.backBarButtonItem = btnBack;
-    if ([iXolrAppDelegate singleton].badgeAllowed)
+    if (_cachedTotalUnread != totalUnread) {
+        self.title = [NSString stringWithFormat:@"CIX (%ld)", (long)totalUnread];
+        // Create a back button every time because iOS 11 stopped updating it when this title changes.
+        // See https://stackoverflow.com/q/46691009/448734
+        UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:self.title style:UIBarButtonItemStylePlain
+                                                                   target:nil action:nil];
+        self.navigationItem.backBarButtonItem = btnBack;
+    }
+    if (_cachedTotalInteresting != totalInteresting && [iXolrAppDelegate singleton].badgeAllowed)
         if (@available(iOS 16.0, *)) {
             [[UNUserNotificationCenter currentNotificationCenter] setBadgeCount:totalInteresting withCompletionHandler:nil];
         } else {
             [[UIApplication sharedApplication] setApplicationIconBadgeNumber:totalInteresting];
         }
+    _cachedTotalUnread = totalUnread;
+    _cachedTotalInteresting = totalInteresting;
 }
 
 // Notification has arrived of new messages in one topic
@@ -404,6 +410,7 @@ enum SectionEnum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _cachedTotalUnread = _cachedTotalInteresting = 0;
     // Set property so top-level can control us.  Should really be a push/pop operation.
     [iXolrAppDelegate singleton].conferenceListViewController = self;
     self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
