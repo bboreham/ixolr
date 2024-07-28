@@ -303,6 +303,13 @@ static const NSUInteger LINE_BREAK_WIDTH = 50;
                     }
                     break;
                     
+                case '?': // CIX converts apostrophe to ?; change it back under heuristics.
+                    if (pc == 't' && nc == 's' || pc == 'u' && nc == 'r' || pc == 'I' && nc == 'd') {
+                        c = 0x2019;
+                    }
+                    [self regularCharHandling];
+                    break;
+
                 default:
                     [self regularCharHandling];
                     break;
