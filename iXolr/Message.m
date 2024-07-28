@@ -222,7 +222,7 @@ typedef enum {
          "  --link-color: #4488FF; "
          "  }"
          "} "
-         "body {%@; color: var(--text-color); } "
+         "body {%@; color: var(--text-color); -webkit-text-size-adjust: 100%%; } "
          ".quote { color: var(--quote-color); } "
          "a { color: var(--link-color); } "
          ".inlineimage {max-width: %.0fpx;} "
