@@ -79,6 +79,7 @@
 
     if (@available(iOS 13, *)) {
         authSessionAS.presentationContextProvider = self;
+        authSessionAS.prefersEphemeralWebBrowserSession = YES;
     }
 
     NSLog(@"Opening: %@", url);
