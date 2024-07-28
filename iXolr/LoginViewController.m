@@ -67,6 +67,15 @@
     _requestToken = [[OAToken alloc] initWithHTTPResponseBody:dataString];
     
     NSURL *url = [self authorizeURLRequest].URL;
+
+    if (_useSafari) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginResponse:) name:@"loginResponse" object:nil];
+
+        NSLog(@"Opening in Safari: %@", url);
+        [[UIApplication sharedApplication] openURL: url options:@{} completionHandler:nil];
+        return;
+    }
+
     ASWebAuthenticationSession *authSessionAS = [[ASWebAuthenticationSession alloc]initWithURL:url callbackURLScheme:@"x-com-ixolr-oauth" completionHandler:^(NSURL *callbackURL, NSError *error) {
         if (error != nil) {
             [self serviceTicket:nil didFailWithError:error];
@@ -143,5 +152,14 @@
     NSLog(@"Authorization failed detail: %@", [err userInfo]);
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginStatus" object:err];
+}
+
+// Notification callback, used for Safari authentication flow.
+- (void)loginResponse:(NSNotification*)param
+{
+    NSURL *url = param.object;
+    if (url != nil) {
+        [self requestAccessToken];
+    }
 }
 @end

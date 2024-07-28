@@ -11,6 +11,7 @@
 
 @interface LoginViewController : UIViewController<ASWebAuthenticationPresentationContextProviding>
 
+@property bool useSafari;
 - (void)requestRequestToken: (UINavigationController*)nc;
 
 @end

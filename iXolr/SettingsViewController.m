@@ -117,6 +117,15 @@
     [_loginVC requestRequestToken: self.navigationController];
 }
 
+// User has pressed the 'Authenticate via Safari' button: start the OAuth process
+- (IBAction)loginViaSafariPressed:(id)sender {
+    testLoginSuccessLabel.text = @"Requesting...";
+    _loginVC = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+    _loginVC.useSafari = YES;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [_loginVC requestRequestToken: self.navigationController];
+}
+
 // Attempt to request the currently-authorized CIX user's profile, but return NO if there is no authorization
 - (BOOL) requestCIXProfile {
     return [[iXolrAppDelegate singleton] requestCIXProfileWithCompletion:^(NSDictionary* results){

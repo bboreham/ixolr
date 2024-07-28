@@ -16,8 +16,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *testLoginSuccessLabel;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIProgressView *topicProgress;
-@property (strong, nonatomic) IBOutlet UIButton *authenticateButton;
-@property (strong, nonatomic) IBOutlet UIButton *joinIXolrConfButton;
 
 @end
 

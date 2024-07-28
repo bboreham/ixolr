@@ -603,6 +603,8 @@ NSString* const oauthServiceName = @"Callback_OAuth";
     NSLog(@"handleOpenURL: %@", url);
     if ([[url scheme] isEqualToString:@"cix"]) {
         [self gotoCIXurl:url];
+    } else if ([[url scheme] isEqualToString:@"x-com-ixolr-oauth"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginResponse" object:url];
     }
     
 	return YES;
